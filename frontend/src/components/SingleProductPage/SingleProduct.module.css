@@ -1,0 +1,7 @@
+.container {
+    width: 100vw;
+}
+.parent {
+    width: 100%;
+    background-color: turquoise;
+}
