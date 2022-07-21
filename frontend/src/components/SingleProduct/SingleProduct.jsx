@@ -73,6 +73,37 @@ export default function SingleProduct() {
                                 Coupon Code-<span className={styles.coupon_code}>NEW-20</span>
                             </div>
                         </div>
+
+                        <div className={styles.accordion_header}>
+                            PRODUCT DESCRIPTION
+                        </div>
+                        <div className={styles.accordion_desc}>
+                            <div className={styles.desc_title}>Men's Blue Voyage Graphic Printed Oversized T-Shirt</div>
+                            <div>Country of Origin<span className={styles.product_category}>India</span></div>
+                            <div>Commodity -<span className={styles.desc_commodity}>Men's T-Shirt</span></div>
+                            <div className={styles.desc_specifications}>Product Specifications</div>
+                            <ul>
+                                <li>Over-sized Fit- Falls loosely on body</li>
+                                <li>Single jersey, 100% Cotton Classic, Lightweight jersey</li>
+                            </ul>
+                        </div>
+
+                        <div className={styles.accordion_header}>
+                            15 DAYS RETURN & EXCHANGE
+                        </div>
+                        <div className={styles.accordion_desc}>
+                            <div>Easy returns utp 15 days of delivery. Exchange available on select pincodes.</div>
+                        </div>
+
+                        <div className={styles.accordion_header}>
+                            DELIVERY DETAILS
+                        </div>
+                        <div className={styles.accordion_desc}>
+                            <div className={styles.desc_pincode}>
+                                <input type="number" placeholder="Enter Pincode" />
+                                <span>Check</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

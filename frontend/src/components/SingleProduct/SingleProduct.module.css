@@ -169,14 +169,15 @@
     font-size: 13px;
     font-weight: bold;
     cursor: pointer;
+    margin-top: 8px;
 }
 .accordion_desc {
     font-size: 13px;
-    font-weight: bold;
+    font-weight: 600;
     color: #606060;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
 }
 .accordion_desc>div {
     display: flex;
@@ -188,4 +189,37 @@
 }
 .coupon_code {
     color: black;
+}
+.desc_title, .desc_commodity, .product_category  {
+    font-weight: 400;
+    font-size: 14px;
+}
+.desc_specifications {
+    color: #42A2A2;
+}
+.accordion_desc ul li {
+    font-weight: 400;
+    font-size: 14px;
+}
+.desc_pincode {
+    border: 1px solid #737373;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+}
+.desc_pincode input::-webkit-outer-spin-button,
+.desc_pincode input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.desc_pincode input, .desc_pincode input:focus {
+    border: none;
+    outline: none;
+    padding: 10px 0 10px 20px;
+}
+.desc_pincode span {
+    color: #42A2A2;
+    text-decoration: underline;
+    cursor: pointer;
 }
