@@ -20,16 +20,25 @@ const Products = () => {
             onMouseEnter={() => setShow(true)}
             onMouseLeave={() => setShow(false)}
           >
-            <p className="cursor-pointer">
-              SORT BY <span>Popular</span>
+            <p className="cursor-pointer flex items-center text-[12px] font-bold text-[rgba(45,45,45,.5)]">
+              SORT BY{" "}
+              <span className="ml-2 font-[500] text-black">Popular</span>
               <KeyboardArrowDownIcon />
             </p>
             {show && (
-              <div>
-                <p>popular</p>
-                <p>new</p>
-                <p>Price:High to Low</p>
-                <p>Price: Low to High</p>
+              <div className="absolute top-6 left-0 text-[13px] bg-white border-2 capitalize w-[160px] cursor-pointer px-2 py-2">
+                <p className="hover:bg-[#f7f7f7] px-1 py-1 text-black font-[500]">
+                  popular
+                </p>
+                <p className="hover:bg-[#f7f7f7] px-1 py-1 text-black font-[500]">
+                  new
+                </p>
+                <p className="hover:bg-[#f7f7f7] px-1 py-1 text-black font-[500]">
+                  Price:High to Low
+                </p>
+                <p className="hover:bg-[#f7f7f7] px-1 py-1 text-black font-[500]">
+                  Price: Low to High
+                </p>
               </div>
             )}
           </div>
