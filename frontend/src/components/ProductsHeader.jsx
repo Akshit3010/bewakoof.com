@@ -7,15 +7,15 @@ const ProductsHeader = () => {
     <>
       <ProductHeader className="w-[80%] mx-auto my-4">
         <div className="flex text-[12px] text-[#2d2d2d]">
-          <Link className="mx-2" to={"/"}>
+          <Link className="mx-3" to={"/"}>
             Home
           </Link>
           /
-          <Link className="mx-2" to={"/"}>
+          <Link className="mx-3" to={"/"}>
             Buy one get one free
           </Link>
           /
-          <Link className="mx-2" to={"/"}>
+          <Link className="mx-3" to={"/"}>
             Men Unisex Buy One Get One Free
           </Link>
         </div>

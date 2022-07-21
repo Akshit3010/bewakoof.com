@@ -188,31 +188,31 @@ const ProductsSidebar = () => {
         </div>
         <div className="border-b border-gray-300  py-4 px-2 cursor-pointer">
           <div className="flex justify-between items-center">
-            <h3 className="text-[14px] text-[#333333] font-[500]">Shipping</h3>
+            <h3 className="text-[14px] text-[#333333] font-[500]">Design</h3>
             <KeyboardArrowDownIcon />
           </div>
         </div>
         <div className="border-b border-gray-300  py-4 px-2 cursor-pointer">
           <div className="flex justify-between items-center">
-            <h3 className="text-[14px] text-[#333333] font-[500]">Color</h3>
+            <h3 className="text-[14px] text-[#333333] font-[500]">Fit</h3>
             <KeyboardArrowDownIcon />
           </div>
         </div>
         <div className="border-b border-gray-300  py-4 px-2 cursor-pointer">
           <div className="flex justify-between items-center">
-            <h3 className="text-[14px] text-[#333333] font-[500]">Material</h3>
+            <h3 className="text-[14px] text-[#333333] font-[500]">Sleeve</h3>
             <KeyboardArrowDownIcon />
           </div>
         </div>
         <div className="border-b border-gray-300  py-4 px-2 cursor-pointer">
           <div className="flex justify-between items-center">
-            <h3 className="text-[14px] text-[#333333] font-[500]">Designers</h3>
+            <h3 className="text-[14px] text-[#333333] font-[500]">Neck</h3>
             <KeyboardArrowDownIcon />
           </div>
         </div>
         <div className="border-b border-gray-300  py-4 px-2 cursor-pointer">
           <div className="flex justify-between items-center">
-            <h3 className="text-[14px] text-[#333333] font-[500]">Stores</h3>
+            <h3 className="text-[14px] text-[#333333] font-[500]">Type</h3>
             <KeyboardArrowDownIcon />
           </div>
         </div>
