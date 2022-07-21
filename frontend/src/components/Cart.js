@@ -12,10 +12,10 @@ const CartWrapper = styled.div`
   height: 800px;
   width: 90%;
   margin: auto;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 
   .headingDiv {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     margin: 15px;
     padding: 10px;
   }
@@ -24,7 +24,7 @@ const CartWrapper = styled.div`
   }
 
   .container {
-    border: 1px solid green;
+    /* border: 1px solid green; */
     height: 600px;
     width: 98%;
     margin: auto;
@@ -34,7 +34,7 @@ const CartWrapper = styled.div`
 
   .leftcont {
     width: 65%;
-    border: 1px solid green;
+    /* border: 1px solid green; */
   }
 
   .truckmove {
@@ -72,6 +72,9 @@ const CartWrapper = styled.div`
     border: 1px solid gray;
     /* padding: 10px; */
     margin:5px;
+    width:548.33px;
+    border-radius: 5px;
+   
   }
 
   .productDiv > div:nth-child(1){
@@ -79,7 +82,7 @@ const CartWrapper = styled.div`
     font-size: 14px;
     /* margin: 5px; */
     padding: 10px;
-    border: 1px solid green;
+    /* border: 1px solid green; */
     display: flex;
     justify-content: space-between;
     color: gray;
@@ -93,10 +96,14 @@ const CartWrapper = styled.div`
     color: gray;
 
   }
-  
+  .productDiv>div>div>div{
+    margin:5px;
+    /* border:1px solid red; */
+  }
   .buttonSection>div:nth-child(1){
    width:40%;
-   border:1px solid gray;
+   border-top:0.5px solid gray;
+   border-right:1px solid gray;
    height:50px;
    text-align: center;
    font-size:16px;
@@ -106,7 +113,8 @@ const CartWrapper = styled.div`
   
   .buttonSection>div:nth-child(2){
     width:60%;
-   border:1px solid gray;
+   border-top:0.5px solid gray;
+
    height:50px;
    text-align: center;
    font-size:16px;
@@ -119,7 +127,7 @@ const CartWrapper = styled.div`
     color: black;
     font-size: 18px;
     font-weight: bold;
-    padding: 2px;
+    padding-right: 8px;
   }
   #savedprice {
     color: green;
@@ -127,7 +135,7 @@ const CartWrapper = styled.div`
   }
   .formcont{
     width:100px;
-    margin:10px;
+    margin:20px;
     
   }
     .selectDiv{
@@ -153,6 +161,10 @@ const CartWrapper = styled.div`
 `;
 
 export const Cart = () => {
+
+
+
+
   return (
     <>
       <CartWrapper>
@@ -242,7 +254,9 @@ export const Cart = () => {
                 </div>
               </div>
             </div>
-            <div className="rightcont"></div>
+            <div className="rightcont">
+              
+            </div>
           </div>
         </div>
       </CartWrapper>
