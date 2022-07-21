@@ -1,12 +1,9 @@
 import { legacy_createStore as createStore, applyMiddleware, compose,combineReducers, } from 'redux';
+
 import thunk from 'redux-thunk'
 
 
-const rootReducer = combineReducers({
-   reducer:reducer
 
-
-})
 
 
   const composeEnhancers =
@@ -21,4 +18,4 @@ const enhancer = composeEnhancers(
   // other store enhancers if any
 );
 
-export const store = createStore(rootReducer, enhancer);
+export const store = createStore(enhancer);
