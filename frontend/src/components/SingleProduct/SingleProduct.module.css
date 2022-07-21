@@ -1,0 +1,10 @@
+.container {
+    width: 100vw;
+}
+.parent {
+    width: 100%;
+    background-color: turquoise;
+}
+.parent svg {
+    width : 20px;
+}

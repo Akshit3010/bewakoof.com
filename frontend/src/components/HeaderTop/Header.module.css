@@ -1,0 +1,31 @@
+.container {
+    height: 27px;
+    width: 100vw;
+    background: #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.parent {
+    width: 85.7%;
+    /* background-color: turquoise; */
+    display: flex;
+    justify-content: space-between;
+}
+.headerLeft {
+    display: flex;
+    gap: 20px;
+    font-size: 11px;
+    color: rgba(0,0,0,.8);
+}
+.headerLeft div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.headerRight {
+    display: flex;
+    gap: 15px;
+    font-size: 11px;
+    color: rgba(0,0,0,.8);
+}
