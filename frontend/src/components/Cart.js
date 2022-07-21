@@ -4,6 +4,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Button from '@mui/material/Button';
 
 const CartWrapper = styled.div`
   margin: 0px;
@@ -155,9 +156,127 @@ const CartWrapper = styled.div`
   }
 
   .rightcont {
-    width: 35%;
-    border: 1px solid green;
+    width:376.656px;
+    /* border: 1px solid green; */
   }
+  
+  .saveExtra{
+    background-color: #fdd835;
+    margin: 0 0 15px 0;
+    padding:15px;
+    width:376.656px;
+    height:50px;
+    font-family: "Montserrat";
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    /* border:1px solid red; */
+    margin:
+
+  }
+
+ .simplehappy10{
+    width:376.656px;
+    padding:5px;
+    font-family: "Montserrat";
+    border-radius: 5px;
+    font-size: 14px;
+    border:1px solid gray;
+    line-height:20.6px;
+    margin: 0 0 15px 0;
+    
+  }
+
+.coupenDiv{
+    width:95%;
+  background-color: #ebf6f5;
+ color:#42a2a2;
+ font-size:14px;
+ margin: 10px;
+ padding: 5px 2px;
+ border-radius: 5px;
+ display: flex;
+ justify-content: space-between;
+ font-family: "Montserrat";
+ font-size:12px;
+
+
+}
+.coupenDiv>span:nth-child(2){
+    font-weight: bold;
+}
+
+
+.priceSection{
+    border:1px solid gray;
+}
+
+.prsummary{
+ height: 37px;
+ padding: 10px 5px;
+ background-color:#f5f5f5;
+ color: #070606;
+ font-family: "Montserrat";
+ font-size:12px;
+ font-weight: bolder;
+ box-sizing: border-box;
+ margin: 0px 0px 15px 0px;
+
+}
+
+.summarysec{
+    padding:5px;
+    margin:10px 0px;
+}
+.summarysec>div{
+  
+    padding:2.5px;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Montserrat";
+    font-size:12px;
+  
+}
+
+.saving{
+    background-color:#e8f3e5 ;
+    color:#235f30;
+    font-family: "Montserrat";
+    font-size:12px;
+    padding:8px;
+    width:90%;
+    border-radius:15px;
+    margin:auto;
+
+}
+.totalDiv{
+    margin:10px 0px;
+    border-top:1px solid gray;
+    padding:10px;
+    display:flex;
+  
+    
+}
+
+.totalDiv>div{
+    margin:0px 10px ;
+}
+.totalDiv>div>p:first-child{
+    font-family: "Montserrat";
+    font-size:12px;
+}
+
+.totalDiv>Button{
+    width:280px;
+    height:48px;
+    padding:15px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #42a2a2;
+}
+
+
+
 `;
 
 export const Cart = () => {
@@ -255,7 +374,30 @@ export const Cart = () => {
               </div>
             </div>
             <div className="rightcont">
-              
+             
+                <div className="saveExtra">Save extra ₹230 with TriBe</div>
+                <div className="simplehappy10">Whistles! Get extra 10% Cashback on prepaid orders above Rs.699. Coupon code - HAPPY10.</div>
+
+                <div className="priceSection">
+                <div className="coupenDiv"><span>Have a Coupon / Referral / Gift Card ?</span><span>Redeem </span></div>
+                <div className="prsummary">Price Summary</div>
+                <div className="summarysec">
+                    <div><span>Total MRP (Incl. of taxes) </span><span>₹ 6644</span></div>
+                    <div><span>Delivery Fee </span><span>FREE</span></div>
+                    <div><span>Bag Discount </span><span>- ₹3800</span></div>
+                    <div><span>Subtotal </span><span></span>₹ 2844</div>
+                </div>
+                <div className="saving">You are saving ₹ 3800 on this order</div>
+       
+
+
+                <div className="totalDiv">
+                     <div><p>Total</p><p>₹ 2844</p></div>
+                     <Button variant="contained">Continue</Button>
+                </div>
+
+                </div>
+            
             </div>
           </div>
         </div>
