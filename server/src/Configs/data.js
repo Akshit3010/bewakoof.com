@@ -44,4 +44,3 @@ const data = [
     reviews: null,
   },
 ];
-
