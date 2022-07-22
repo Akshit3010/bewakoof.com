@@ -31,7 +31,9 @@ const ProductsHeader = ({ products }) => {
 
         <div className="mt-10">
           <div className="flex items-center capitalize">
-            <h2 className="font-bold text-[24px]">Buy one get one free</h2>
+            <h2 className="font-bold text-[24px] capitalize">
+              {first}'s {second}
+            </h2>
             <span className="text-[24px] text-[#949494] ml-2">
               ({products.length})
             </span>
