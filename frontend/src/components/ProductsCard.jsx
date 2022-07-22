@@ -22,7 +22,7 @@ const ProductsCard = ({ title, imgUrl, price, strikedOffprice, rating }) => {
             <p className="text-[12px] font-bold my-1">Bewakoof</p>
             <p className="text-[11px]">{title.slice(0, 36)}...</p>
           </div>
-          <FavoriteBorderIcon />
+          <FavoriteBorderIcon className="mr-3" />
         </div>
         <div className="flex items-end">
           <h2 className="font-bold">

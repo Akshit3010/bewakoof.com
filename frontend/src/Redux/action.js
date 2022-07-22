@@ -1,4 +1,11 @@
-import { GET_PRODUCTS, IS_ERROR, IS_LOADING } from "./actionTypes";
+import {
+  CLEAR_FILTER,
+  FILTER_DATA,
+  GET_PRODUCTS,
+  IS_ERROR,
+  IS_LOADING,
+  SORT_DATA,
+} from "./actionTypes";
 import axios from "axios";
 
 export const prodReq = () => ({
@@ -12,6 +19,16 @@ export const prodSuccess = (payload) => ({
 
 export const prodError = () => ({
   type: IS_ERROR,
+});
+
+export const filterData = (payload) => ({
+  type: FILTER_DATA,
+  payload,
+});
+
+export const sortData = (payload) => ({
+  type: SORT_DATA,
+  payload,
 });
 
 export const getProducts = (category) => (dispatch) => {
