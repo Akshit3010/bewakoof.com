@@ -39,6 +39,7 @@ const CartWrapper = styled.div`
   }
 
   .truckmove {
+    top:15px;
     width: 19px;
     height: 12px;
     animation-duration: 2s;
@@ -49,13 +50,13 @@ const CartWrapper = styled.div`
     margin-left: 25px;
     /* border: 1px solid red; */
     font-size: 12px;
-    position: relative;
+
     align-self: baseline;
   }
   .truckDiv {
     padding: 8px;
-
     background-color: #fcffee;
+    position: relative;
     height: 40px;
   }
 
@@ -171,7 +172,7 @@ const CartWrapper = styled.div`
     font-size: 14px;
     font-weight: bold;
     /* border:1px solid red; */
-    margin:
+    /* margin: */
 
   }
 
