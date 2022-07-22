@@ -8,7 +8,7 @@ export default function MainRoute() {
         <>
             <Routes>
                 <Route path="/wishlist" element={<WishlistPage />} />
-                <Route path="/singleProduct" element={<SingleProductPage />} />
+                <Route path="/single-product" element={<SingleProductPage />} />
             </Routes>
         </>
     );

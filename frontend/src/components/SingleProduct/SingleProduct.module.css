@@ -21,12 +21,12 @@
     font-size: 18px;
     color: #4F5362;
     font-weight: 600;
-    letter-spacing: 0.1px;
+    /* letter-spacing: 0.1px; */
 }
 .product_name {
     font-size: 16px;
     color: #737373;
-    letter-spacing: 0.1px;
+    /* letter-spacing: 0.1px; */
 }
 .product_price {
     font-size: 24px;
@@ -45,7 +45,7 @@
 .taxes {
     font-size: 13px;
     color: #949494;
-    letter-spacing: 0.1px;
+    /* letter-spacing: 0.1px; */
 }
 .product_category {
     display: flex;
@@ -78,6 +78,7 @@
     background-color: #eee;
     width: 80%;
     display: block;
+    margin-bottom: 10px;
 }
 .tribe_member {
     color: #333333;
@@ -91,6 +92,7 @@
     background-color: #eee;
     width: 80%;
     display: block;
+    margin-top: 10px;
 }
 .tribe_member div {
     color: #42A2A2;
@@ -142,6 +144,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
     padding: 10px 0;
     border-radius: 3px;
     cursor: pointer;
@@ -165,11 +168,27 @@
     flex-direction: column;
     gap: 10px;
 }
+.accordion_header::before {
+    content: "";
+    /* width: 90%; */
+    background: #eee;
+    height: 3px;
+    display: block;
+    margin-bottom: 10px;
+}
 .accordion_header {
     font-size: 13px;
     font-weight: bold;
     cursor: pointer;
     margin-top: 8px;
+}
+.accordion_header div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.accordion_header div span {
+    font-size: 16px;
 }
 .accordion_desc {
     font-size: 13px;
@@ -203,7 +222,7 @@
 }
 .desc_pincode {
     border: 1px solid #737373;
-    width: 90%;
+    /* width: 90%; */
     display: flex;
     justify-content: space-between;
     padding-right: 20px;
@@ -213,10 +232,11 @@
   -webkit-appearance: none;
   margin: 0;
 }
-.desc_pincode input, .desc_pincode input:focus {
+.desc_pincode input, .desc_pincode input:focus, .desc_pincode input:active {
     border: none;
     outline: none;
     padding: 10px 0 10px 20px;
+    background: white;
 }
 .desc_pincode span {
     color: #42A2A2;

@@ -1,0 +1,38 @@
+:root {
+    --clr-white: #fff;
+    --radius: 0.25rem;
+  }
+  .modal_container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal {
+    background: var(--clr-white);
+    width: 333px;
+    border-radius: var(--radius);
+    padding: 0.5rem 0.5rem;
+    text-align: center;
+    border: 1px solid #474747;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header svg {
+    cursor: pointer;
+  }
+  .modal img {
+    width: 60%;
+  }
+  .modal thead tr td {
+    background: #eee;
+  }
