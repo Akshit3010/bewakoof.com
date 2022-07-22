@@ -1,8 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import { ProductHeader } from "../Assets/Styled/Products.styled";
 
-const ProductsHeader = () => {
+const ProductsHeader = ({ products }) => {
   const { id } = useParams();
+  let split = id.split("-");
+  let first = split.slice(0, 1);
+  let second = split[split.length - 1];
+  let last = split.slice(1, split.length).join(" ");
+
   return (
     <>
       <ProductHeader className="w-[80%] mx-auto my-4">
@@ -11,19 +16,27 @@ const ProductsHeader = () => {
             Home
           </Link>
           /
-          <Link className="mx-3" to={"/"}>
-            Buy one get one free
+          <Link className="mx-3 capitalize" to={"/"}>
+            {first} Clothing
           </Link>
           /
-          <Link className="mx-3" to={"/"}>
-            Men Unisex Buy One Get One Free
+          <Link className="mx-3 capitalize" to={"/"}>
+            {first}'s {second}
+          </Link>
+          /
+          <Link className="mx-3 capitalize" to={"/"}>
+            {last} for {first}
           </Link>
         </div>
 
         <div className="mt-10">
           <div className="flex items-center capitalize">
-            <h2 className="font-bold text-[24px]">Buy one get one free</h2>
-            <span className="text-[24px] text-[#949494] ml-2">(379)</span>
+            <h2 className="font-bold text-[24px] capitalize">
+              {first}'s {second}
+            </h2>
+            <span className="text-[24px] text-[#949494] ml-2">
+              ({products.length})
+            </span>
           </div>
           <div className="w-[117px] h-[2px] bg-[#fbd139] mt-[6px] mr-[2px]"></div>
         </div>

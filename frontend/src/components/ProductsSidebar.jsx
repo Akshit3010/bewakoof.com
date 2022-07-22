@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { ProdFilterDiv } from "../Assets/Styled/Products.styled";
+import { useDispatch } from "react-redux";
+import { filterData, getProducts } from "../Redux/action";
 
-const ProductsSidebar = () => {
+const ProductsSidebar = ({ payload }) => {
   const [active, setActive] = useState({
     gender: false,
     category: false,
     size: false,
     color: false,
   });
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -20,6 +24,7 @@ const ProductsSidebar = () => {
           <button
             className="text-[12px] text-gray-900 self-end"
             onClick={() => {
+              dispatch(getProducts(payload.join("_")));
               setActive(!active);
             }}
           >
@@ -86,17 +91,32 @@ const ProductsSidebar = () => {
             className="px-4  py-2"
           >
             <ul className="text-[12px] mt-2 cursor-pointer">
-              <li className="mt-1 hover:bg-[#f7f7f7]">Mobile Covers</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">T-shirt</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">Cloth Mask</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">
-                Protective Outdoor Mask
+              <li className="mt-1 hover:bg-[#f7f7f7]">Shorts</li>
+              <li
+                className="mt-1 hover:bg-[#f7f7f7]"
+                onClick={() => {
+                  dispatch(getProducts("Men_Printed"));
+                }}
+              >
+                Printed T-shirts
               </li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">Notebooks</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">Sliders</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">Dress</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">Joggers</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">Laptop Bag</li>
+              <li className="mt-1 hover:bg-[#f7f7f7]">Cloth Mask</li>
+              <li
+                className="mt-1 hover:bg-[#f7f7f7]"
+                onClick={() => dispatch(getProducts("Men_Activewear"))}
+              >
+                Activewears
+              </li>
+              <li className="mt-1 hover:bg-[#f7f7f7]">Vest</li>
+              <li className="mt-1 hover:bg-[#f7f7f7]">Boxer</li>
+              <li className="mt-1 hover:bg-[#f7f7f7]">Headband</li>
+              <li
+                className="mt-1 hover:bg-[#f7f7f7]"
+                onClick={() => dispatch(getProducts("Men_Joggers"))}
+              >
+                Joggers
+              </li>
+              <li className="mt-1 hover:bg-[#f7f7f7]">Gym Bag</li>
             </ul>
           </div>
         </div>
@@ -127,18 +147,103 @@ const ProductsSidebar = () => {
             className="px-4  py-2"
           >
             <ul className="text-[12px] mt-2 cursor-pointer">
-              <li className="mt-1 hover:bg-[#f7f7f7]"> XS</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">S</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">M</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">L</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">XL</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">2XL</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">3XL</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">4XL</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">5XL</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">6XL</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">30</li>
-              <li className="mt-1 hover:bg-[#f7f7f7]">32</li>
+              <li
+                className="mt-1 hover:bg-[#f7f7f7]"
+                onClick={(e) =>
+                  dispatch(filterData({ sizes: e.target.innerHTML }))
+                }
+              >
+                {" "}
+                XS
+              </li>
+              <li
+                className="mt-1 hover:bg-[#f7f7f7]"
+                onClick={(e) =>
+                  dispatch(filterData({ sizes: e.target.innerHTML }))
+                }
+              >
+                S
+              </li>
+              <li
+                className="mt-1 hover:bg-[#f7f7f7]"
+                onClick={(e) =>
+                  dispatch(filterData({ sizes: e.target.innerHTML }))
+                }
+              >
+                M
+              </li>
+              <li
+                className="mt-1 hover:bg-[#f7f7f7]"
+                onClick={(e) =>
+                  dispatch(filterData({ sizes: e.target.innerHTML }))
+                }
+              >
+                L
+              </li>
+              <li
+                className="mt-1 hover:bg-[#f7f7f7]"
+                onClick={(e) =>
+                  dispatch(filterData({ sizes: e.target.innerHTML }))
+                }
+              >
+                XL
+              </li>
+              <li
+                className="mt-1 hover:bg-[#f7f7f7]"
+                onClick={(e) =>
+                  dispatch(filterData({ sizes: e.target.innerHTML }))
+                }
+              >
+                2XL
+              </li>
+              <li
+                className="mt-1 hover:bg-[#f7f7f7]"
+                onClick={(e) =>
+                  dispatch(filterData({ sizes: e.target.innerHTML }))
+                }
+              >
+                3XL
+              </li>
+              <li
+                className="mt-1 hover:bg-[#f7f7f7]"
+                onClick={(e) =>
+                  dispatch(filterData({ sizes: e.target.innerHTML }))
+                }
+              >
+                4XL
+              </li>
+              <li
+                className="mt-1 hover:bg-[#f7f7f7]"
+                onClick={(e) =>
+                  dispatch(filterData({ sizes: e.target.innerHTML }))
+                }
+              >
+                5XL
+              </li>
+              <li
+                className="mt-1 hover:bg-[#f7f7f7]"
+                onClick={(e) =>
+                  dispatch(filterData({ sizes: e.target.innerHTML }))
+                }
+              >
+                6XL
+              </li>
+              <li
+                className="mt-1 hover:bg-[#f7f7f7]"
+                onClick={(e) =>
+                  dispatch(filterData({ sizes: e.target.innerHTML }))
+                }
+              >
+                30
+              </li>
+              <li
+                className="mt-1 hover:bg-[#f7f7f7]"
+                onClick={(e) =>
+                  dispatch(filterData({ sizes: e.target.innerHTML }))
+                }
+              >
+                32
+              </li>
             </ul>
           </div>
         </div>
@@ -169,20 +274,47 @@ const ProductsSidebar = () => {
             className="px-4  py-2"
           >
             <ul className="flex gap-4 flex-wrap">
-              <li className="mt-2 w-[24px] h-[24px] bg-black rounded-sm"></li>
+              <li
+                className="mt-2 w-[24px] h-[24px] bg-black rounded-sm"
+                onClick={(e) => dispatch(filterData({ color: "black" }))}
+              ></li>
 
-              <li className="mt-2 w-[24px] h-[24px] bg-gray-400 rounded-sm"></li>
+              <li
+                className="mt-2 w-[24px] h-[24px] bg-gray-400 rounded-sm"
+                onClick={(e) => dispatch(filterData({ color: "gray" }))}
+              ></li>
 
-              <li className="mt-2 w-[24px] h-[24px] bg-white border-2 rounded-sm"></li>
+              <li
+                className="mt-2 w-[24px] h-[24px] bg-white border-2 rounded-sm"
+                onClick={(e) => dispatch(filterData({ color: "white" }))}
+              ></li>
 
-              <li className="mt-2 w-[24px] h-[24px] bg-blue-600 rounded-sm"></li>
+              <li
+                className="mt-2 w-[24px] h-[24px] bg-blue-600 rounded-sm"
+                onClick={(e) => dispatch(filterData({ color: "blue" }))}
+              ></li>
 
-              <li className="mt-2 w-[24px] h-[24px] bg-red-600 rounded-sm"></li>
-              <li className="mt-2 w-[24px] h-[24px] bg-green-600 rounded-sm"></li>
+              <li
+                className="mt-2 w-[24px] h-[24px] bg-red-600 rounded-sm"
+                onClick={(e) => dispatch(filterData({ color: "red" }))}
+              ></li>
+              <li
+                className="mt-2 w-[24px] h-[24px] bg-green-600 rounded-sm"
+                onClick={(e) => dispatch(filterData({ color: "green" }))}
+              ></li>
 
-              <li className="mt-2 w-[24px] h-[24px] bg-yellow-400 rounded-sm"></li>
-              <li className="mt-2 w-[24px] h-[24px] bg-pink-400 rounded-sm"></li>
-              <li className="mt-2 w-[24px] h-[24px] bg-violet-700 rounded-sm"></li>
+              <li
+                className="mt-2 w-[24px] h-[24px] bg-yellow-400 rounded-sm"
+                onClick={(e) => dispatch(filterData({ color: "yellow" }))}
+              ></li>
+              <li
+                className="mt-2 w-[24px] h-[24px] bg-pink-400 rounded-sm"
+                onClick={(e) => dispatch(filterData({ color: "pink" }))}
+              ></li>
+              <li
+                className="mt-2 w-[24px] h-[24px] bg-violet-700 rounded-sm"
+                onClick={(e) => dispatch(filterData({ color: "purple" }))}
+              ></li>
             </ul>
           </div>
         </div>
