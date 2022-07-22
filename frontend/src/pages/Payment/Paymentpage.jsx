@@ -2,17 +2,24 @@ import React from 'react'
 import { Payment } from '../../components/Payment/Payment'
 import styled from 'styled-components'
 import { Showbuyed } from '../../components/Payment/Showbuyed'
+import { PageSummary } from '../../components/Payment/PageSummary'
 
 const Paywrapper = styled.div`
-width:90%;
+width:80%;
 margin:auto;
 margin-top:50px;
 font-size: 14px;
 font-family:"Montserrat";
 display: flex;
-justify-content: space-between;
+justify-content: space-around;
 
 .secondcont{
+  padding-left:15px;
+  font-size: 14px;
+  font-family:"Montserrat";
+  width:481px;
+  border-left:1px solid gray;
+
   margin-left: 30px;
 
   .deliver{
@@ -50,6 +57,7 @@ export const Paymentpage = () => {
         <p className='font-bold my-3'>You are paying for these items</p>
         <Showbuyed/>
        </div>
+       <PageSummary/>
       </div>
       </Paywrapper>
     </>

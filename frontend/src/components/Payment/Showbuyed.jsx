@@ -5,9 +5,13 @@ const Showbuyedwrapper = styled.div`
 
 .container{
     display:flex;
+   font-size: 14px;
+  font-family:"Montserrat";
+    
     img{
-        height: 36px;
-        width:36px;
+        height: 50px;
+        width:50px;
+        margin-right:10px;
     }
 }
 
