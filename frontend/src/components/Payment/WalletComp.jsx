@@ -17,10 +17,6 @@ const Walletwrapper = styled.div`
     }
 }
 
-
-
-
-
 `
 
 

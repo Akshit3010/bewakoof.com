@@ -61,19 +61,19 @@ export  function Payment() {
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: 'divider' }}
+        sx={{ borderRight: 1, borderColor: 'divider',margin:0}}
       >
-        <Tab label={<DebitCard/>} {...a11yProps(0)}/>
-        <Tab label={<Wallet/>} {...a11yProps(1)} />
-        <Tab label={<UPI/>} {...a11yProps(2)} />
-        <Tab label={<Net/>} {...a11yProps(3)} />
-        <Tab label={<Cash/>} {...a11yProps(4)} />
+        <Tab label={<DebitCard />} {...a11yProps(0)}/><hr/>
+        <Tab label={<Wallet/>} {...a11yProps(2)} /><hr/>
+        <Tab label={<UPI/>} {...a11yProps(4)} /><hr/>
+        <Tab label={<Net/>} {...a11yProps(6)} /><hr/>
+        <Tab label={<Cash/>} {...a11yProps(8)} /><hr/>
       </Tabs>
       <TabPanel value={value} index={0}><DebitComp/></TabPanel>
-      <TabPanel value={value} index={1}><WalletComp/></TabPanel>
-      <TabPanel value={value} index={2}><UpiComp/></TabPanel>
-      <TabPanel value={value} index={3}><NetComp/></TabPanel>
-      <TabPanel value={value} index={4}><CashComp/></TabPanel>
+      <TabPanel value={value} index={2}><WalletComp/></TabPanel>
+      <TabPanel value={value} index={4}><UpiComp/></TabPanel>
+      <TabPanel value={value} index={6}><NetComp/></TabPanel>
+      <TabPanel value={value} index={8}><CashComp/></TabPanel>
 
     </Box>
   )
