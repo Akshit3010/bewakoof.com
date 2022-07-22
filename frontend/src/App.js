@@ -1,5 +1,5 @@
 import "./App.css";
-import MainRoute from "./Routes/mainRoute";
+import MainRoute from "./routes/mainRoute";
 
 
 function App() {
