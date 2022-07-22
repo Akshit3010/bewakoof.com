@@ -1,13 +1,26 @@
 import React from 'react'
 import { Payment } from '../../components/Payment/Payment'
 import styled from 'styled-components'
+import { Showbuyed } from '../../components/Payment/Showbuyed'
 
 const Paywrapper = styled.div`
-width:80%;
+width:90%;
 margin:auto;
 margin-top:50px;
 font-size: 14px;
 font-family:"Montserrat";
+display: flex;
+justify-content: space-between;
+
+.secondcont{
+  margin-left: 30px;
+
+  .deliver{
+    margin:15px 0px;
+
+  }
+}
+
 .titletag{
   font-weight: bold;
   margin:10px;
@@ -30,9 +43,13 @@ export const Paymentpage = () => {
           <Payment/>
         </div>
       </div>
-      <div>
-      <div>Delivering order to Naved Khan Madarse wali gali, Near Noori Masjid,Delapeer bareilly, Bareilly, Uttar Pradesh, 243122</div>
+      <div className='secondcont'>
+      <div className='deliver'>Delivering order to Naved Khan Madarse wali gali, Near Noori Masjid,Delapeer bareilly, Bareilly, Uttar Pradesh, 243122</div>
        <hr/>
+       <div>
+        <p className='font-bold my-3'>You are paying for these items</p>
+        <Showbuyed/>
+       </div>
       </div>
       </Paywrapper>
     </>
