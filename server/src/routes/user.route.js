@@ -1,29 +1,37 @@
-const User = require('../models/user.model')
-const Product = require('../models/product.model');
-const { getProducts, addToWishlist, removeProduct, orderProduct, changeQuantity } = require('../controllers/mybag.controller')
-const { getOrders, getUser } = require('../controllers/accountDetails.controller')
-const { addToCart } = require('../controllers/ProductDetails.controllers');
-const { getWishlistProducts } = require('../controllers/wishlist.controllers');
+const User = require("../models/user.model");
+const Product = require("../models/product.model");
+const {
+  getProducts,
+  addToWishlist,
+  removeProduct,
+  orderProduct,
+  changeQuantity,
+} = require("../controllers/mybag.controller");
+const {
+  getOrders,
+  getUser,
+} = require("../controllers/accountDetails.controller");
+const { addToCart } = require("../controllers/ProductDetails.controllers");
+const { getWishlistProducts } = require("../controllers/wishlist.controllers");
 
-const { Router } = require('express');
-const userRouter = Router()
-
+const { Router } = require("express");
+const userRouter = Router();
 
 // All routes of mybag Page
-userRouter.get('/cart/:id', getProducts)
-userRouter.patch('/addToWishlist/:id', addToWishlist)
-userRouter.patch('/removeProduct/:id', removeProduct)
-userRouter.patch('/order/:id', orderProduct)
-userRouter.patch('/qty/:id', changeQuantity)
+userRouter.get("/cart/:id", getProducts);
+userRouter.patch("/addToWishlist/:id", addToWishlist);
+userRouter.patch("/removeProduct/:id", removeProduct);
+userRouter.patch("/order/:id", orderProduct);
+userRouter.patch("/qty/:id", changeQuantity);
 
 // All routes of MyAccount Page
-userRouter.get('/orders/:id', getOrders)
-userRouter.get('/:id', getUser)
+userRouter.get("/orders/:id", getOrders);
+userRouter.get("/:id", getUser);
 
 // All routes of AddToCart Page
-userRouter.patch('/addToCart/:id',addToCart)
+userRouter.patch("/addToCart/:id", addToCart);
 
 //All routes of Wishlist Page
-userRouter.get('/wishlisht/:id',getWishlistProducts)
+userRouter.get("/wishlisht/:id", getWishlistProducts);
 
-module.exports = userRouter
+module.exports = userRouter;
