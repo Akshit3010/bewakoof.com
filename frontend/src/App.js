@@ -1,15 +1,15 @@
 import "./App.css";
-import { MainRoutes } from "./Routes/MainRoutes";
+import MainRoute from "./Routes/mainRoute";
 
 function App() {
-    return <div className="App">
-       <MainRoutes/>
-    </div>;
+  return (
+    <div className="App">
+      <MainRoute />
+    </div>
+  );
 }
 
 export default App;
-
-
 
 // Start with tailwind guide:
 // Install Tailwind CSS with Create React App
@@ -17,7 +17,6 @@ export default App;
 
 // npm install tailwindcss postcss autoprefixer
 // npx tailwindcss init -p
-
 
 // change your content with this in tailwind.config.js
 
@@ -29,4 +28,3 @@ export default App;
 // @tailwind base;
 // @tailwind components;
 // @tailwind utilities;
-
