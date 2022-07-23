@@ -5,12 +5,14 @@ import {
   IS_ERROR,
   IS_LOADING,
   SORT_DATA,
+  BAG_DATA
 } from "./actionTypes";
 
 const initState = {
   isLoading: false,
   isError: false,
   products: [],
+  mybag:[]
 };
 
 export const reducer = (state = initState, { type, payload }) => {
@@ -65,6 +67,16 @@ export const reducer = (state = initState, { type, payload }) => {
           }
         }),
       };
+      case BAG_DATA: {
+        return {
+          ...state,
+          isLoading: false,
+          isError: false,
+          mybag: payload,
+        };
+      }
+
+
     default: {
       return state;
     }

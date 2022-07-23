@@ -1,10 +1,14 @@
-import React from "react";
+import React,{useEffect} from "react";
 import styled from "styled-components";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Button from '@mui/material/Button';
+import { getUserbag } from "../Redux/action";
+import {useDispatch,useSelector} from 'react-redux'
+import { useParams } from "react-router-dom";
+import { BagProduct } from "./BagProduct";
 
 const CartWrapper = styled.div`
   margin: 0px;
@@ -280,16 +284,26 @@ const CartWrapper = styled.div`
 `;
 
 export const Cart = () => {
-
+ const dispatch =  useDispatch();
+ const {id} = useParams();
+ console.log(id,"id")
+ const {isLoading,isError,mybag} = useSelector((state)=>state.reducer)
+ 
+ console.log(mybag,"bag_Data")
+  useEffect(()=>{
+   dispatch(getUserbag(id))
+    
+  },[])
 
 
 
   return (
-    <>
-      <CartWrapper>
+    <>{
+      isLoading?<h1>Loading...</h1>
+      :isError?<h1>Erro</h1>:<CartWrapper>
         <div>
           <div className="headingDiv">
-            <span>My Bag </span>6 item(s)
+            <span>My Bag {mybag.length} </span> item(s)
           </div>
           <div className="container">
             <div className="leftcont">
@@ -302,7 +316,10 @@ export const Cart = () => {
                 <span>Yay! You get FREE delivery on this order</span>
               </div>
               <div>
-                <div className="productDiv">
+              {mybag.map((el)=>{
+               return <BagProduct key={el._id} {...el} />
+              })}
+                {/* <div className="productDiv">
                   <div>
                     <div>
                       <div>
@@ -370,7 +387,7 @@ export const Cart = () => {
                     <div>Remove</div>
                     <div>Move to Wishlist</div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="rightcont">
@@ -402,6 +419,7 @@ export const Cart = () => {
           </div>
         </div>
       </CartWrapper>
+    }
     </>
   );
 };

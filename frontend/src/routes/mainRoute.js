@@ -13,7 +13,7 @@ export default function MainRoute() {
       <Routes>
         <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/single-product" element={<SingleProductPage />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart/:id" element={<Cart />} />
         <Route path="/:id" element={<Products />} />
          <Route path='/payment' element={<Paymentpage/>} />
       </Routes>
