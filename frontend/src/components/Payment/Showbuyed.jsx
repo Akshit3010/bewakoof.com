@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Showbuyedwrapper = styled.div`
-
+margin:20px 0px;
 .container{
     display:flex;
-   font-size: 14px;
-  font-family:"Montserrat";
+    font-size: 14px;
+   font-family:"Montserrat";
     
     img{
         height: 50px;
@@ -18,20 +18,17 @@ const Showbuyedwrapper = styled.div`
 
 `
 
-
-export const Showbuyed = () => {
-
-
+export const Showbuyed = ({imgUrl,title}) => {
 
   return (
    <>
-<Showbuyedwrapper>
+   <Showbuyedwrapper>
     <div className='container'>
-        <img  src='https://images.bewakoof.com/t320/women-s-red-minion-s-bello-graphic-printed-plus-size-boyfriend-t-shirt-480068-1656149137-1.jpg' alt=''/>
-        <span>Women's Red Minion'S Bello Graphic Printed Plus Size Boyfriend T-shirtWomen's Red Minion'S Bello Graphic Printed Plus Size Boyfriend T-shirt Estimated delivery by 29 July 2022</span>
+        <img  src={imgUrl} alt=''/>
+        <span>{title} Estimated delivery by <span className='text-green-600'>29 July 2022</span></span>
         <hr/>
     </div>
-</Showbuyedwrapper>
+   </Showbuyedwrapper>
    </>
   )
 }

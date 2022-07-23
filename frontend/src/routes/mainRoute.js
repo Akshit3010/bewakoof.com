@@ -15,7 +15,7 @@ export default function MainRoute() {
         <Route path="/single-product" element={<SingleProductPage />} />
         <Route path="/cart/:id" element={<Cart />} />
         <Route path="/:id" element={<Products />} />
-         <Route path='/payment' element={<Paymentpage/>} />
+         <Route path='/payment/:id' element={<Paymentpage/>} />
       </Routes>
     </>
   );

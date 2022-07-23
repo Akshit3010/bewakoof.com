@@ -1,5 +1,5 @@
 const User = require('../models/user.model')
-
+const Product = require('../models/product.model')
 const getProducts = (async (req, res) => {
  const{id} = req.params;
  console.log("id",id)
@@ -31,7 +31,7 @@ const addToWishlist = (async (req, res) => {
    try{
        productData =  await Product.findById(productId)
        UserData = await User.findByIdAndUpdate(id,{$push:{wishlist:productData}})
-       return res.status(200).json({productData})
+       return res.status(200).json({"productData":UserData.mybag})
     
    }catch(err){
    return res.status(501).json({err:err.message})

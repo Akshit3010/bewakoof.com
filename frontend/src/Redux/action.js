@@ -5,7 +5,8 @@ import {
   IS_ERROR,
   IS_LOADING,
   SORT_DATA,
-  BAG_DATA
+  BAG_DATA,
+  GET_TOTAL
 } from "./actionTypes";
 import axios from "axios";
 
@@ -39,6 +40,7 @@ export const getmybag = (payload) => ({
 })
 
 
+
 export const getProducts = (category) => (dispatch) => {
   dispatch(prodReq());
   axios
@@ -49,11 +51,14 @@ export const getProducts = (category) => (dispatch) => {
     .catch((err) => dispatch(prodError(err.message)));
 };
 
+
+
 export const getUserbag = (id) => (dispatch) => {
   // console.log(id,"id")
   dispatch(prodReq());
   axios.get(`http://localhost:8000/users/cart/${id}`).then((res) => {
     const data = res.data.productData;
+    
     // console.log(data,"data")
     dispatch(getmybag(data))
   }).catch((err) => {
@@ -65,7 +70,7 @@ export const getUserbag = (id) => (dispatch) => {
 export const changeQty = (productId,qty,id)=>(dispatch)=>{
   dispatch(prodReq());
   console.log(productId,qty,id)
-  
+
   // console.log(typeof qty)
  axios.patch(`http://localhost:8000/users/qty/${id}`,{productId,qty}).then((res)=>{
      
@@ -76,14 +81,31 @@ export const changeQty = (productId,qty,id)=>(dispatch)=>{
     dispatch(prodError(err.message))
   })
 
-
-
 }
 
 
-// All routes of mybag Page
-// userRouter.get("/cart/:id", getProducts);
-// userRouter.patch("/addToWishlist/:id", addToWishlist);
-// userRouter.patch("/removeProduct/:id", removeProduct);
-// userRouter.patch("/order/:id", orderProduct);
-// userRouter.patch("/qty/:id", changeQuantity);
+export const doRemove = (productId,id) => (dispatch)=>{
+
+    dispatch(prodReq());
+
+     axios.patch(`http://localhost:8000/users/removeProduct/${id}`,{productId}).then((res)=>{
+    const data = res.data.productData;
+    dispatch(getmybag(data))
+   }).catch((err)=>{
+    dispatch(prodError(err.message))
+   })
+
+}
+
+export const AddToWish = (productId,id) => (dispatch)=>{
+ 
+  dispatch(prodReq());
+    
+  axios.patch(`http://localhost:8000/users/addToWishlist/${id}`,{productId}).then((res)=>{
+    const data = res.data.productData;
+    dispatch(getmybag(data))
+  }).catch((err)=>{
+   dispatch(prodError(err.message))
+  })
+
+}

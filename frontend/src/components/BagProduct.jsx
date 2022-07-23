@@ -6,11 +6,15 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Button from '@mui/material/Button';
 import { useDispatch} from 'react-redux';
-import { changeQty } from '../Redux/action';
+import { AddToWish, changeQty, doRemove } from '../Redux/action';
 import { useParams } from 'react-router-dom';
 
 
 export const Bagwrapper = styled.div`
+
+margin:20px 0px;
+
+
 .productDiv {
     border: 1px solid gray;
     /* padding: 10px; */
@@ -116,6 +120,18 @@ export const BagProduct = ({ _id,title, price, strikedOffprice, imgUrl,qty }) =>
     
   }
 
+  const  handleRemove = ()=>{
+      
+    dispatch(doRemove(_id,id))
+   
+  }
+  
+  const AddtoWishlist = ()=>{
+   
+   dispatch(AddToWish(_id,id))
+  }
+
+
 
   return (
     <>
@@ -185,8 +201,8 @@ export const BagProduct = ({ _id,title, price, strikedOffprice, imgUrl,qty }) =>
             </div>
           </div>
           <div className="buttonSection">
-            <div>Remove</div>
-            <div>Move to Wishlist</div>
+            <div className="cursor-pointer" onClick={handleRemove}>Remove</div>
+            <div className="cursor-pointer" onClick={AddtoWishlist}>Move to Wishlist</div>
           </div>
         </div>
       </Bagwrapper>

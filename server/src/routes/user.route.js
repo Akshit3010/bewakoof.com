@@ -21,7 +21,6 @@ const userRouter = Router();
 
 userRouter.post("/",createUser)
 
-
 // All routes of mybag Page
 userRouter.get("/cart/:id", getProducts);
 userRouter.patch("/addToWishlist/:id", addToWishlist);

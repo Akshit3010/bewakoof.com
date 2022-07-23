@@ -1,9 +1,11 @@
-import React from "react";
+import React,{useState} from "react";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const DebitWrapper = styled.div`
   font-size: 14px;
@@ -36,6 +38,7 @@ const DebitWrapper = styled.div`
     .buttonpay{
         width:250px;
         background-color:#42a2a2;
+        text-transform: none;
 
     }
   
@@ -43,41 +46,70 @@ const DebitWrapper = styled.div`
 `;
 
 export const DebitComp = () => {
-  const handleChange = () => {};
 
-  const handleSubmit = () => {};
+  const navigate = useNavigate()
+  const[cardvalue,setCardValue] = useState("")
+  const{total} =  useSelector((state)=>state.reducer)
+  const[formData,setFormData] = useState({})
+ 
+
+  const handleChange = (e) => {
+
+   const{name} = e.target;
+    setFormData({...formData,[name]:e.target.value})
+  };
+
+  const handleSubmit = (e) => { 
+    e.preventDefault();
+
+    setFormData({...formData,["Card Number"]:cardvalue})
+    
+    console.log(formData)
+    // navigate('/')
+
+  };
 
   return (
     <>
       <DebitWrapper>
         <div></div>
-        <form className="form">
+        <form className="form" onSubmit={handleSubmit}>
           <div>
             <TextField
               variant="standard"
               className="cardnumber"
+              name="Card Number"
               InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
               label="Card Number"
+              value={cardvalue}
+              onChange= {(e)=>{setCardValue(e.target.value=e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim())}}
+              
             />
             <div className="valid-cvv">
               <TextField
                 variant="standard"
                 className="valid"
+                name="Validity"
                 InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
                 label="Valid(mm/yy)"
+                onChange= {handleChange}
               />
               <TextField
                 variant="standard"
                 className="cvv"
+                name="CVV"
                 InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
                 label="CVV"
+                onChange= {handleChange}
               />
             </div>
             <TextField
               variant="standard"
               className="name"
+              name="name"
               InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
               label="Name On Card"
+              onChange= {handleChange}
             />
           </div>
           <Checkbox className="checkbox" />
@@ -86,8 +118,8 @@ export const DebitComp = () => {
             This transaction you make is totally secure. We don't save your CVV
             number.
           </div>
-          <Button type="submit" className='buttonpay' variant="contained">
-            Pay 1098
+          <Button  type="submit" className='buttonpay' variant="contained">
+            Pay {total}
           </Button>
         </form>
       </DebitWrapper>
