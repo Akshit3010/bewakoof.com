@@ -125,7 +125,7 @@ const Menprod = () => {
       <div className={styles.Box}>
         <Slider className={styles.Total_slider_part} {...settings}>
           <div key="1" className={styles.Single_slider_part}>
-            <NavLink to="/men">
+            <NavLink to="/">
               {" "}
               <img
                 src="https://images.bewakoof.com/uploads/grid/app/Screenshot-2022-07-22-123359--1--1658473864.png"
@@ -134,7 +134,7 @@ const Menprod = () => {
             </NavLink>
           </div>
           <div key="2" className={styles.Single_slider_part}>
-            <NavLink to="/men">
+            <NavLink to="/">
               {" "}
               <img
                 src="https://images.bewakoof.com/uploads/grid/app/happy-weekend-sale-live-banner-men-1658416183.jpg"
@@ -143,7 +143,7 @@ const Menprod = () => {
             </NavLink>
           </div>
           <div key="3" className={styles.Single_slider_part}>
-            <NavLink to="/men">
+            <NavLink to="/">
               <img
                 src="https://images.bewakoof.com/uploads/grid/app/undrdawg-homepage-revised-1658327775.jpg"
                 alt=""
@@ -151,7 +151,7 @@ const Menprod = () => {
             </NavLink>
           </div>
           <div key="4" className={styles.Single_slider_part}>
-            <NavLink to="/men">
+            <NavLink to="/">
               <img
                 src="https://images.bewakoof.com/uploads/grid/app/b1g1-men-new-1658468562.jpg"
                 alt=""
@@ -347,7 +347,7 @@ const Menprod = () => {
       <div className={styles.Box}>
         <Slider className={styles.Total_slider_part} {...settings}>
           <div key="1" className={styles.Single_slider_part}>
-            <NavLink to="/men">
+            <NavLink to="/">
               <img
                 src="https://images.bewakoof.com/uploads/grid/app/minion-homepage-men-1658140992.jpg"
                 alt=""
@@ -355,7 +355,7 @@ const Menprod = () => {
             </NavLink>
           </div>
           <div key="2" className={styles.Single_slider_part}>
-            <NavLink to="/men">
+            <NavLink to="/">
               <img
                 src="https://images.bewakoof.com/uploads/grid/app/oversized-men-1658468563.jpg"
                 alt=""
@@ -363,7 +363,7 @@ const Menprod = () => {
             </NavLink>
           </div>
           <div key="3" className={styles.Single_slider_part}>
-            <NavLink to="/men">
+            <NavLink to="/">
               <img
                 src="https://images.bewakoof.com/uploads/grid/app/Static-JustArrived-Cargo-men-1658250092.gif"
                 alt=""

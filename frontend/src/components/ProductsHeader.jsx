@@ -10,7 +10,7 @@ const ProductsHeader = ({ products }) => {
 
   return (
     <>
-      <ProductHeader className="w-[80%] mx-auto my-4">
+      <ProductHeader className="w-[80%] mx-auto my-4 mt-[180px]">
         <div className="flex text-[12px] text-[#2d2d2d]">
           <Link className="mx-3" to={"/"}>
             Home

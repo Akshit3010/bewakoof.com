@@ -29,7 +29,7 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(getProducts(payload.join("_")));
-  }, []);
+  }, [id]);
 
   return (
     <>
