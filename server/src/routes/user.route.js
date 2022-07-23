@@ -16,6 +16,7 @@ const { getWishlistProducts} = require("../controllers/wishlist.controllers");
 const createUser = require("../controllers/CreateUser.controller");
 
 const { Router } = require("express");
+const { getGoogleUser } = require("../controllers/google.controller");
 const userRouter = Router();
 
 
@@ -27,6 +28,9 @@ userRouter.patch("/addToWishlist/:id", addToWishlist);
 userRouter.patch("/removeProduct/:id", removeProduct);
 userRouter.patch("/order/:id", orderProduct);
 userRouter.patch("/qty/:id", changeQuantity);
+
+// Getting the user from Google with the code
+userRouter.get(`/auth/google/callback`, getGoogleUser);
 
 // All routes of MyAccount Page
 userRouter.get("/orders/:id", getOrders);

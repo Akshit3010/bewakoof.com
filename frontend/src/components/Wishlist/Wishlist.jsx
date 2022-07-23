@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
 import styles from "./Wishlist.module.css";
-import { ImCross } from "react-icons/im";
 
 export default function Wishlist() {
     useEffect(() => {
@@ -14,7 +13,8 @@ export default function Wishlist() {
                     <div className={styles.header}>Wishlist</div>
                     <div className={styles.wrapper}>
                         <div className={styles.product_card}>
-                            <ImCross />
+                            {/* <ImCross /> */}
+                            <i className="fa-solid fa-xmark"></i>
                             <img
                                 src="https://images.bewakoof.com/t320/batman-comical-half-sleeve-t-shirt-520741-1658208762-1.jpg"
                                 alt=""
