@@ -1,5 +1,4 @@
 import {
-  CLEAR_FILTER,
   FILTER_DATA,
   GET_PRODUCTS,
   IS_ERROR,

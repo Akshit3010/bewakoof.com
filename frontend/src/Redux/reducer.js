@@ -47,6 +47,7 @@ export const reducer = (state = initState, { type, payload }) => {
           } else if (payload.color) {
             return item.title.toLowerCase().includes(payload.color);
           }
+          return [];
         }),
       };
     case SORT_DATA:
