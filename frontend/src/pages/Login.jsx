@@ -19,13 +19,7 @@ const Login = () => {
 
         <div className="w-[50%] flex justify-center flex-col items-center">
           <h2 className="text-[24px] font-bold">Log in / Sign up</h2>
-          <p
-            style={{
-              color: "gray",
-              marginBottom: "50px",
-              fontSize: "18px",
-            }}
-          >
+          <p className={styles.loginP}>
             for Latest trends, exciting offers and everything Bewakoof!
           </p>
           <input

@@ -34,7 +34,7 @@ export const ProdSection = styled.section`
 
 export const ProdFilterDiv = styled.aside`
   position: sticky;
-  top: 10%;
+  top: 24%;
   left: 0;
   align-self: start;
   height: 100vh;
