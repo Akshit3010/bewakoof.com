@@ -1,0 +1,144 @@
+/* .Single_slider_part{
+    border: 1px solid red;
+    height: 400px;
+    margin: 0px 30px;
+} */
+
+.Total_slider_part{
+    margin: auto;
+    margin-top: 160px;
+    box-sizing: border-box;
+}
+.Box{
+    overflow: hidden;
+    width:95%;
+    margin:auto;
+    
+}
+button{
+    color: white;
+    background-color: white;
+    border: none;
+}
+.Total_slider_part>div>div{
+
+    
+    display: flex;
+    width: 100%;
+    height: 500px;
+    box-sizing: border-box;
+    
+
+}
+.Total_slider_part>div>div>div{
+
+  
+    display: flex;
+    margin-left: 10px;
+    margin-right: 20px;
+    height: 500px;
+    box-sizing: border-box;
+    
+
+}
+.Total_slider_part>div>div>div img{
+
+    width: 100%;
+    height: 100%;
+    
+
+}
+.nineImg{
+    height: 150px;
+    width: 100px;
+}
+.nineDiv{
+   width: 90%;
+   height: 200px;
+   margin: auto;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.popImg{
+    height: 230px;
+    width: 150px;
+}
+.popH3{
+    margin: 40px;
+    text-align: center;
+    padding: 10px;
+    word-spacing: 5px;
+    font-family: montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 2px;
+    color: rgb(0, 0, 0);
+    margin: 0px 0px 17px;
+}
+.popDiv{
+   width: 85%;
+   height: 250px;
+   margin: auto;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.favDiv{
+    width: 99%;
+    height: 400px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+.favDiv>img{
+    width: 48%;
+    height: 400px;
+}
+.SlideFlex{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 400px;
+    width: 90%;
+    border: 1px solid red;
+}
+
+.manSwip img{
+   width: 100%;
+}
+.manSwip div{
+    display: flex;
+
+ }
+ .slidersDiv{
+    margin: auto;
+    width: 95%;
+ }
+.diScount{
+    text-decoration: line-through;
+    color: #b6b6b6;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.navLinks{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 40px;
+    color: #b6b6b6;
+    font-weight: 600;
+}
+.addVet{
+    margin: auto;
+    width: 98%;
+}
+.addVet>img{
+    margin: auto;
+    width: 100%;
+    margin-bottom: 10px;
+    
+}
