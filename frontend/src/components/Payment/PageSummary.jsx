@@ -79,7 +79,7 @@ const Summarywrapper = styled.div`
 
 `
 
-export const PageSummary = () => {
+export const PageSummary = ({m,t,d}) => {
 
 
 
@@ -90,11 +90,11 @@ export const PageSummary = () => {
     <Summarywrapper>
       <div className='font-extrabold my-3'>Price Summary</div>
           <div className="summarysec">
-                    <div><span>Total MRP (Incl. of taxes) </span><span>₹ 6644</span></div>
+                    <div><span>Total MRP (Incl. of taxes) </span><span>₹ {m}</span></div>
                     <div><span>Delivery Fee </span><span>FREE</span></div>
-                    <div><span>Discount on MRP </span><span>- ₹3800</span></div>
+                    <div><span>Discount on MRP </span><span>- ₹{d}</span></div>
                     <hr className='my-3'/>
-                    <div className='font-bold'><span >Subtotal </span><span></span>₹ 2844</div>
+                    <div className='font-bold'><span >Subtotal </span><span></span>₹{t}</div>
                 </div>
      </Summarywrapper>
     </>

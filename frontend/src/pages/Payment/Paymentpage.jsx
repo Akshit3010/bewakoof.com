@@ -1,8 +1,11 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Payment } from '../../components/Payment/Payment'
 import styled from 'styled-components'
 import { Showbuyed } from '../../components/Payment/Showbuyed'
 import { PageSummary } from '../../components/Payment/PageSummary'
+import {useDispatch, useSelector} from 'react-redux'
+import {getUserbag} from '../../Redux/action'
+import { useParams } from 'react-router-dom'
 
 const Paywrapper = styled.div`
 width:80%;
@@ -41,6 +44,14 @@ justify-content: space-around;
 
 `
 export const Paymentpage = () => {
+  const dispatch = useDispatch()
+  const {id} = useParams()
+  const { mybag,mrp,total,bag_discount } = useSelector((state) =>state.reducer)
+
+  useEffect(()=>{
+    dispatch(getUserbag(id))
+  },[])
+
   return (
     <>
     <Paywrapper>
@@ -55,9 +66,12 @@ export const Paymentpage = () => {
        <hr/>
        <div>
         <p className='font-bold my-3'>You are paying for these items</p>
-        <Showbuyed/>
+        {mybag.map((el)=>{
+          return <Showbuyed {...el}/>
+        })}
+        
        </div>
-       <PageSummary/>
+       <PageSummary m={mrp} t={total} d={bag_discount} />
       </div>
       </Paywrapper>
     </>

@@ -5,12 +5,18 @@ import {
   IS_ERROR,
   IS_LOADING,
   SORT_DATA,
+  BAG_DATA,
+  GET_TOTAL
 } from "./actionTypes";
 
 const initState = {
   isLoading: false,
   isError: false,
   products: [],
+  mybag:[],
+  mrp:0,
+  bag_discount:0,
+  total:0
   singleProd: [],
 };
 
@@ -75,6 +81,25 @@ export const reducer = (state = initState, { type, payload }) => {
           }
         }),
       };
+      case BAG_DATA: {
+      
+        return {
+          ...state,
+          isLoading: false,
+          isError: false,
+          mybag: payload,
+          mrp:payload.reduce((acc,el)=>{
+            return acc+(el.strikedOffprice)*(el.qty)
+           },0),
+           bag_discount:payload.reduce((acc,el)=>{
+             return acc+((el.strikedOffprice-el.price)*el.qty)
+
+           },0),
+           total:payload.reduce((acc,el)=>{
+            return acc+(el.price)*(el.qty)
+           },0)
+        }
+      }
     default: {
       return state;
     }

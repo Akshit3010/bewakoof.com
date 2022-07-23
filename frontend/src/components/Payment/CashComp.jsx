@@ -13,23 +13,16 @@ const Cashwrapper = styled.div`
        background-color:#42a2a2 ;
      }
 
-
-
 `
-
 export const CashComp = () => {
-
-
-
-
 
   return (
 
-   <>
-   <Cashwrapper>
-    <div>Cash Collection Charges: Costs ₹ 35 Extra</div>
-    <Button className='buttontag' type="submit"  variant="contained">Verify</Button>
-    </Cashwrapper>
-   </>
+    <>
+      <Cashwrapper>
+        <div>Cash Collection Charges: Costs ₹ 35 Extra</div>
+        <Button className='buttontag' type="submit" variant="contained">Pay</Button>
+      </Cashwrapper>
+    </>
   )
 }

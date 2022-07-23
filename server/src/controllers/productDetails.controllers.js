@@ -1,3 +1,4 @@
+const Product = require('../models/product.model');
 const User = require('../models/user.model')
 
 const addToCart = (async (req, res) => {
@@ -7,9 +8,11 @@ const addToCart = (async (req, res) => {
 
     let UserData
     let productData;
+
+
     try{
-        UserData = await User.findByIdAndUpdate(id,{$push:{mybag:productId}})
-        productData= UserData.mybag;
+        productData =  await Product.findById(productId)
+        UserData = await User.findByIdAndUpdate(id,{$push:{mybag:productData}})
         return res.status(200).json({productData})
      
     }catch(err){

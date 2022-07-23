@@ -1,4 +1,5 @@
 const User = require('../models/user.model')
+const Product = require('../models/product.model')
 
 const getWishlistProducts = (async (req, res) => {
  const{id} = req.params;
@@ -7,7 +8,7 @@ const getWishlistProducts = (async (req, res) => {
 let UserData
 let productData;
 try{
-    UserData = await User.findById(id).populate("wishlist").lean().exec()
+    UserData = await User.findById(id).lean().exec()
     productData= UserData.whishlist;
     return res.status(200).json({productData})
  
@@ -18,6 +19,9 @@ return res.status(503).json({err:err.message})
    
 })
 
+
+
 module.exports = {
-    getWishlistProducts
+    getWishlistProducts,
+   
 }

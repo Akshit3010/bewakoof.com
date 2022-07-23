@@ -9,8 +9,8 @@ const userSchema = new Schema({
   date_of_birth:{type:String},
   gender:{type:String},
   phone_number:{type:Number},
-  mybag:[{type:Schema.Types.ObjectId, ref:'product'}],
-  wishlist:[{type:Schema.Types.ObjectId, ref:'product'}],
+  mybag:[{type:Object}],
+  wishlist:[{type:Schema.Types.ObjectId, ref:'product',qty:Number}],
   myorders:[{type:Schema.Types.ObjectId, ref:'product'}],
   addresses:[{type:String,}],
 },{
