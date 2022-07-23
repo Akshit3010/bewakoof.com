@@ -1,6 +1,6 @@
 import {
-  CLEAR_FILTER,
   FILTER_DATA,
+  GET_PRODUCT,
   GET_PRODUCTS,
   IS_ERROR,
   IS_LOADING,
@@ -16,6 +16,11 @@ export const prodReq = () => ({
 
 export const prodSuccess = (payload) => ({
   type: GET_PRODUCTS,
+  payload,
+});
+
+export const singleProdSuccess = (payload) => ({
+  type: GET_PRODUCT,
   payload,
 });
 
@@ -50,6 +55,7 @@ export const getProducts = (category) => (dispatch) => {
     })
     .catch((err) => dispatch(prodError(err.message)));
 };
+
 
 
 
@@ -109,6 +115,7 @@ export const AddToWish = (productId,id) => (dispatch)=>{
   })
 
 }
+<<<<<<< HEAD
 
 export const orderbag=(id)=>(dispatch) =>{
  
@@ -123,3 +130,15 @@ export const orderbag=(id)=>(dispatch) =>{
 
 
 }
+=======
+export const getSingleProd = (id) => (dispatch) => {
+  dispatch(prodReq());
+  axios
+    .get(`http://localhost:8000/product/${id}`)
+    .then((res) => {
+      dispatch(singleProdSuccess(res.data));
+    })
+    .catch((err) => dispatch(prodError(err.message)));
+};
+
+>>>>>>> 569cbbac6413d068de1ec3325b7b3cb3c5d8a8c2

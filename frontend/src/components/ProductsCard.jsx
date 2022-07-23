@@ -2,14 +2,29 @@ import React from "react";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { AiFillStar } from "react-icons/ai";
 import { ProdImg } from "../Assets/Styled/Products.styled";
+import { useNavigate } from "react-router-dom";
 
-const ProductsCard = ({ title, imgUrl, price, strikedOffprice, rating }) => {
+const ProductsCard = ({
+  _id,
+  title,
+  imgUrl,
+  price,
+  strikedOffprice,
+  rating,
+}) => {
+  const navigate = useNavigate();
+  const costForTwo = price * 2 - 19;
   return (
     <>
-      <div className="cursor-pointer mb-2">
+      <div
+        className="cursor-pointer mb-2"
+        onClick={() => {
+          navigate(`${_id}`);
+        }}
+      >
         <div className="relative overflow-hidden">
           <span className="absolute top-0 z-10 left-0 bg-gray-800 text-[10px] text-white px-1 py-[1px]">
-            Buy 2 for 1199
+            Buy 2 for {costForTwo}
           </span>
           <ProdImg className="cursor-pointer" src={imgUrl} alt={title} />
           <span className="absolute bottom-4 flex items-center left-0 bg-[rgba(255,255,255,.8)] text-[11px] font-bold  px-1 py-[1px]">

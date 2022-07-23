@@ -1,6 +1,6 @@
-
 import {
   FILTER_DATA,
+  GET_PRODUCT,
   GET_PRODUCTS,
   IS_ERROR,
   IS_LOADING,
@@ -17,6 +17,7 @@ const initState = {
   mrp:0,
   bag_discount:0,
   total:0
+  singleProd: [],
 };
 
 export const reducer = (state = initState, { type, payload }) => {
@@ -45,6 +46,14 @@ export const reducer = (state = initState, { type, payload }) => {
         products: payload,
       };
     }
+    case GET_PRODUCT: {
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        singleProd: payload,
+      };
+    }
     case FILTER_DATA:
       return {
         ...state,
@@ -54,6 +63,7 @@ export const reducer = (state = initState, { type, payload }) => {
           } else if (payload.color) {
             return item.title.toLowerCase().includes(payload.color);
           }
+          return [];
         }),
       };
     case SORT_DATA:
@@ -95,4 +105,3 @@ export const reducer = (state = initState, { type, payload }) => {
     }
   }
 };
-
