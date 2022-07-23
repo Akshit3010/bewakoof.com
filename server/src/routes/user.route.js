@@ -12,7 +12,7 @@ const {
   getUser,
 } = require("../controllers/accountDetails.controller");
 const { addToCart } = require("../controllers/ProductDetails.controllers");
-const { getWishlistProducts } = require("../controllers/wishlist.controllers");
+const { getWishlistProducts} = require("../controllers/wishlist.controllers");
 const createUser = require("../controllers/CreateUser.controller");
 
 const { Router } = require("express");
@@ -38,5 +38,6 @@ userRouter.patch("/addToCart/:id", addToCart);
 
 //All routes of Wishlist Page
 userRouter.get("/wishlisht/:id", getWishlistProducts);
+
 
 module.exports = userRouter;

@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from "styled-components";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Button from '@mui/material/Button';
-import { ImPriceTag } from 'react-icons/im';
-  
+import { useDispatch} from 'react-redux';
+import { changeQty } from '../Redux/action';
+import { useParams } from 'react-router-dom';
+
 
 export const Bagwrapper = styled.div`
 .productDiv {
@@ -97,82 +99,98 @@ export const Bagwrapper = styled.div`
 
 `
 
-export const BagProduct = ({title,price,strikedOffprice}) => {
+export const BagProduct = ({ _id,title, price, strikedOffprice, imgUrl,qty }) => {
+  
+  const dispatch = useDispatch()  
+  const {id} = useParams()
+  const [qtyvalue,setQty] = useState(qty);
+
+  console.log(qtyvalue,"outside")
+  // console.log(mainqty,"mainqty")
+  const handleChange = (e) => {
+    // e.preventDefalut();
+    console.log(qtyvalue,"before")
+    setQty(e.target.value)
+    console.log(qtyvalue,"after")
+    dispatch(changeQty(_id,e.target.value,id))
+    
+  }
+
 
   return (
-   <>
-   <Bagwrapper>
-    <div className="productDiv">
-                  <div>
-                    <div>
-                      <div>
-                       {title}
-                      </div>
-                      <div>
-                        <span id="spfirst">₹{price}</span>
-                        <span>₹{strikedOffprice}</span>
-                      </div>
-                      <div id="savedprice">You saved ₹{strikedOffprice-price}!</div>
-                      <div className="selectDiv">
-                        <FormControl className="formcont">
-                          <InputLabel id="demo-simple-select-label">
-                           Size
-                          </InputLabel>
-                          <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            // value={age}
-                            label="Age"
-                            // onChange={handleChange}
-                          >
-                            <MenuItem value={10}>S</MenuItem>
-                            <MenuItem value={20}>M</MenuItem>
-                            <MenuItem value={30}>L</MenuItem>
-                            <MenuItem value={30}>XL</MenuItem>
-                            <MenuItem value={30}>2XL</MenuItem>
-                            <MenuItem value={30}>3XL</MenuItem>
-                          </Select>
-                        </FormControl>
+    <>
+      <Bagwrapper>
+        <div className="productDiv">
+          <div>
+            <div>
+              <div>
+                {title}
+              </div>
+              <div>
+                <span id="spfirst">₹{price}</span>
+                <span>₹{strikedOffprice}</span>
+              </div>
+              <div id="savedprice">You saved ₹{strikedOffprice - price} !</div>
+              <div className="selectDiv">
+                <FormControl className="formcont">
+                  <InputLabel id="demo-simple-select-label">
+                    Size
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    // value={age}
+                    label="Age"
+                  // onChange={handleChange}
+                  >
+                    <MenuItem value={'S'}>S</MenuItem>
+                    <MenuItem value={"M"}>M</MenuItem>
+                    <MenuItem value={"L"}>L</MenuItem>
+                    <MenuItem value={'XL'}>XL</MenuItem>
+                    <MenuItem value={"2Xl"}>2XL</MenuItem>
+                    <MenuItem value={"3XL"}>3XL</MenuItem>
+                  </Select>
+                </FormControl>
 
-                        <FormControl className="formcont">
-                          <InputLabel id="demo-simple-select-label">
-                           Qty
-                          </InputLabel>
-                          <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            // value={age}
-                            label="Age"
-                            // onChange={handleChange}
-                          >
-                            <MenuItem value={10}>1</MenuItem>
-                            <MenuItem value={20}>2</MenuItem>
-                            <MenuItem value={30}>3</MenuItem>
-                            <MenuItem value={10}>4</MenuItem>
-                            <MenuItem value={20}>5</MenuItem>
-                            <MenuItem value={30}>6</MenuItem>
-                            <MenuItem value={10}>7</MenuItem>
-                            <MenuItem value={20}>8</MenuItem>
-                            <MenuItem value={30}>9</MenuItem>
-                          </Select>
-                        </FormControl>
-                      </div>
-                    </div>
-                    <div>
-                      <img
-                        className="imgtag"
-                        src="https://images.bewakoof.com/t320/voyage-oversized-fit-t-shirt-520745-1658295402-1.jpg"
-                        alt="invalid-image"
-                      />
-                    </div>
-                  </div>
-                  <div className="buttonSection">
-                    <div>Remove</div>
-                    <div>Move to Wishlist</div>
-                  </div>
-      </div>
-    </Bagwrapper>
-   </>
+                <FormControl className="formcont">
+                  <InputLabel id="demo-simple-select-label">
+                    Qty
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={qtyvalue}
+                    label="Age"
+                    onChange={handleChange}
+                  >
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                    <MenuItem value={3}>3</MenuItem>
+                    <MenuItem value={4}>4</MenuItem>
+                    <MenuItem value={5}>5</MenuItem>
+                    <MenuItem value={6}>6</MenuItem>
+                    <MenuItem value={7}>7</MenuItem>
+                    <MenuItem value={8}>8</MenuItem>
+                    <MenuItem value={9}>9</MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
+            </div>
+            <div>
+              <img
+                className="imgtag"
+                src={imgUrl}
+                alt="invalid-image"
+              />
+            </div>
+          </div>
+          <div className="buttonSection">
+            <div>Remove</div>
+            <div>Move to Wishlist</div>
+          </div>
+        </div>
+      </Bagwrapper>
+    </>
   )
 }
 

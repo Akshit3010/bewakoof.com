@@ -46,39 +46,35 @@ const data = [
 ];
 
 
-const UserData = [{
-    "UserData": {
-      "first_name": "Naved",
-      "Last_name": "Khan",
-      "username": "naved@007",
-      "email": "naved@gmail.com",
-      "password": "@gmail.com",
-      "date_of_birth": "21-04-1997",
-      "gender": "Male",
-      "phone_number": 987654321,
-      "mybag": [
-        "62dabad32fec84c1ab465c1f",
-        "62dabad32fec84c1ab465c29",
-        "62dabad32fec84c1ab465c0b",
-        "62dabad32fec84c1ab465c26",
-        "62dabad32fec84c1ab465c0c"
-      ],
-      "wishlist": [
-        "62dabad32fec84c1ab465c0d",
-        "62dabad32fec84c1ab465c12",
-        "62dabad32fec84c1ab465c19"
-      ],
-      "myorders": [
-        "62dabad32fec84c1ab465c23",
-        "62dabad32fec84c1ab465c27"
-      ],
-      "addresses": [
-        "Near Natraj Cinema Hall,Gomiti nagar Road, Delapeer.Bareilly"
-      ],
-      "_id": "62dba290af7fc692bdea6232",
-      "createdAt": "2022-07-23T07:26:08.608Z",
-      "updatedAt": "2022-07-23T07:26:08.608Z",
-      "__v": 0
-    }
+const UserData = [
+  {
+  "UserData": {
+    "first_name": "Akshit",
+    "Last_name": "rana",
+    "username": "rana@007",
+    "email": "akshit@gmail.com",
+    "password": "akshit@gmail.com",
+    "date_of_birth": "21-04-1997",
+    "gender": "Male",
+    "phone_number": 987654321,
+    "mybag": [],
+    "wishlist": [
+      "62dbb48cf71f649453973453",
+      "62dbb48cf71f649453973452",
+      "62dbb48cf71f649453973451",
+      "62dbb48cf71f649453973450"
+    ],
+    "myorders": [
+      "62dbb48cf71f64945397344f",
+      "62dbb48cf71f64945397344e"
+    ],
+    "addresses": [
+      "Near Natraj Cinema Hall,Gomiti nagar Road, Delapeer.Bareilly"
+    ],
+    "_id": "62dbd714e61b72afd28f5322",
+    "updatedAt": "2022-07-23T11:10:12.607Z",
+    "createdAt": "2022-07-23T11:10:12.607Z",
+    "__v": 0
   }
+}
 ]

@@ -54,6 +54,7 @@ export const getUserbag = (id) => (dispatch) => {
   dispatch(prodReq());
   axios.get(`http://localhost:8000/users/cart/${id}`).then((res) => {
     const data = res.data.productData;
+    // console.log(data,"data")
     dispatch(getmybag(data))
   }).catch((err) => {
     dispatch(prodError(err.message))
@@ -61,6 +62,23 @@ export const getUserbag = (id) => (dispatch) => {
 
 }
 
+export const changeQty = (productId,qty,id)=>(dispatch)=>{
+  dispatch(prodReq());
+  console.log(productId,qty,id)
+  
+  // console.log(typeof qty)
+ axios.patch(`http://localhost:8000/users/qty/${id}`,{productId,qty}).then((res)=>{
+     
+  const data = res.data.productData;
+    console.log(data,"data")
+    dispatch(getmybag(data))
+ }).catch((err) => {
+    dispatch(prodError(err.message))
+  })
+
+
+
+}
 
 
 // All routes of mybag Page
