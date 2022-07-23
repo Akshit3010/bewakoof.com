@@ -1,6 +1,6 @@
-
 import {
   FILTER_DATA,
+  GET_PRODUCT,
   GET_PRODUCTS,
   IS_ERROR,
   IS_LOADING,
@@ -11,6 +11,7 @@ const initState = {
   isLoading: false,
   isError: false,
   products: [],
+  singleProd: [],
 };
 
 export const reducer = (state = initState, { type, payload }) => {
@@ -37,6 +38,14 @@ export const reducer = (state = initState, { type, payload }) => {
         isLoading: false,
         isError: false,
         products: payload,
+      };
+    }
+    case GET_PRODUCT: {
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        singleProd: payload,
       };
     }
     case FILTER_DATA:
@@ -71,4 +80,3 @@ export const reducer = (state = initState, { type, payload }) => {
     }
   }
 };
-
