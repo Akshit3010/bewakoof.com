@@ -16,7 +16,7 @@ const initState = {
   mybag:[],
   mrp:0,
   bag_discount:0,
-  total:0
+  total:0,
   singleProd: [],
 };
 
