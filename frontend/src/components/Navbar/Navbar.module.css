@@ -38,17 +38,19 @@
     align-items: center;
 }
 .Right_Input {
+    height: 80%;
     display: flex;
     align-items: center;
     gap: 6px;
     background: #EAEAEA;
-    padding: 10px 8px 10px 15px;
+    padding: 0 0 0 15px;
     border-radius: 6px;
 }
 .Right_Input svg {
     color: rgba(0,0,0,.5);
 }
 .Right_Input input {
+    height: 100%;
     outline: none;
     border: none;
     width: 250px;
