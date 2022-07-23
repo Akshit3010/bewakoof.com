@@ -17,7 +17,9 @@ const getGoogleUser = async (req, res) => {
 
   // Fetch the user's profile with the access token and bearer
   const googleUser = await getUser({ id_token, access_token });
-
+  console.log(googleUser);
+  // const user = await User.create(payload);
+  //     await user.save();
   res.redirect("http://localhost:3000");
 };
 
@@ -55,8 +57,21 @@ const getUser = async ({ id_token, access_token }) => {
       }
     )
     .then((res) => {
-      console.log(res.data);
-      res.data;
+      const payload = {
+        first_name: res.data.given_name,
+        Last_name: res.data.family_name,
+        username: res.data.given_name + "@123",
+        email: res.data.email,
+        password: "12345",
+        date_of_birth: "",
+        gender: "",
+        phone_number: "",
+        mybag: [],
+        wishlist: [],
+        myorders: [],
+        addresses: [],
+      };
+      payload;
     })
     .catch((error) => {
       console.error(`Failed to fetch user`);
