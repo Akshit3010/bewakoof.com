@@ -64,9 +64,11 @@ const orderProduct = (async (req, res) => {
     let UserData
     let productData;
     try{
-        UserData = await User.findByIdAndUpdate(id,{$push:{myorders:productId}})
-        productData= UserData.myorders;
-        return res.status(200).json({productData})
+        UserData = await User.findById(id)
+        productData= UserData.mybag;
+        UserData = await User.findByIdAndUpdate(id,{myorders:productData})
+        UserData = await User.findByIdAndUpdate(id,{mybag:[]})
+        return res.status(200).json({myorders:productData.myorders})
        
     }catch(err){
     return res.status(501).json({err:err.message})

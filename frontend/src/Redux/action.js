@@ -115,6 +115,22 @@ export const AddToWish = (productId,id) => (dispatch)=>{
   })
 
 }
+<<<<<<< HEAD
+
+export const orderbag=(id)=>(dispatch) =>{
+ 
+  dispatch(prodReq());
+    
+  axios.patch(`http://localhost:8000/users/order/${id}`).then((res)=>{
+    const data = res.data.myorders;
+    dispatch(getmybag(data))
+  }).catch((err)=>{
+   dispatch(prodError(err.message))
+  })
+
+
+}
+=======
 export const getSingleProd = (id) => (dispatch) => {
   dispatch(prodReq());
   axios
@@ -125,3 +141,4 @@ export const getSingleProd = (id) => (dispatch) => {
     .catch((err) => dispatch(prodError(err.message)));
 };
 
+>>>>>>> 569cbbac6413d068de1ec3325b7b3cb3c5d8a8c2

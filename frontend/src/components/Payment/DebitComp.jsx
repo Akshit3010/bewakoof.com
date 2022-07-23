@@ -4,8 +4,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate,useParams } from "react-router-dom";
+import { orderbag } from "../../Redux/action";
 
 const DebitWrapper = styled.div`
   font-size: 14px;
@@ -46,8 +47,10 @@ const DebitWrapper = styled.div`
 `;
 
 export const DebitComp = () => {
-
+  
+   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const {id} = useParams();
   const[cardvalue,setCardValue] = useState("")
   const{total} =  useSelector((state)=>state.reducer)
   const[formData,setFormData] = useState({})
@@ -63,9 +66,11 @@ export const DebitComp = () => {
     e.preventDefault();
 
     setFormData({...formData,["Card Number"]:cardvalue})
-    
+ 
     console.log(formData)
-    // navigate('/')
+    dispatch(orderbag(id))
+  
+    navigate('/')
 
   };
 
