@@ -7,19 +7,29 @@ import Products from "../pages/Products";
 import { Paymentpage } from "../pages/Payment/Paymentpage";
 import Login from "../pages/Login";
 import Error from "../pages/Error";
+import Navbar from "../components/home/Navbar";
+import Footer from "../components/home/Footer";
+import Home from "../components/home/Home";
+import Womenprod from "../components/home/Womenprod";
+import Homeprod from "../components/home/Homeprod";
 
 export default function MainRoute() {
   return (
     <>
+      <Navbar />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/products/*" element={<SingleProductPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/products/:id" element={<Products />} />
         <Route path="/payment" element={<Paymentpage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/women" element={<Womenprod />} />
+        <Route path="/accessories" element={<Homeprod />} />
         <Route path="*" element={<Error />} />
       </Routes>
+      <Footer />
     </>
   );
 }
