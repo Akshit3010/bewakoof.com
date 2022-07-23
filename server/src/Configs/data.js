@@ -44,3 +44,41 @@ const data = [
     reviews: null,
   },
 ];
+
+
+const UserData = [{
+    "UserData": {
+      "first_name": "Naved",
+      "Last_name": "Khan",
+      "username": "naved@007",
+      "email": "naved@gmail.com",
+      "password": "@gmail.com",
+      "date_of_birth": "21-04-1997",
+      "gender": "Male",
+      "phone_number": 987654321,
+      "mybag": [
+        "62dabad32fec84c1ab465c1f",
+        "62dabad32fec84c1ab465c29",
+        "62dabad32fec84c1ab465c0b",
+        "62dabad32fec84c1ab465c26",
+        "62dabad32fec84c1ab465c0c"
+      ],
+      "wishlist": [
+        "62dabad32fec84c1ab465c0d",
+        "62dabad32fec84c1ab465c12",
+        "62dabad32fec84c1ab465c19"
+      ],
+      "myorders": [
+        "62dabad32fec84c1ab465c23",
+        "62dabad32fec84c1ab465c27"
+      ],
+      "addresses": [
+        "Near Natraj Cinema Hall,Gomiti nagar Road, Delapeer.Bareilly"
+      ],
+      "_id": "62dba290af7fc692bdea6232",
+      "createdAt": "2022-07-23T07:26:08.608Z",
+      "updatedAt": "2022-07-23T07:26:08.608Z",
+      "__v": 0
+    }
+  }
+]

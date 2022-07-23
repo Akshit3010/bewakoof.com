@@ -13,9 +13,14 @@ const {
 } = require("../controllers/accountDetails.controller");
 const { addToCart } = require("../controllers/ProductDetails.controllers");
 const { getWishlistProducts } = require("../controllers/wishlist.controllers");
+const createUser = require("../controllers/CreateUser.controller");
 
 const { Router } = require("express");
 const userRouter = Router();
+
+
+userRouter.post("/",createUser)
+
 
 // All routes of mybag Page
 userRouter.get("/cart/:id", getProducts);
