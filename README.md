@@ -6,7 +6,7 @@ Google authenication,Add/Buy and filter the product. We have completed this proj
 
 - [Click here](https://gleaming-hotteok-a2ad5e.netlify.app/) to see preview of our project.
 
-beauty bebo is India’s fastest growing online retail store for the day-to-day and special occasion needs of Makeup, Skincare, Haircare, Personal care, Mom and Baby care, Fragrance, and Ayurveda products.
+Bewakoof.com is an E-commerce website where a user can find different acessories for men and women.
 
 ## Credits
 
@@ -68,7 +68,7 @@ it became very complicated to login a user then we change the structure and made
 2.We faced some problems during merging the files but we figured it out very quickly and start following the basic steps of merging.
 
 
-3. We faced challenges with CSS tags like absolute and relative.We aligned a Navigation bar with all the pages by giving it some margin functionalities.
+3.We faced challenges with CSS tags like absolute and relative.We aligned a Navigation bar with all the pages by giving it some margin functionalities.
 
 ## Team
 
