@@ -640,7 +640,7 @@ const Navbar = () => {
             </div>
             <div id={styles.searchBarsData}></div>
           </li>
-          {token && (
+          {!token && (
             <NavLink
               id={styles.loginButton}
               className={styles.lInk}
