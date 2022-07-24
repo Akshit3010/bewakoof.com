@@ -140,5 +140,3 @@ export const getSingleProd = (id) => (dispatch) => {
     })
     .catch((err) => dispatch(prodError(err.message)));
 };
-
-
