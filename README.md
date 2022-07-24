@@ -68,7 +68,7 @@ it became very complicated to login a user then we change the structure and made
 2.We faced some problems during merging the files but we figured it out very quickly and start following the basic steps of merging.
 
 
-3.We faced challenges with CSS tags like absolute and relative.We aligned a Navigation bar with all the pages by giving it some margin functionalities.
+3.We faced challenges with CSS tags like absolute and relative.We aligned Navigation bar with all the pages by giving it proper margin and padding.
 
 ## Team
 
