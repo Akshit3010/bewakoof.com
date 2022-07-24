@@ -116,6 +116,7 @@ export const AddToWish = (productId,id) => (dispatch)=>{
 
 }
 
+
 export const orderbag=(id)=>(dispatch) =>{
  
   dispatch(prodReq());
@@ -129,6 +130,7 @@ export const orderbag=(id)=>(dispatch) =>{
 
 
 }
+
 export const getSingleProd = (id) => (dispatch) => {
   dispatch(prodReq());
   axios
@@ -138,4 +140,3 @@ export const getSingleProd = (id) => (dispatch) => {
     })
     .catch((err) => dispatch(prodError(err.message)));
 };
-
