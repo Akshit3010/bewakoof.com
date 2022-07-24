@@ -10,6 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../Loader";
 import { Alert, Stack } from "@mui/material";
 import "./SingleProduct.css";
+import { toast } from "react-toastify";
 
 export default function SingleProduct() {
   const { singleProd, isLoading, isError, user } = useSelector(
@@ -23,6 +24,9 @@ export default function SingleProduct() {
     delivery: false,
   });
   const [size, setSize] = useState("");
+
+  const notify = (msg) => toast(msg);
+  const error = (msg) => toast.error(msg);
   const handleSizeModal = () => {
     setVisible(true);
   };
@@ -50,12 +54,11 @@ export default function SingleProduct() {
   const addTobag = () => {
     const userId = user.user._id;
 
-    if (!userId) {
+    if (!user) {
       return navigate("/login");
     }
 
-    dispatch(addDataToCart(userId, id, size));
-
+    dispatch(addDataToCart(userId, id, size, error, notify));
   };
 
   const addToWishlist = () => {
@@ -110,8 +113,16 @@ export default function SingleProduct() {
                 </div>
                 <div className={styles.size}>
                   {prod.sizes.map((elem, i) => {
-                    const check = (elem === size)
-                    return <div key={i} onClick={() => setSize(elem)} className={`${check ? "activeProdSize" : ""}`}>{elem}</div>;
+                    const check = elem === size;
+                    return (
+                      <div
+                        key={i}
+                        onClick={() => setSize(elem)}
+                        className={`${check ? "activeProdSize" : ""}`}
+                      >
+                        {elem}
+                      </div>
+                    );
                   })}
                 </div>
                 <div className={styles.cart_menu}>
@@ -196,7 +207,7 @@ export default function SingleProduct() {
                         <span className={styles.product_category}>India</span>
                       </div>
                       <div>
-                        Commodity 
+                        Commodity
                         <span className={styles.desc_commodity}>
                           {prod.description.split(".")[4].split(" - ")[1]}
                         </span>
@@ -206,9 +217,7 @@ export default function SingleProduct() {
                       </div>
                       <ul>
                         <li>{prod.description.split(".")[6]}</li>
-                        <li>
-                          {prod.description.split(".")[7]}
-                        </li>
+                        <li>{prod.description.split(".")[7]}</li>
                       </ul>
                     </div>
                   )}

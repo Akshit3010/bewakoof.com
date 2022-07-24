@@ -247,25 +247,30 @@ export const getSingleProd = (id) => (dispatch) => {
     .catch((err) => dispatch(prodError(err.message)));
 };
 
-export const addDataToCart = (id, productId, size) => (dispatch) => {
-  let token = localStorage.getItem("jwtoken");
+export const addDataToCart =
+  (id, productId, size, error, notify) => (dispatch) => {
+    let token = localStorage.getItem("jwtoken");
 
-  axios
-    .patch(
-      `https://heady-rabbits-8947.herokuapp.com/users/addToCart/${id}`,
-      { productId, size },
-      {
-        withCredentials: true,
-        headers: {
-          Authorization: token,
-        },
-      }
-    )
-    .then((res) => {
-      console.log(res.data);
-    })
-    .catch((err) => dispatch(prodError(err.message)));
-};
+    axios
+      .patch(
+        `https://heady-rabbits-8947.herokuapp.com/users/addToCart/${id}`,
+        { productId, size },
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: token,
+          },
+        }
+      )
+      .then((res) => {
+        notify("Added to cart");
+        console.log(res.data);
+      })
+      .catch((err) => {
+        error("Something went wrong");
+        dispatch(prodError(err.message));
+      });
+  };
 
 export const getUser = () => (dispatch) => {
   console.log("user");
