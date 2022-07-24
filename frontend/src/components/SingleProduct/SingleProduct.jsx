@@ -9,6 +9,7 @@ import { addDataToCart, AddToWish, getSingleProd } from "../../Redux/action";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../Loader";
 import { Alert, Stack } from "@mui/material";
+import "./SingleProduct.css";
 
 export default function SingleProduct() {
   const { singleProd, isLoading, isError, user } = useSelector(
@@ -21,6 +22,7 @@ export default function SingleProduct() {
     return: false,
     delivery: false,
   });
+  const [size, setSize] = useState("");
   const handleSizeModal = () => {
     setVisible(true);
   };
@@ -47,9 +49,9 @@ export default function SingleProduct() {
 
   const addTobag = () => {
     const userId = user.user._id;
-    dispatch(addDataToCart(userId, id));
+    console.log(size);
+    dispatch(addDataToCart(userId, id, size));
   };
-  console.log(user);
 
   const addToWishlist = () => {
     const userId = user.user._id;
@@ -102,8 +104,9 @@ export default function SingleProduct() {
                   <span onClick={handleSizeModal}>Size Guide</span>
                 </div>
                 <div className={styles.size}>
-                  {prod.sizes.map((size, i) => {
-                    return <div key={i}>{size}</div>;
+                  {prod.sizes.map((elem, i) => {
+                    const check = (elem === size)
+                    return <div key={i} onClick={() => setSize(elem)} className={`${check ? "activeProdSize" : ""}`}>{elem}</div>;
                   })}
                 </div>
                 <div className={styles.cart_menu}>

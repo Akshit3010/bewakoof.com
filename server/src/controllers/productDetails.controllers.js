@@ -3,14 +3,14 @@ const User = require("../models/user.model");
 
 const addToCart = async (req, res) => {
   const { id } = req.params;
-  const { productId } = req.body;
+  const { productId, size } = req.body;
 
   let UserData;
   let productData;
 
   try {
     productData = await Product.findById(productId);
-    productData.sizes = "S";
+    productData.sizes = size;
     console.log(productData);
     UserData = await User.findByIdAndUpdate(id, {
       $push: { mybag: productData },
