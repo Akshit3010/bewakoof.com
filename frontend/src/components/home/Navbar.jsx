@@ -20,7 +20,10 @@ const Navbar = () => {
   const token = localStorage.getItem("jwtoken");
   useEffect(() => {
     dispatch(getUser());
-    dispatch(getUserbag(user.user.id));
+  }, [isLoggedIn, token]);
+
+  useEffect(() => {
+    dispatch(getUserbag(user.user._id));
   }, [isLoggedIn, token]);
 
   const navigate = useNavigate();
