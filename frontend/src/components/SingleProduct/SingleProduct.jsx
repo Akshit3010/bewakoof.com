@@ -49,8 +49,13 @@ export default function SingleProduct() {
 
   const addTobag = () => {
     const userId = user.user._id;
-    console.log(size);
+
+    if (!userId) {
+      return navigate("/login");
+    }
+
     dispatch(addDataToCart(userId, id, size));
+
   };
 
   const addToWishlist = () => {
