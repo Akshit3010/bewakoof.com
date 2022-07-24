@@ -72,9 +72,14 @@ export const getWishlist = (payload) => ({
 
 export const getProducts = (category) => (dispatch) => {
   dispatch(prodReq());
+  let token = localStorage.getItem("jwtoken");
+
   axios
     .get(`https://heady-rabbits-8947.herokuapp.com/${category}`, {
       withCredentials: true,
+      headers: {
+        Authorization: token,
+      },
     })
     .then((res) => {
       dispatch(prodSuccess(res.data));
@@ -85,8 +90,15 @@ export const getProducts = (category) => (dispatch) => {
 export const getUserbag = (id) => (dispatch) => {
   // console.log(id,"id")
   dispatch(prodReq());
+  let token = localStorage.getItem("jwtoken");
+
   axios
-    .get(`https://heady-rabbits-8947.herokuapp.com/users/cart/${id}`)
+    .get(`https://heady-rabbits-8947.herokuapp.com/users/cart/${id}`, {
+      withCredentials: true,
+      headers: {
+        Authorization: token,
+      },
+    })
     .then((res) => {
       const data = res.data.productData;
 
@@ -101,9 +113,14 @@ export const getUserbag = (id) => (dispatch) => {
 export const getUserWish = (id) => (dispatch) => {
   console.log(id, "id");
   dispatch(prodReq());
+  let token = localStorage.getItem("jwtoken");
+
   axios
     .get(`https://heady-rabbits-8947.herokuapp.com/users/wishlisht/${id}`, {
       withCredentials: true,
+      headers: {
+        Authorization: token,
+      },
     })
     .then((res) => {
       const data = res.data.productData;
@@ -119,13 +136,23 @@ export const getUserWish = (id) => (dispatch) => {
 export const changeQty = (productId, qty, id) => (dispatch) => {
   dispatch(prodReq());
   console.log(productId, qty, id);
+  let token = localStorage.getItem("jwtoken");
 
   // console.log(typeof qty)
   axios
-    .patch(`https://heady-rabbits-8947.herokuapp.com/users/qty/${id}`, {
-      productId,
-      qty,
-    })
+    .patch(
+      `https://heady-rabbits-8947.herokuapp.com/users/qty/${id}`,
+      {
+        productId,
+        qty,
+      },
+      {
+        withCredentials: true,
+        headers: {
+          Authorization: token,
+        },
+      }
+    )
     .then((res) => {
       const data = res.data.productData;
       console.log(data, "data");
@@ -138,11 +165,18 @@ export const changeQty = (productId, qty, id) => (dispatch) => {
 
 export const doRemove = (productId, id) => (dispatch) => {
   dispatch(prodReq());
+  let token = localStorage.getItem("jwtoken");
 
   axios
     .patch(
       `https://heady-rabbits-8947.herokuapp.com/users/removeProduct/${id}`,
-      { productId }
+      { productId },
+      {
+        withCredentials: true,
+        headers: {
+          Authorization: token,
+        },
+      }
     )
     .then((res) => {
       const data = res.data.productData;
@@ -155,12 +189,17 @@ export const doRemove = (productId, id) => (dispatch) => {
 
 export const AddToWish = (productId, id) => (dispatch) => {
   dispatch(prodReq());
-
+  let token = localStorage.getItem("jwtoken");
   axios
     .patch(
       `https://heady-rabbits-8947.herokuapp.com/users/addToWishlist/${id}`,
       { productId },
-      { withCredentials: true }
+      {
+        withCredentials: true,
+        headers: {
+          Authorization: token,
+        },
+      }
     )
     .then((res) => {
       const data = res.data.productData;
@@ -173,9 +212,15 @@ export const AddToWish = (productId, id) => (dispatch) => {
 
 export const orderbag = (id) => (dispatch) => {
   dispatch(prodReq());
+  let token = localStorage.getItem("jwtoken");
 
   axios
-    .patch(`https://heady-rabbits-8947.herokuapp.com/users/order/${id}`)
+    .patch(`https://heady-rabbits-8947.herokuapp.com/users/order/${id}`, {
+      withCredentials: true,
+      headers: {
+        Authorization: token,
+      },
+    })
     .then((res) => {
       const data = res.data.myorders;
       dispatch(getmybag(data));
@@ -187,9 +232,14 @@ export const orderbag = (id) => (dispatch) => {
 
 export const getSingleProd = (id) => (dispatch) => {
   dispatch(prodReq());
+  let token = localStorage.getItem("jwtoken");
+
   axios
     .get(`https://heady-rabbits-8947.herokuapp.com/product/${id}`, {
       withCredentials: true,
+      headers: {
+        Authorization: token,
+      },
     })
     .then((res) => {
       dispatch(singleProdSuccess(res.data));
@@ -198,12 +248,17 @@ export const getSingleProd = (id) => (dispatch) => {
 };
 
 export const addDataToCart = (id, productId) => (dispatch) => {
+  let token = localStorage.getItem("jwtoken");
+
   axios
     .patch(
       `https://heady-rabbits-8947.herokuapp.com/users/addToCart/${id}`,
       { productId },
       {
         withCredentials: true,
+        headers: {
+          Authorization: token,
+        },
       }
     )
     .then((res) => {
@@ -215,9 +270,14 @@ export const addDataToCart = (id, productId) => (dispatch) => {
 export const getUser = () => (dispatch) => {
   console.log("user");
   dispatch(userReq());
+  let token = localStorage.getItem("jwtoken");
+
   axios
     .get("https://heady-rabbits-8947.herokuapp.com/users/verify", {
       withCredentials: true,
+      headers: {
+        Authorization: token,
+      },
     })
     .then((res) => {
       dispatch(userSuccess(res.data));
