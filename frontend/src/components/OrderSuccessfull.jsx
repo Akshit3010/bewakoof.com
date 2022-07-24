@@ -8,6 +8,7 @@ const OrderSuccessfull = () => {
       <div className="h-[100vh] w-full flex flex-col items-center justify-center">
         <div>
           <img
+            className="w-[440px]"
             src="https://www.pinkwigscloset.com/images/success-tick.gif"
             alt="img"
           />

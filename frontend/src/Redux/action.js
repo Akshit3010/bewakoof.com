@@ -239,12 +239,16 @@ export const orderbag = (id) => (dispatch) => {
   let token = localStorage.getItem("jwtoken");
 
   axios
-    .patch(`https://heady-rabbits-8947.herokuapp.com/users/order/${id}`, {
-      withCredentials: true,
-      headers: {
-        Authorization: token,
-      },
-    })
+    .patch(
+      `https://heady-rabbits-8947.herokuapp.com/users/order/${id}`,
+      {},
+      {
+        withCredentials: true,
+        headers: {
+          Authorization: token,
+        },
+      }
+    )
     .then((res) => {
       const data = res.data.myorders;
       dispatch(getmybag(data));
