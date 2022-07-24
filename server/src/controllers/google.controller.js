@@ -3,6 +3,7 @@ const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const queryString = require("query-string");
 const { default: axios } = require("axios");
 const User = require("../models/user.model");
+const jwt = require("jsonwebtoken");
 const { createUser } = require("./user.controller");
 
 const getGoogleUser = async (req, res) => {
@@ -12,15 +13,24 @@ const getGoogleUser = async (req, res) => {
     code,
     clientId: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    redirectUri: `http://localhost:8000/users/auth/google/callback`,
+    redirectUri: `https://heady-rabbits-8947.herokuapp.com/users/auth/google/callback`,
   });
 
   // Fetch the user's profile with the access token and bearer
   const googleUser = await getUser({ id_token, access_token });
-  console.log(googleUser);
-  // const user = await User.create(payload);
-  //     await user.save();
-  res.redirect("http://localhost:3000");
+
+  await createUser(googleUser);
+  const user = await User.findOne({ email: googleUser.email });
+  let token;
+  if (user) {
+    token = genereateAccessToken(user);
+    res.cookie("jwtoken", token, {
+      expires: new Date(Date.now() + 3000000),
+      secure: true,
+    });
+    console.log(token);
+  }
+  res.redirect("https://heady-rabbits-8957.vercel.app/?" + token);
 };
 
 function getTokens({ code, clientId, clientSecret, redirectUri }) {
@@ -58,6 +68,7 @@ const getUser = async ({ id_token, access_token }) => {
     )
     .then((res) => {
       const payload = {
+        avatar: res.data.picture,
         first_name: res.data.given_name,
         Last_name: res.data.family_name,
         username: res.data.given_name + "@123",
@@ -71,11 +82,21 @@ const getUser = async ({ id_token, access_token }) => {
         myorders: [],
         addresses: [],
       };
-      payload;
+      return payload;
     })
     .catch((error) => {
       console.error(`Failed to fetch user`);
     });
 };
+
+function genereateAccessToken(user) {
+  return jwt.sign(
+    { id: user?._id, name: user.name, email: user.email, avatar: user.avatar },
+    process.env.SECRETKEY,
+    {
+      expiresIn: "1h",
+    }
+  );
+}
 
 module.exports = { getGoogleUser };

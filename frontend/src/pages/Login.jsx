@@ -1,6 +1,37 @@
 import React from "react";
 import styles from "./Login.module.css";
+
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 const Login = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const action = (
+    <React.Fragment>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
   return (
     <>
       <div className={styles.main}>
@@ -55,6 +86,7 @@ const Login = () => {
               textTransform: "uppercase",
               marginTop: "10px",
             }}
+            onClick={handleClick}
           >
             Continue
           </button>
@@ -80,6 +112,7 @@ const Login = () => {
               margin: "10px",
               width: "377px",
             }}
+            onClick={handleClick}
           >
             <img
               style={{ width: "20px", margin: "0 15px 0px 15px" }}
@@ -90,7 +123,7 @@ const Login = () => {
           </button>
           <div className="flex w-full justify-center">
             <a
-              href={`https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fusers%2Fauth%2Fgoogle%2Fcallback&client_id=${process.env.REACT_APP_GOOGLE_CLIENTID}&response_type=code&prompt=consent&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email`}
+              href={`https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=https%3A%2F%2Fheady%2drabbits%2d8947%2eherokuapp%2ecom%2Fusers%2Fauth%2Fgoogle%2Fcallback&client_id=${process.env.REACT_APP_GOOGLE_CLIENTID}&response_type=code&prompt=consent&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email`}
             >
               <button
                 style={{
@@ -184,6 +217,15 @@ const Login = () => {
             </p>
           </small>
         </div>
+      </div>
+      <div>
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          message="We are only accepting Login's from google!"
+          action={action}
+        />
       </div>
     </>
   );

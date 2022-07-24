@@ -21,6 +21,7 @@
     padding: 0.5rem 0.5rem;
     text-align: center;
     border: 1px solid #474747;
+    margin-top: 10rem;
   }
   .header {
     display: flex;

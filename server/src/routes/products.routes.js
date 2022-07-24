@@ -4,7 +4,9 @@ const {
   postProducts,
   getProduct,
 } = require("../controllers/products.controller");
+const cookieParser = require("cookie-parser");
 const prodRouter = Router();
+prodRouter.use(cookieParser());
 
 //Routes for products
 prodRouter.get("/:category", getProducts);

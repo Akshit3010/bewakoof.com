@@ -5,13 +5,21 @@ import { BiShoppingBag, BiPlus, BiMinus } from "react-icons/bi";
 import Modal from "../SizeModal/Modal";
 import SingleProductSlider from "./SingleProductSlider";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleProd } from "../../Redux/action";
-import { useParams } from "react-router-dom";
+import {
+  addDataToCart,
+  AddToWish,
+  getSingleProd,
+  getUserbag,
+} from "../../Redux/action";
+import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../Loader";
 import { Alert, Stack } from "@mui/material";
+import "./SingleProduct.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SingleProduct() {
-  const { singleProd, isLoading, isError } = useSelector(
+  const { singleProd, isLoading, isError, user } = useSelector(
     (state) => state.reducer
   );
   const [visible, setVisible] = useState(false);
@@ -21,6 +29,10 @@ export default function SingleProduct() {
     return: false,
     delivery: false,
   });
+  const [size, setSize] = useState("");
+
+  const notify = (msg) => toast(msg);
+  const error = (msg) => toast.error(msg);
   const handleSizeModal = () => {
     setVisible(true);
   };
@@ -40,9 +52,27 @@ export default function SingleProduct() {
   const id = params["*"].split("/").slice(-1).join("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(getSingleProd(id));
   }, []);
+
+  const addTobag = () => {
+    if (!user.user) {
+      return navigate("/login");
+    }
+    if (!size) {
+      return error("Please choose a size first");
+    }
+    const userId = user.user._id;
+    dispatch(addDataToCart(userId, id, size, error, notify));
+    dispatch(getUserbag(userId));
+  };
+
+  const addToWishlist = () => {
+    const userId = user.user._id;
+    dispatch(AddToWish(id, userId, error, notify));
+  };
 
   return (
     <>
@@ -60,6 +90,7 @@ export default function SingleProduct() {
           const discount = Math.floor(
             ((prod.strikedOffprice - prod.price) / prod.strikedOffprice) * 100
           );
+          // console.log(prod.description.split("."))
           return (
             <div className={styles.parent} key={prod._id}>
               <div className={styles.parent_left}>
@@ -89,16 +120,38 @@ export default function SingleProduct() {
                   <span onClick={handleSizeModal}>Size Guide</span>
                 </div>
                 <div className={styles.size}>
-                  {prod.sizes.map((size, i) => {
-                    return <div key={i} className='h-6 w-6'>{size}</div>;
+                  {prod.sizes.map((elem, i) => {
+                    const check = elem === size;
+                    return (
+                      <div
+                       className='h-6 w-6'
+                        key={i}
+                        onClick={() => setSize(elem)}
+                        className={`${check ? "activeProdSize" : ""}`}
+                      >
+                        {elem}
+                      </div>
+                    );
+
                   })}
                 </div>
                 <div className={styles.cart_menu}>
-                  <div>
+                  <div
+                    onClick={() => {
+                      addTobag();
+                    }}
+                  >
                     <BiShoppingBag />
                     ADD TO BAG
                   </div>
-                  <div>
+                  <div
+                    onClick={() => {
+                      if (!user?.user?.email) {
+                        return navigate("/login");
+                      }
+                      addToWishlist();
+                    }}
+                  >
                     <AiOutlineHeart />
                     WISHLIST
                   </div>
@@ -157,26 +210,24 @@ export default function SingleProduct() {
                   {accordion.desc && (
                     <div className={styles.accordion_desc}>
                       <div className={styles.desc_title}>
-                        Men's Blue Voyage Graphic Printed Oversized T-Shirt
+                        {prod.description.split(".")[0]}
                       </div>
                       <div>
                         Country of Origin
                         <span className={styles.product_category}>India</span>
                       </div>
                       <div>
-                        Commodity -
+                        Commodity
                         <span className={styles.desc_commodity}>
-                          Men's T-Shirt
+                          {prod.description.split(".")[4].split(" - ")[1]}
                         </span>
                       </div>
                       <div className={styles.desc_specifications}>
                         Product Specifications
                       </div>
                       <ul>
-                        <li>Over-sized Fit- Falls loosely on body</li>
-                        <li>
-                          Single jersey, 100% Cotton Classic, Lightweight jersey
-                        </li>
+                        <li>{prod.description.split(".")[6]}</li>
+                        <li>{prod.description.split(".")[7]}</li>
                       </ul>
                     </div>
                   )}
