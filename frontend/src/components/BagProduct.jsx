@@ -138,7 +138,7 @@ export const BagProduct = ({
                   return (
                     <div
                       key={i}
-                      className="border h-[54px] w-[84px] text-[xl] flex items-center justify-center border-gray-400 rounded-md"
+                      className="border h-[54px] w-[84px] text-[xl] font-bold flex items-center justify-center border-gray-400 rounded-md"
                     >
                       {size}
                     </div>
