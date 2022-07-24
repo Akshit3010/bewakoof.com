@@ -49,6 +49,7 @@ export default function SingleProduct() {
     const userId = user.user._id;
     dispatch(addDataToCart(userId, id));
   };
+  console.log(user);
 
   const addToWishlist = () => {
     const userId = user.user._id;
@@ -115,7 +116,7 @@ export default function SingleProduct() {
                   </div>
                   <div
                     onClick={() => {
-                      if (!user.user.email) {
+                      if (!user?.user?.email) {
                         return navigate("/login");
                       }
                       addToWishlist();

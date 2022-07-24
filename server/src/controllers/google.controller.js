@@ -25,11 +25,10 @@ const getGoogleUser = async (req, res) => {
     const token = genereateAccessToken(user);
     res.cookie("jwtoken", token, {
       expires: new Date(Date.now() + 3000000),
-      httpOnly: true,
     });
     console.log(token);
   }
-  res.redirect("http://localhost:3000");
+  res.redirect("https://heady-rabbits-8957.vercel.app/");
 };
 
 function getTokens({ code, clientId, clientSecret, redirectUri }) {
