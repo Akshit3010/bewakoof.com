@@ -124,6 +124,7 @@ export default function SingleProduct() {
                     const check = elem === size;
                     return (
                       <div
+                       className='h-6 w-6'
                         key={i}
                         onClick={() => setSize(elem)}
                         className={`${check ? "activeProdSize" : ""}`}
@@ -131,6 +132,7 @@ export default function SingleProduct() {
                         {elem}
                       </div>
                     );
+
                   })}
                 </div>
                 <div className={styles.cart_menu}>
