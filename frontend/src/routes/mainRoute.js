@@ -14,6 +14,7 @@ import Womenprod from "../components/home/Womenprod";
 import Homeprod from "../components/home/Homeprod";
 import Myaccount from "../pages/MyAccount/Myaccount";
 import { ToastContainer } from "react-toastify";
+import OrderSuccessfull from "../components/OrderSuccessfull";
 
 export default function MainRoute() {
   return (
@@ -34,6 +35,7 @@ export default function MainRoute() {
         <Route path="/login" element={<Login />} />
         <Route path="/women" element={<Womenprod />} />
         <Route path="/accessories" element={<Homeprod />} />
+        <Route path="/order_successful" element={<OrderSuccessfull />} />
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />

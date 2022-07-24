@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Button from "@mui/material/Button";
-import { getTotal, getUserbag } from "../Redux/action";
+import { getUserbag } from "../Redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { BagProduct } from "./BagProduct";
@@ -15,7 +11,6 @@ const CartWrapper = styled.div`
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  height: 150vh;
   width: 90%;
   margin: auto;
   /* border: 1px solid red; */
@@ -32,7 +27,6 @@ const CartWrapper = styled.div`
 
   .container {
     /* border: 1px solid green; */
-    height: 600px;
     width: 98%;
     margin: auto;
     display: flex;

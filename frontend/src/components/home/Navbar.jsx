@@ -711,7 +711,7 @@ const Navbar = () => {
             >
               <span className="relative">
                 <IoBagOutline />
-                <span className="absolute top-[-5px] left-3 text-[11px] bg-[#fdd835] rounded-full h-[18px] w-[18px] text-center">
+                <span className="absolute top-[-5px] left-3 text-[11px] flex items-center justify-center bg-[#fdd835] rounded-full h-[18px] w-[18px] text-center">
                   {mybag.length}
                 </span>
               </span>

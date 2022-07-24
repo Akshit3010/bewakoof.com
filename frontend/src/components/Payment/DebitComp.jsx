@@ -1,11 +1,11 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate,useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { orderbag } from "../../Redux/action";
 
 const DebitWrapper = styled.div`
@@ -36,42 +36,36 @@ const DebitWrapper = styled.div`
       margin: 10px 0px;
     }
 
-    .buttonpay{
-        width:250px;
-        background-color:#42a2a2;
-        text-transform: none;
-
+    .buttonpay {
+      width: 250px;
+      background-color: #42a2a2;
+      text-transform: none;
     }
-  
   }
 `;
 
 export const DebitComp = () => {
-  
-   const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const {id} = useParams();
-  const[cardvalue,setCardValue] = useState("")
-  const{total} =  useSelector((state)=>state.reducer)
-  const[formData,setFormData] = useState({})
- 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const [cardvalue, setCardValue] = useState("");
+  const { total } = useSelector((state) => state.reducer);
+  const [formData, setFormData] = useState({});
 
   const handleChange = (e) => {
-
-   const{name} = e.target;
-    setFormData({...formData,[name]:e.target.value})
+    const { name } = e.target;
+    setFormData({ ...formData, [name]: e.target.value });
   };
 
-  const handleSubmit = (e) => { 
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    setFormData({...formData,["Card Number"]:cardvalue})
- 
-    console.log(formData)
-    dispatch(orderbag(id))
-  
-    navigate('/')
+    setFormData({ ...formData, ["Card Number"]: cardvalue });
 
+    console.log(formData);
+    dispatch(orderbag(id));
+
+    navigate("/order_successful");
   };
 
   return (
@@ -84,11 +78,18 @@ export const DebitComp = () => {
               variant="standard"
               className="cardnumber"
               name="Card Number"
+              inputProps={{ maxLength: 19 }}
               InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
               label="Card Number"
               value={cardvalue}
-              onChange= {(e)=>{setCardValue(e.target.value=e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim())}}
-              
+              onChange={(e) => {
+                setCardValue(
+                  (e.target.value = e.target.value
+                    .replace(/[^\dA-Z]/g, "")
+                    .replace(/(.{4})/g, "$1 ")
+                    .trim())
+                );
+              }}
             />
             <div className="valid-cvv">
               <TextField
@@ -97,7 +98,7 @@ export const DebitComp = () => {
                 name="Validity"
                 InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
                 label="Valid(mm/yy)"
-                onChange= {handleChange}
+                onChange={handleChange}
               />
               <TextField
                 variant="standard"
@@ -105,7 +106,7 @@ export const DebitComp = () => {
                 name="CVV"
                 InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
                 label="CVV"
-                onChange= {handleChange}
+                onChange={handleChange}
               />
             </div>
             <TextField
@@ -114,7 +115,7 @@ export const DebitComp = () => {
               name="name"
               InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
               label="Name On Card"
-              onChange= {handleChange}
+              onChange={handleChange}
             />
           </div>
           <Checkbox className="checkbox" />
@@ -123,7 +124,7 @@ export const DebitComp = () => {
             This transaction you make is totally secure. We don't save your CVV
             number.
           </div>
-          <Button  type="submit" className='buttonpay' variant="contained">
+          <Button type="submit" className="buttonpay" variant="contained">
             Pay {total}
           </Button>
         </form>
