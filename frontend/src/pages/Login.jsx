@@ -1,6 +1,37 @@
 import React from "react";
 import styles from "./Login.module.css";
+
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 const Login = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const action = (
+    <React.Fragment>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
   return (
     <>
       <div className={styles.main}>
@@ -55,6 +86,7 @@ const Login = () => {
               textTransform: "uppercase",
               marginTop: "10px",
             }}
+            onClick={handleClick}
           >
             Continue
           </button>
@@ -80,6 +112,7 @@ const Login = () => {
               margin: "10px",
               width: "377px",
             }}
+            onClick={handleClick}
           >
             <img
               style={{ width: "20px", margin: "0 15px 0px 15px" }}
@@ -184,6 +217,15 @@ const Login = () => {
             </p>
           </small>
         </div>
+      </div>
+      <div>
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          message="We are only accepting Login's from google!"
+          action={action}
+        />
       </div>
     </>
   );

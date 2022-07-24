@@ -31,6 +31,7 @@ const Navbar = () => {
       .then((res) => {
         console.log(res);
         setLoggedIn(false);
+        localStorage.removeItem("jwtoken");
         navigate("/");
       })
       .catch((err) => console.log(err));
