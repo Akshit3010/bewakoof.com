@@ -11,6 +11,7 @@ import Loader from "../Loader";
 import { Alert, Stack } from "@mui/material";
 import "./SingleProduct.css";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SingleProduct() {
   const { singleProd, isLoading, isError, user } = useSelector(
@@ -52,12 +53,10 @@ export default function SingleProduct() {
   }, []);
 
   const addTobag = () => {
-    const userId = user.user._id;
-
-    if (!user) {
+    if (!user.user) {
       return navigate("/login");
     }
-
+    const userId = user.user._id;
     dispatch(addDataToCart(userId, id, size, error, notify));
   };
 
