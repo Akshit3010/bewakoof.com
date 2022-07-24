@@ -1,7 +1,8 @@
 .container {
   width: 100vw;
   display: flex;
-  margin-top: 5.6rem;
+  height: auto;
+  margin: 5.6rem auto;
   justify-content: center;
 }
 .parent {
