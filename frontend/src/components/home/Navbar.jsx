@@ -22,6 +22,10 @@ const Navbar = () => {
     dispatch(getUser());
   }, [isLoggedIn, token]);
 
+  useEffect(() => {
+    dispatch(getUserbag(user?.user?._id));
+  }, [isLoggedIn, token]);
+
   const navigate = useNavigate();
 
   const logout = () => {
@@ -699,14 +703,19 @@ const Navbar = () => {
             </p>
           </li>
           <li>
-            <NavLink to={`/cart/${user.user._id}`}>
+            <p
+              className="cursor-pointer text-xl"
+              onClick={() => {
+                navigate(`/cart/${user.user._id}`);
+              }}
+            >
               <span className="relative">
                 <IoBagOutline />
                 <span className="absolute top-[-5px] left-3 text-[11px] bg-[#fdd835] rounded-full h-[18px] w-[18px] text-center">
                   {mybag.length}
                 </span>
               </span>
-            </NavLink>
+            </p>
           </li>
         </div>
       </div>
