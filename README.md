@@ -1,7 +1,8 @@
-# Clone of beautybebo.com
+# Inspired by bewakoof.com
 
-This was our project for Unit-4 Construct week at Masai Shcool.
-Our main objective was to complete all main functionality of this e-commerce website, such as Signing Up for the buy of a product. We have completed this project in 5 days.
+This is our project for Unit-6 Construct week at Masai Shcool.
+Our main objective is to complete all main functionality of this e-commerce website, such as Login/Signup,
+Google authenication,Add/Buy and filter the product. We have completed this project in 5 days.
 
 - [Click here](https://gleaming-hotteok-a2ad5e.netlify.app/) to see preview of our project.
 
@@ -9,8 +10,8 @@ beauty bebo is India’s fastest growing online retail store for the day-to-day 
 
 ## Credits
 
-- Images : [beautybebo.com](https://www.beautybebo.com/)
-- Content : [beautybebo.com](https://www.beautybebo.com/)
+- Images : [bewakoof.com](https://www.bewakoof.com/)
+- Content : [bewakoof.com](https://www.bewakoof.com/)
 - Icons : [Font Awesome](https://fontawesome.com/)
 - References : [MDN Docs](https://developer.mozilla.org/en-US/) | [W3School](https://www.w3schools.com/)
 
@@ -19,55 +20,63 @@ beauty bebo is India’s fastest growing online retail store for the day-to-day 
 - React FrameWork
 - Redux library
 - Material UI
+- Tailwind CSS
 
 ## Features
 
 Login / Sign Up
+Google Authentication
+JWT Authentication
+Filter products by gender,size,color,popular,prices-range,categories
 Search bar for searching any specific items.
 Product slider for different categories.
 Product page for different categories.
 Detailed product preview page.
-Add to cart option for buying products.
-Payment Page.
+Review to the product/Differenct Sectional View of the product
+Add to cart/Add to Wishlist option to buy products.
+Payment Page with Card,UPI,Wallet and Cash on Delivery Options
 
 ## Demo
 
-[Click here](https://drive.google.com/file/d/1Iesjq6OhwqdUDsqDUe717yf6u6BYV6iN/view?usp=sharing) to watch our project preview in a video format.
+[Click here](https://drive.google.com/file/d/12ub4fZdBB31PUstNxrAls-iuXp1RPzaE/view?usp=sharing) to watch our project preview in a video format.
 
 ## Screenshots
 
-![Screenshot ](https://miro.medium.com/max/1400/1*nKo1RDyuns1PNpVhrn6Rkw.png)
+![Screenshot ](https://cdn-images-1.medium.com/max/800/1*OnySsAQhUK8o3m5E3wJFqA.png)
 
-![Screenshot ](https://miro.medium.com/max/1400/1*-0FUjpm0CTqB6cHOooQVIw.png)
+![Screenshot ](https://cdn-images-1.medium.com/max/800/1*GIVgVE_WjNWQiRA0miKUHQ.png)
 
-![Screenshot](https://miro.medium.com/max/1400/1*JlAp03MlVbDkPjV5nTDQtQ.png)
+![Screenshot](https://cdn-images-1.medium.com/max/800/1*uEs-dFvZwJ_YtyYQ0pG7_Q.png)
 
-![Screenshot](https://miro.medium.com/max/1400/1*JlAp03MlVbDkPjV5nTDQtQ.png)
+![Screenshot](https://cdn-images-1.medium.com/max/800/1*CTRSlMJK4Fqn8uQv9YLymw.png)
 
-![Screenshot ](https://miro.medium.com/max/1400/1*o1CDSMINnFfchpWnhGWEVQ.png)
+![Screenshot ](https://cdn-images-1.medium.com/max/800/1*4diDGjUlktoP39qObW8D_Q.png)
 
-![Screenshot](https://miro.medium.com/max/1400/1*uKRZ70IyY8qjJhR1mozj9w.png)
+![Screenshot](https://cdn-images-1.medium.com/max/800/1*QQJn9-v6WIqeUqBlW-nSFA.png)
 
-![Screenshot](https://miro.medium.com/max/1400/1*UH8xF0EZnuU9DdxemJ51EA.png)
+![Screenshot](https://cdn-images-1.medium.com/max/800/1*-pv7QEDlH2rJyMH1h72r9Q.png)
+
+![Screenshot](https://cdn-images-1.medium.com/max/800/1*BLiiJYE3nYrumJydcVUs9A.png)
+
 
 ## Challenges
 
-1.As every journey has some challenges and so was ours. Being a Team Leader I break the project into small Chunks and decided to distribute it according to the capability of an individual.I list out some of the milestones in the project that will help us to learn something different.
+1.As every journey has some challenges and so was ours. We faced challenges to make a more secure user interface. We implemented some major authentication and autherization functionality due to which sometimes
+it became very complicated to login a user then we change the structure and made a good user interface to login.
 
 
 2.We faced some problems during merging the files but we figured it out very quickly and start following the basic steps of merging.
 
 
-3. We faced challenges with CSS tags like absolute and relative. Some of the files got dull CSS so we changed some classes and tags and build an eye catching UI.
+3. We faced challenges with CSS tags like absolute and relative.We aligned a Navigation bar with all the pages by giving it some margin functionalities.
 
 ## Team
 
-- Naved 
-- Ajit
-- Nikhil
-- Pankaj
-- Monish
+- Akshit- (Tech-Lead) 
+- Naved
+- Yash
+- Himanshu
+- Nirbhay
 
-## Authors
-
-- [@Naved Khan](https://github.com/Navedphysicist/BeautyBebo)
+## IA 
+ Rajesh
