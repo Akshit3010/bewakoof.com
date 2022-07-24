@@ -14,12 +14,11 @@ import Womenprod from "../components/home/Womenprod";
 import Homeprod from "../components/home/Homeprod";
 import Myaccount from "../pages/MyAccount/Myaccount";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 export default function MainRoute() {
   return (
     <>
-      <ToastContainer />
+      <ToastContainer position="bottom-left" />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
