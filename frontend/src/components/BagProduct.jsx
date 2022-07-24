@@ -133,24 +133,16 @@ export const BagProduct = ({
               </div>
               <div id="savedprice">You saved ₹{strikedOffprice - price} !</div>
               <div className="selectDiv">
-                <FormControl className="formcont">
-                  <InputLabel id="demo-simple-select-label">Size</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    // value={age}
-                    label="Age"
-                    // onChange={handleChange}
-                  >
-                    {sizes.map((size, i) => {
-                      return (
-                        <MenuItem key={i} value={size}>
-                          {size}
-                        </MenuItem>
-                      );
-                    })}
-                  </Select>
-                </FormControl>
+                {sizes.map((size, i) => {
+                  return (
+                    <div
+                      key={i}
+                      className="px-1 py-2 border border-gray-400 rounded-sm"
+                    >
+                      {size}
+                    </div>
+                  );
+                })}
 
                 <FormControl className="formcont">
                   <InputLabel id="demo-simple-select-label">Qty</InputLabel>
