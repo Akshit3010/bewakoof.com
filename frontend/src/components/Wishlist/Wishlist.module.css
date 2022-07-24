@@ -29,7 +29,7 @@
   gap: 8px;
   position: relative;
 }
-.product_card i {
+.product_card svg {
   position: absolute;
   top: 10px;
   right: 10px;

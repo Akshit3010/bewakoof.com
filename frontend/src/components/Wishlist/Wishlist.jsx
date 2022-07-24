@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../Loader";
 import { Alert, Stack } from "@mui/material";
+import { TiDelete } from "react-icons/ti";
 
 export default function Wishlist() {
   const { wishList, isLoading, isError } = useSelector(
@@ -32,7 +33,7 @@ export default function Wishlist() {
   }, []);
 
   const moveBag = (productId) => {
-    const size = ["S", "M", "L", "XL"];
+    const size = ["M"];
     dispatch(addDataToCart(id, productId, size, error, notify));
     dispatch(wishRemove(productId, id));
     dispatch(getUserbag(id));
@@ -69,11 +70,7 @@ export default function Wishlist() {
                 );
                 return (
                   <div className={styles.product_card} key={item._id}>
-                    {/* <ImCross /> */}
-                    <i
-                      className="fa-solid fa-xmark"
-                      onClick={() => removeWish(item._id)}
-                    ></i>
+                    <TiDelete onClick={() => removeWish(item._id)} />
                     <img src={item.imgUrl} alt="" />
                     <div className={styles.product_title}>{item.title}</div>
                     <div className={styles.price}>
