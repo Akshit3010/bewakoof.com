@@ -16,6 +16,10 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
+app.get("/", (req, res) => {
+  res.send("App working");
+});
+
 app.use("/users", userRouter);
 app.use("/", prodRouter);
 

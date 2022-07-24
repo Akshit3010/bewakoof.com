@@ -25,7 +25,9 @@ const Navbar = () => {
 
   const logout = () => {
     axios
-      .get("http://localhost:8000/users/logout", { withCredentials: true })
+      .get("https://heady-rabbits-8947.herokuapp.com/users/logout", {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log(res);
         setLoggedIn(false);
