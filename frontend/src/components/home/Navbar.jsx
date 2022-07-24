@@ -619,12 +619,12 @@ const Navbar = () => {
           </NavLink>
 
           <li>
-            <NavLink to="/men">
+            <NavLink to="/wishlist">
               <VscHeart />
             </NavLink>
           </li>
           <li>
-            <NavLink to="/men">
+            <NavLink to="/cart">
               <span className="relative">
                 <IoBagOutline />
                 <span className="absolute top-[-5px] left-3 text-[11px] bg-[#fdd835] rounded-full h-[18px] w-[18px] text-center">

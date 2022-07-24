@@ -1,4 +1,5 @@
 import {
+  ADDD_TO_CART,
   FILTER_DATA,
   GET_PRODUCT,
   GET_PRODUCTS,
@@ -33,6 +34,11 @@ export const filterData = (payload) => ({
   payload,
 });
 
+export const AddTocart = (payload) => ({
+  type: ADDD_TO_CART,
+  payload,
+});
+
 export const sortData = (payload) => ({
   type: SORT_DATA,
   payload,
@@ -49,15 +55,12 @@ export const getmybag = (payload) => ({
 export const getProducts = (category) => (dispatch) => {
   dispatch(prodReq());
   axios
-    .get(`http://localhost:8000/${category}`)
+    .get(`http://localhost:8000/${category}`, { withCredentials: true })
     .then((res) => {
       dispatch(prodSuccess(res.data));
     })
     .catch((err) => dispatch(prodError(err.message)));
 };
-
-
-
 
 export const getUserbag = (id) => (dispatch) => {
   // console.log(id,"id")
@@ -134,7 +137,19 @@ export const orderbag=(id)=>(dispatch) =>{
 export const getSingleProd = (id) => (dispatch) => {
   dispatch(prodReq());
   axios
-    .get(`http://localhost:8000/product/${id}`)
+    .get(`http://localhost:8000/product/${id}`, { withCredentials: true })
+    .then((res) => {
+      dispatch(singleProdSuccess(res.data));
+    })
+    .catch((err) => dispatch(prodError(err.message)));
+};
+
+export const addDataToCart = (id, productId) => (dispatch) => {
+  dispatch(prodReq());
+  axios
+    .post(`http://localhost:8000/users/addToCart/${id}`, productId, {
+      withCredentials: true,
+    })
     .then((res) => {
       dispatch(singleProdSuccess(res.data));
     })
