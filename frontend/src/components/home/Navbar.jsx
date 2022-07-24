@@ -21,6 +21,7 @@ const Navbar = () => {
     dispatch(getUser());
   }, [isLoggedIn]);
 
+  const token = localStorage.getItem("jwtoken");
   const navigate = useNavigate();
 
   const logout = () => {
@@ -639,7 +640,7 @@ const Navbar = () => {
             </div>
             <div id={styles.searchBarsData}></div>
           </li>
-          {!user?.user?.email && (
+          {token && (
             <NavLink
               id={styles.loginButton}
               className={styles.lInk}
