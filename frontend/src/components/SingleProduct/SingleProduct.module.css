@@ -119,13 +119,13 @@
 .size {
   display: flex;
   gap: 10px;
-  width: 60%;
+  width: 50%;
   margin: 10px 0;
 }
 .size div {
   flex: 1;
   aspect-ratio: 1;
-  border: 1px solid gray;
+  background-color: #eee;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -134,6 +134,10 @@
   font-weight: bold;
   color: #000;
   cursor: pointer;
+  border: 2px solid transparent;
+}
+.size div:hover {
+  border: 2px solid #42a2a2;
 }
 .cart_menu {
   width: 80%;
