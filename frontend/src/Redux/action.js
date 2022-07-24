@@ -187,6 +187,30 @@ export const doRemove = (productId, id) => (dispatch) => {
     });
 };
 
+export const wishRemove = (productId, id) => (dispatch) => {
+  dispatch(prodReq());
+  let token = localStorage.getItem("jwtoken");
+
+  axios
+    .patch(
+      `https://heady-rabbits-8947.herokuapp.com/users/removeWish/${id}`,
+      { productId },
+      {
+        withCredentials: true,
+        headers: {
+          Authorization: token,
+        },
+      }
+    )
+    .then((res) => {
+      const data = res.data.productData;
+      dispatch(getWishlist(data));
+    })
+    .catch((err) => {
+      dispatch(prodError(err.message));
+    });
+};
+
 export const AddToWish = (productId, id) => (dispatch) => {
   dispatch(prodReq());
   let token = localStorage.getItem("jwtoken");
