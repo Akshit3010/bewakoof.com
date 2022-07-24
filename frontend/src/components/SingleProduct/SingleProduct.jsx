@@ -5,13 +5,13 @@ import { BiShoppingBag, BiPlus, BiMinus } from "react-icons/bi";
 import Modal from "../SizeModal/Modal";
 import SingleProductSlider from "./SingleProductSlider";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleProd } from "../../Redux/action";
-import { useParams } from "react-router-dom";
+import { addDataToCart, AddToWish, getSingleProd } from "../../Redux/action";
+import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../Loader";
 import { Alert, Stack } from "@mui/material";
 
 export default function SingleProduct() {
-  const { singleProd, isLoading, isError } = useSelector(
+  const { singleProd, isLoading, isError, user } = useSelector(
     (state) => state.reducer
   );
   const [visible, setVisible] = useState(false);
@@ -40,9 +40,21 @@ export default function SingleProduct() {
   const id = params["*"].split("/").slice(-1).join("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(getSingleProd(id));
   }, []);
+
+  const addTobag = () => {
+    const userId = user.user._id;
+    dispatch(addDataToCart(userId, id));
+  };
+  console.log(user);
+
+  const addToWishlist = () => {
+    const userId = user.user._id;
+    dispatch(AddToWish(id, userId));
+  };
 
   return (
     <>
@@ -95,11 +107,22 @@ export default function SingleProduct() {
                   })}
                 </div>
                 <div className={styles.cart_menu}>
-                  <div>
+                  <div
+                    onClick={() => {
+                      addTobag();
+                    }}
+                  >
                     <BiShoppingBag />
                     ADD TO BAG
                   </div>
-                  <div>
+                  <div
+                    onClick={() => {
+                      if (!user?.user?.email) {
+                        return navigate("/login");
+                      }
+                      addToWishlist();
+                    }}
+                  >
                     <AiOutlineHeart />
                     WISHLIST
                   </div>

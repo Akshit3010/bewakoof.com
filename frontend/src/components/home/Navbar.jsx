@@ -1,12 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./main.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { VscHeart } from "react-icons/vsc";
 import { IoBagOutline } from "react-icons/io5";
 import { IoSearchOutline } from "react-icons/io5";
 import { BsPhone } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../Redux/action";
+import { FaUserAlt } from "react-icons/fa";
+import axios from "axios";
+
 const Navbar = () => {
+  const { user } = useSelector((state) => state.reducer);
   const [active, setActive] = useState("Men");
+  const [info, setinfo] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(true);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUser());
+  }, [isLoggedIn]);
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    axios
+      .get("https://heady-rabbits-8947.herokuapp.com/users/logout", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res);
+        setLoggedIn(false);
+        localStorage.removeItem("jwtoken");
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div id={styles.fixedNav}>
       <div className={styles.upperDiv}>
@@ -609,22 +639,66 @@ const Navbar = () => {
             </div>
             <div id={styles.searchBarsData}></div>
           </li>
-          <NavLink
-            id={styles.loginButton}
-            className={styles.lInk}
-            to="/login"
-            onClick={() => setActive("")}
-          >
-            Login
-          </NavLink>
+          {!user?.user?.email && (
+            <NavLink
+              id={styles.loginButton}
+              className={styles.lInk}
+              to="/login"
+              onClick={() => setActive("")}
+            >
+              Login
+            </NavLink>
+          )}
+          {user?.user?.email && (
+            <li
+              className="relative"
+              onMouseOver={() => setinfo(true)}
+              onMouseLeave={() => setinfo(false)}
+            >
+              <p>
+                <FaUserAlt className="cursor-pointer text-[18px] ml-2" />
+              </p>
+              {info && (
+                <div className="absolute text-center top-[20px] left-[-80px] shadow-lg border rounded-sm  bg-white w-auto px-4 py-4">
+                  <div className="flex items-center">
+                    <img
+                      src={user.user.avatar}
+                      alt="avatar"
+                      className="w-[30px] h-[30px] rounded-full"
+                    />
+                    <p className="text-[18px] ml-2 font-[500]">
+                      {user.user.first_name} {user.user.Last_name}
+                    </p>
+                  </div>
+                  <p className="text-[16px]  my-2 w-full ml-2 font-[600]">
+                    {user.user.email}
+                  </p>
+                  <button
+                    onClick={logout}
+                    className="text-black bg-[#fdd835] py-1 px-2 font-[600]"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </li>
+          )}
 
           <li>
-            <NavLink to="/wishlist">
+            <p
+              className="cursor-pointer text-xl"
+              onClick={() => {
+                if (!user?.user?.email) {
+                  return navigate("/login");
+                }
+                navigate(`/wishlist/${user.user._id}`);
+              }}
+            >
               <VscHeart />
-            </NavLink>
+            </p>
           </li>
           <li>
-            <NavLink to="/cart">
+            <NavLink to="/cart/62dce091cf122ad222cc0290">
               <span className="relative">
                 <IoBagOutline />
                 <span className="absolute top-[-5px] left-3 text-[11px] bg-[#fdd835] rounded-full h-[18px] w-[18px] text-center">

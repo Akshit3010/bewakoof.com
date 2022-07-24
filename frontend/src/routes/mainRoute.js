@@ -20,12 +20,11 @@ export default function MainRoute() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/wishlist" element={<WishlistPage />} />
+        <Route path="/wishlist/:id" element={<WishlistPage />} />
         <Route path="/single-product" element={<SingleProductPage />} />
         <Route path="/cart/:id" element={<Cart />} />
-        <Route patch="/account" element={<Myaccount/>}/>
-        <Route path="/:id" element={<Products />} />
-         <Route path='/payment/:id' element={<Paymentpage/>} />
+        <Route patch="/account" element={<Myaccount />} />
+        <Route path="/payment/:id" element={<Paymentpage />} />
         <Route path="/products/*" element={<SingleProductPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/products/:id" element={<Products />} />

@@ -8,16 +8,32 @@ import {
   SORT_DATA,
   BAG_DATA,
   GET_TOTAL,
+  USER_REQ,
+  GET_USER,
+  USER_FAILURE,
+  WISHLIST_DATA,
 } from "./actionTypes";
 import axios from "axios";
 
 export const prodReq = () => ({
   type: IS_LOADING,
 });
+export const userReq = () => ({
+  type: USER_REQ,
+});
 
 export const prodSuccess = (payload) => ({
   type: GET_PRODUCTS,
   payload,
+});
+
+export const userSuccess = (payload) => ({
+  type: GET_USER,
+  payload,
+});
+
+export const userError = () => ({
+  type: USER_FAILURE,
 });
 
 export const singleProdSuccess = (payload) => ({
@@ -49,10 +65,22 @@ export const getmybag = (payload) => ({
   payload,
 });
 
+export const getWishlist = (payload) => ({
+  type: WISHLIST_DATA,
+  payload,
+});
+
 export const getProducts = (category) => (dispatch) => {
   dispatch(prodReq());
+  let token = localStorage.getItem("jwtoken");
+
   axios
-    .get(`http://localhost:8000/${category}`, { withCredentials: true })
+    .get(`https://heady-rabbits-8947.herokuapp.com/${category}`, {
+      withCredentials: true,
+      headers: {
+        Authorization: token,
+      },
+    })
     .then((res) => {
       dispatch(prodSuccess(res.data));
     })
@@ -62,8 +90,15 @@ export const getProducts = (category) => (dispatch) => {
 export const getUserbag = (id) => (dispatch) => {
   // console.log(id,"id")
   dispatch(prodReq());
+  let token = localStorage.getItem("jwtoken");
+
   axios
-    .get(`http://localhost:8000/users/cart/${id}`)
+    .get(`https://heady-rabbits-8947.herokuapp.com/users/cart/${id}`, {
+      withCredentials: true,
+      headers: {
+        Authorization: token,
+      },
+    })
     .then((res) => {
       const data = res.data.productData;
 
@@ -75,13 +110,49 @@ export const getUserbag = (id) => (dispatch) => {
     });
 };
 
+export const getUserWish = (id) => (dispatch) => {
+  console.log(id, "id");
+  dispatch(prodReq());
+  let token = localStorage.getItem("jwtoken");
+
+  axios
+    .get(`https://heady-rabbits-8947.herokuapp.com/users/wishlisht/${id}`, {
+      withCredentials: true,
+      headers: {
+        Authorization: token,
+      },
+    })
+    .then((res) => {
+      const data = res.data.productData;
+
+      console.log(data, "data");
+      dispatch(getWishlist(data));
+    })
+    .catch((err) => {
+      dispatch(prodError(err.message));
+    });
+};
+
 export const changeQty = (productId, qty, id) => (dispatch) => {
   dispatch(prodReq());
   console.log(productId, qty, id);
+  let token = localStorage.getItem("jwtoken");
 
   // console.log(typeof qty)
   axios
-    .patch(`http://localhost:8000/users/qty/${id}`, { productId, qty })
+    .patch(
+      `https://heady-rabbits-8947.herokuapp.com/users/qty/${id}`,
+      {
+        productId,
+        qty,
+      },
+      {
+        withCredentials: true,
+        headers: {
+          Authorization: token,
+        },
+      }
+    )
     .then((res) => {
       const data = res.data.productData;
       console.log(data, "data");
@@ -94,9 +165,19 @@ export const changeQty = (productId, qty, id) => (dispatch) => {
 
 export const doRemove = (productId, id) => (dispatch) => {
   dispatch(prodReq());
+  let token = localStorage.getItem("jwtoken");
 
   axios
-    .patch(`http://localhost:8000/users/removeProduct/${id}`, { productId })
+    .patch(
+      `https://heady-rabbits-8947.herokuapp.com/users/removeProduct/${id}`,
+      { productId },
+      {
+        withCredentials: true,
+        headers: {
+          Authorization: token,
+        },
+      }
+    )
     .then((res) => {
       const data = res.data.productData;
       dispatch(getmybag(data));
@@ -108,9 +189,18 @@ export const doRemove = (productId, id) => (dispatch) => {
 
 export const AddToWish = (productId, id) => (dispatch) => {
   dispatch(prodReq());
-
+  let token = localStorage.getItem("jwtoken");
   axios
-    .patch(`http://localhost:8000/users/addToWishlist/${id}`, { productId })
+    .patch(
+      `https://heady-rabbits-8947.herokuapp.com/users/addToWishlist/${id}`,
+      { productId },
+      {
+        withCredentials: true,
+        headers: {
+          Authorization: token,
+        },
+      }
+    )
     .then((res) => {
       const data = res.data.productData;
       dispatch(getmybag(data));
@@ -122,9 +212,15 @@ export const AddToWish = (productId, id) => (dispatch) => {
 
 export const orderbag = (id) => (dispatch) => {
   dispatch(prodReq());
+  let token = localStorage.getItem("jwtoken");
 
   axios
-    .patch(`http://localhost:8000/users/order/${id}`)
+    .patch(`https://heady-rabbits-8947.herokuapp.com/users/order/${id}`, {
+      withCredentials: true,
+      headers: {
+        Authorization: token,
+      },
+    })
     .then((res) => {
       const data = res.data.myorders;
       dispatch(getmybag(data));
@@ -136,8 +232,15 @@ export const orderbag = (id) => (dispatch) => {
 
 export const getSingleProd = (id) => (dispatch) => {
   dispatch(prodReq());
+  let token = localStorage.getItem("jwtoken");
+
   axios
-    .get(`http://localhost:8000/product/${id}`, { withCredentials: true })
+    .get(`https://heady-rabbits-8947.herokuapp.com/product/${id}`, {
+      withCredentials: true,
+      headers: {
+        Authorization: token,
+      },
+    })
     .then((res) => {
       dispatch(singleProdSuccess(res.data));
     })
@@ -145,13 +248,42 @@ export const getSingleProd = (id) => (dispatch) => {
 };
 
 export const addDataToCart = (id, productId) => (dispatch) => {
-  dispatch(prodReq());
+  let token = localStorage.getItem("jwtoken");
+
   axios
-    .post(`http://localhost:8000/users/addToCart/${id}`, productId, {
-      withCredentials: true,
-    })
+    .patch(
+      `https://heady-rabbits-8947.herokuapp.com/users/addToCart/${id}`,
+      { productId },
+      {
+        withCredentials: true,
+        headers: {
+          Authorization: token,
+        },
+      }
+    )
     .then((res) => {
-      dispatch(singleProdSuccess(res.data));
+      console.log(res.data);
     })
     .catch((err) => dispatch(prodError(err.message)));
+};
+
+export const getUser = () => (dispatch) => {
+  console.log("user");
+  dispatch(userReq());
+  let token = localStorage.getItem("jwtoken");
+
+  axios
+    .get("https://heady-rabbits-8947.herokuapp.com/users/verify", {
+      withCredentials: true,
+      headers: {
+        Authorization: token,
+      },
+    })
+    .then((res) => {
+      dispatch(userSuccess(res.data));
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch(userError(err.message));
+    });
 };

@@ -6,5 +6,8 @@ export const FILTER_DATA = "FILTER_DATA";
 export const SORT_DATA = "SORT_DATA";
 export const ADDD_TO_CART = "ADDD_TO_CART";
 export const BAG_DATA = "BAG_DATA";
+export const WISHLIST_DATA = "WISHLIST_DATA";
 export const GET_TOTAL = "GET_TOTAL";
-
+export const USER_REQ = "USER_REQ";
+export const GET_USER = "GET_USER";
+export const USER_FAILURE = "USER_FAILURE";

@@ -6,22 +6,48 @@ import {
   IS_LOADING,
   SORT_DATA,
   BAG_DATA,
-  GET_TOTAL
+  GET_TOTAL,
+  USER_REQ,
+  GET_USER,
+  USER_FAILURE,
+  WISHLIST_DATA,
 } from "./actionTypes";
 
 const initState = {
   isLoading: false,
   isError: false,
+  user: {},
   products: [],
-  mybag:[],
-  mrp:0,
-  bag_discount:0,
-  total:0,
+  mybag: [],
+  mrp: 0,
+  bag_discount: 0,
+  total: 0,
   singleProd: [],
+  wishList: [],
 };
 
 export const reducer = (state = initState, { type, payload }) => {
   switch (type) {
+    case USER_REQ:
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+      };
+    case GET_USER:
+      return {
+        ...state,
+        user: payload,
+        isLoading: false,
+        isError: false,
+      };
+    case USER_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        user: {},
+        isError: false,
+      };
     case IS_LOADING: {
       return {
         ...state,
@@ -81,25 +107,31 @@ export const reducer = (state = initState, { type, payload }) => {
           }
         }),
       };
-      case BAG_DATA: {
-      
-        return {
-          ...state,
-          isLoading: false,
-          isError: false,
-          mybag: payload,
-          mrp:payload.reduce((acc,el)=>{
-            return acc+(el.strikedOffprice)*(el.qty)
-           },0),
-           bag_discount:payload.reduce((acc,el)=>{
-             return acc+((el.strikedOffprice-el.price)*el.qty)
-
-           },0),
-           total:payload.reduce((acc,el)=>{
-            return acc+(el.price)*(el.qty)
-           },0)
-        }
-      }
+    case BAG_DATA: {
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        mybag: payload,
+        mrp: payload.reduce((acc, el) => {
+          return acc + el.strikedOffprice * el.qty;
+        }, 0),
+        bag_discount: payload.reduce((acc, el) => {
+          return acc + (el.strikedOffprice - el.price) * el.qty;
+        }, 0),
+        total: payload.reduce((acc, el) => {
+          return acc + el.price * el.qty;
+        }, 0),
+      };
+    }
+    case WISHLIST_DATA: {
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        wishList: payload,
+      };
+    }
     default: {
       return state;
     }
