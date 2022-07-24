@@ -8,7 +8,6 @@ const Home = () => {
   useEffect(() => {
     if (query) {
       localStorage.setItem("jwtoken", query);
-      window.location.reload();
     }
   }, []);
   return (
