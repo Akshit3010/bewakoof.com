@@ -87,7 +87,7 @@ const Navbar = () => {
       <div id={styles.navBar}>
         <div id={styles.menuNav}>
           <li>
-            <NavLink to="/products/oneplus">
+            <NavLink to="/">
               <img
                 src="https://images.bewakoof.com/web/ic-desktop-normal-bwkf-logo.svg"
                 alt="logo"
