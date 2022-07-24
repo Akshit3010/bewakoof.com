@@ -5,7 +5,12 @@ import { BiShoppingBag, BiPlus, BiMinus } from "react-icons/bi";
 import Modal from "../SizeModal/Modal";
 import SingleProductSlider from "./SingleProductSlider";
 import { useDispatch, useSelector } from "react-redux";
-import { addDataToCart, AddToWish, getSingleProd } from "../../Redux/action";
+import {
+  addDataToCart,
+  AddToWish,
+  getSingleProd,
+  getUserbag,
+} from "../../Redux/action";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../Loader";
 import { Alert, Stack } from "@mui/material";
@@ -56,13 +61,17 @@ export default function SingleProduct() {
     if (!user.user) {
       return navigate("/login");
     }
+    if (!size) {
+      return error("Please choose a size first");
+    }
     const userId = user.user._id;
     dispatch(addDataToCart(userId, id, size, error, notify));
+    dispatch(getUserbag(userId));
   };
 
   const addToWishlist = () => {
     const userId = user.user._id;
-    dispatch(AddToWish(id, userId));
+    dispatch(AddToWish(id, userId, error, notify));
   };
 
   return (

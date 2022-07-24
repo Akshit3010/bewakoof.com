@@ -3,8 +3,7 @@ import styled from "styled-components";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import Button from "@mui/material/Button";
+import Select from "@mui/material/Select";
 import { useDispatch } from "react-redux";
 import { AddToWish, changeQty, doRemove } from "../Redux/action";
 import { useParams } from "react-router-dom";
@@ -97,6 +96,7 @@ export const BagProduct = ({
   strikedOffprice,
   imgUrl,
   qty,
+  sizes,
 }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -142,12 +142,13 @@ export const BagProduct = ({
                     label="Age"
                     // onChange={handleChange}
                   >
-                    <MenuItem value={"S"}>S</MenuItem>
-                    <MenuItem value={"M"}>M</MenuItem>
-                    <MenuItem value={"L"}>L</MenuItem>
-                    <MenuItem value={"XL"}>XL</MenuItem>
-                    <MenuItem value={"2Xl"}>2XL</MenuItem>
-                    <MenuItem value={"3XL"}>3XL</MenuItem>
+                    {sizes.map((size, i) => {
+                      return (
+                        <MenuItem key={i} value={size}>
+                          size
+                        </MenuItem>
+                      );
+                    })}
                   </Select>
                 </FormControl>
 

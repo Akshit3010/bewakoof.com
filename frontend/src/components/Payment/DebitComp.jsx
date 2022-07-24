@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { orderbag } from "../../Redux/action";
+import { getUserbag, orderbag } from "../../Redux/action";
 
 const DebitWrapper = styled.div`
   font-size: 14px;
@@ -64,6 +63,7 @@ export const DebitComp = () => {
 
     console.log(formData);
     dispatch(orderbag(id));
+    dispatch(getUserbag(id));
 
     navigate("/order_successful");
   };
