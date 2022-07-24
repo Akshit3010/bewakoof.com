@@ -21,14 +21,16 @@ const getGoogleUser = async (req, res) => {
 
   await createUser(googleUser);
   const user = await User.findOne({ email: googleUser.email });
+  let token;
   if (user) {
-    const token = genereateAccessToken(user);
+    token = genereateAccessToken(user);
     res.cookie("jwtoken", token, {
       expires: new Date(Date.now() + 3000000),
+      secure: true,
     });
     console.log(token);
   }
-  res.redirect("https://heady-rabbits-8957.vercel.app/");
+  res.redirect("https://heady-rabbits-8957.vercel.app/?" + token);
 };
 
 function getTokens({ code, clientId, clientSecret, redirectUri }) {

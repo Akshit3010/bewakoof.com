@@ -1,30 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import styled from "styled-components";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import Button from '@mui/material/Button';
-import { useDispatch} from 'react-redux';
-import { AddToWish, changeQty, doRemove } from '../Redux/action';
-import { useParams } from 'react-router-dom';
-
+import Button from "@mui/material/Button";
+import { useDispatch } from "react-redux";
+import { AddToWish, changeQty, doRemove } from "../Redux/action";
+import { useParams } from "react-router-dom";
 
 export const Bagwrapper = styled.div`
+  margin: 20px 0px;
 
-margin:20px 0px;
-
-
-.productDiv {
+  .productDiv {
     border: 1px solid gray;
     /* padding: 10px; */
-    margin:5px;
-    width:548.33px;
+    margin: 5px;
+    width: 548.33px;
     border-radius: 5px;
-   
   }
 
-  .productDiv > div:nth-child(1){
+  .productDiv > div:nth-child(1) {
     font-family: "Montserrat";
     font-size: 14px;
     /* margin: 5px; */
@@ -35,40 +31,34 @@ margin:20px 0px;
     color: gray;
   }
 
-  .productDiv > div:nth-child(2){
+  .productDiv > div:nth-child(2) {
     font-family: "Montserrat";
     font-size: 14px;
     display: flex;
     justify-content: center;
     color: gray;
-
   }
-  .productDiv>div>div>div{
-    margin:5px;
+  .productDiv > div > div > div {
+    margin: 5px;
     /* border:1px solid red; */
   }
-  .buttonSection>div:nth-child(1){
-   width:40%;
-   border-top:0.5px solid gray;
-   border-right:1px solid gray;
-   height:50px;
-   text-align: center;
-   font-size:16px;
- 
-
+  .buttonSection > div:nth-child(1) {
+    width: 40%;
+    border-top: 0.5px solid gray;
+    border-right: 1px solid gray;
+    height: 50px;
+    text-align: center;
+    font-size: 16px;
   }
-  
-  .buttonSection>div:nth-child(2){
-    width:60%;
-   border-top:0.5px solid gray;
 
-   height:50px;
-   text-align: center;
-   font-size:16px;
+  .buttonSection > div:nth-child(2) {
+    width: 60%;
+    border-top: 0.5px solid gray;
 
- 
-}
-
+    height: 50px;
+    text-align: center;
+    font-size: 16px;
+  }
 
   #spfirst {
     color: black;
@@ -80,19 +70,17 @@ margin:20px 0px;
     color: green;
     font-weight: 400;
   }
-  .formcont{
-    width:100px;
-    margin:20px;
-    
+  .formcont {
+    width: 100px;
+    margin: 20px;
   }
-    .selectDiv{
+  .selectDiv {
     width: 250px;
-    display:flex;
+    display: flex;
     justify-content: space-between;
-    
   }
-  #demo-simple-select{
-    height:10px;
+  #demo-simple-select {
+    height: 10px;
     font-size: 16px;
   }
 
@@ -100,38 +88,37 @@ margin:20px 0px;
     width: 88px;
     height: 109.5px;
   }
+`;
 
-`
+export const BagProduct = ({
+  _id,
+  title,
+  price,
+  strikedOffprice,
+  imgUrl,
+  qty,
+}) => {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const [qtyvalue, setQty] = useState(qty);
 
-export const BagProduct = ({ _id,title, price, strikedOffprice, imgUrl,qty }) => {
-  
-  const dispatch = useDispatch()  
-  const {id} = useParams()
-  const [qtyvalue,setQty] = useState(qty);
-
-  console.log(qtyvalue,"outside")
+  console.log(qtyvalue, "outside");
   // console.log(mainqty,"mainqty")
   const handleChange = (e) => {
     // e.preventDefalut();
-    console.log(qtyvalue,"before")
-    setQty(e.target.value)
-    console.log(qtyvalue,"after")
-    dispatch(changeQty(_id,e.target.value,id))
-    
-  }
+    console.log(qtyvalue, "before");
+    setQty(e.target.value);
+    console.log(qtyvalue, "after");
+    dispatch(changeQty(_id, e.target.value, id));
+  };
 
-  const  handleRemove = ()=>{
-      
-    dispatch(doRemove(_id,id))
-   
-  }
-  
-  const AddtoWishlist = ()=>{
-   
-   dispatch(AddToWish(_id,id))
-  }
+  const handleRemove = () => {
+    dispatch(doRemove(_id, id));
+  };
 
-
+  const AddtoWishlist = () => {
+    dispatch(AddToWish(_id, id));
+  };
 
   return (
     <>
@@ -139,9 +126,7 @@ export const BagProduct = ({ _id,title, price, strikedOffprice, imgUrl,qty }) =>
         <div className="productDiv">
           <div>
             <div>
-              <div>
-                {title}
-              </div>
+              <div>{title}</div>
               <div>
                 <span id="spfirst">₹{price}</span>
                 <span>₹{strikedOffprice}</span>
@@ -149,29 +134,25 @@ export const BagProduct = ({ _id,title, price, strikedOffprice, imgUrl,qty }) =>
               <div id="savedprice">You saved ₹{strikedOffprice - price} !</div>
               <div className="selectDiv">
                 <FormControl className="formcont">
-                  <InputLabel id="demo-simple-select-label">
-                    Size
-                  </InputLabel>
+                  <InputLabel id="demo-simple-select-label">Size</InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     // value={age}
                     label="Age"
-                  // onChange={handleChange}
+                    // onChange={handleChange}
                   >
-                    <MenuItem value={'S'}>S</MenuItem>
+                    <MenuItem value={"S"}>S</MenuItem>
                     <MenuItem value={"M"}>M</MenuItem>
                     <MenuItem value={"L"}>L</MenuItem>
-                    <MenuItem value={'XL'}>XL</MenuItem>
+                    <MenuItem value={"XL"}>XL</MenuItem>
                     <MenuItem value={"2Xl"}>2XL</MenuItem>
                     <MenuItem value={"3XL"}>3XL</MenuItem>
                   </Select>
                 </FormControl>
 
                 <FormControl className="formcont">
-                  <InputLabel id="demo-simple-select-label">
-                    Qty
-                  </InputLabel>
+                  <InputLabel id="demo-simple-select-label">Qty</InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
@@ -193,23 +174,22 @@ export const BagProduct = ({ _id,title, price, strikedOffprice, imgUrl,qty }) =>
               </div>
             </div>
             <div>
-              <img
-                className="imgtag"
-                src={imgUrl}
-                alt="invalid-image"
-              />
+              <img className="imgtag" src={imgUrl} alt="invalid-image" />
             </div>
           </div>
           <div className="buttonSection">
-            <div className="cursor-pointer" onClick={handleRemove}>Remove</div>
-            <div className="cursor-pointer" onClick={AddtoWishlist}>Move to Wishlist</div>
+            <div className="cursor-pointer" onClick={handleRemove}>
+              Remove
+            </div>
+            <div className="cursor-pointer" onClick={AddtoWishlist}>
+              Move to Wishlist
+            </div>
           </div>
         </div>
       </Bagwrapper>
     </>
-  )
-}
-
+  );
+};
 
 // 0:
 // brand: "Bewakoof"
