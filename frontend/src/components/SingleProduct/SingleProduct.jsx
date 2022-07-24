@@ -90,7 +90,7 @@ export default function SingleProduct() {
                 </div>
                 <div className={styles.size}>
                   {prod.sizes.map((size, i) => {
-                    return <div key={i}>{size}</div>;
+                    return <div key={i} className='h-6 w-6'>{size}</div>;
                   })}
                 </div>
                 <div className={styles.cart_menu}>
