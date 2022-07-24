@@ -1,9 +1,11 @@
 import "./App.css";
+import ScrollToTop from "./components/ScrollToTop";
 import MainRoute from "./routes/mainRoute";
 
 function App() {
   return (
     <div className="App">
+      <ScrollToTop />
       <MainRoute />
     </div>
   );

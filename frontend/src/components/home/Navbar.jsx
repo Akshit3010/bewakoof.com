@@ -17,11 +17,11 @@ const Navbar = () => {
   const [isLoggedIn, setLoggedIn] = useState(true);
   const dispatch = useDispatch();
 
+  const token = localStorage.getItem("jwtoken");
   useEffect(() => {
     dispatch(getUser());
-  }, [isLoggedIn]);
+  }, [isLoggedIn, token]);
 
-  const token = localStorage.getItem("jwtoken");
   const navigate = useNavigate();
 
   const logout = () => {
