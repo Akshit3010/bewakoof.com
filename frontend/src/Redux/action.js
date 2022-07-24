@@ -247,13 +247,13 @@ export const getSingleProd = (id) => (dispatch) => {
     .catch((err) => dispatch(prodError(err.message)));
 };
 
-export const addDataToCart = (id, productId) => (dispatch) => {
+export const addDataToCart = (id, productId, size) => (dispatch) => {
   let token = localStorage.getItem("jwtoken");
 
   axios
     .patch(
       `https://heady-rabbits-8947.herokuapp.com/users/addToCart/${id}`,
-      { productId },
+      { productId, size },
       {
         withCredentials: true,
         headers: {
