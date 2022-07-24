@@ -9,7 +9,7 @@ const Home = () => {
     if (query) {
       localStorage.setItem("jwtoken", query);
     }
-  }, []);
+  }, [query]);
   return (
     <>
       <Menprod />
