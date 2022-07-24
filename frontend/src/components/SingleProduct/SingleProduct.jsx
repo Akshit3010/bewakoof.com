@@ -9,6 +9,7 @@ import { addDataToCart, AddToWish, getSingleProd } from "../../Redux/action";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../Loader";
 import { Alert, Stack } from "@mui/material";
+import "./SingleProduct.css";
 
 export default function SingleProduct() {
   const { singleProd, isLoading, isError, user } = useSelector(
@@ -21,6 +22,7 @@ export default function SingleProduct() {
     return: false,
     delivery: false,
   });
+  const [size, setSize] = useState("");
   const handleSizeModal = () => {
     setVisible(true);
   };
@@ -47,12 +49,14 @@ export default function SingleProduct() {
 
   const addTobag = () => {
     const userId = user.user._id;
+
     if (!userId) {
       return navigate("/login");
     }
-    dispatch(addDataToCart(userId, id));
+
+    dispatch(addDataToCart(userId, id, size));
+
   };
-  console.log(user);
 
   const addToWishlist = () => {
     const userId = user.user._id;
@@ -75,6 +79,7 @@ export default function SingleProduct() {
           const discount = Math.floor(
             ((prod.strikedOffprice - prod.price) / prod.strikedOffprice) * 100
           );
+          // console.log(prod.description.split("."))
           return (
             <div className={styles.parent} key={prod._id}>
               <div className={styles.parent_left}>
@@ -104,8 +109,9 @@ export default function SingleProduct() {
                   <span onClick={handleSizeModal}>Size Guide</span>
                 </div>
                 <div className={styles.size}>
-                  {prod.sizes.map((size, i) => {
-                    return <div key={i}>{size}</div>;
+                  {prod.sizes.map((elem, i) => {
+                    const check = (elem === size)
+                    return <div key={i} onClick={() => setSize(elem)} className={`${check ? "activeProdSize" : ""}`}>{elem}</div>;
                   })}
                 </div>
                 <div className={styles.cart_menu}>
@@ -183,25 +189,25 @@ export default function SingleProduct() {
                   {accordion.desc && (
                     <div className={styles.accordion_desc}>
                       <div className={styles.desc_title}>
-                        Men's Blue Voyage Graphic Printed Oversized T-Shirt
+                        {prod.description.split(".")[0]}
                       </div>
                       <div>
                         Country of Origin
                         <span className={styles.product_category}>India</span>
                       </div>
                       <div>
-                        Commodity -
+                        Commodity 
                         <span className={styles.desc_commodity}>
-                          Men's T-Shirt
+                          {prod.description.split(".")[4].split(" - ")[1]}
                         </span>
                       </div>
                       <div className={styles.desc_specifications}>
                         Product Specifications
                       </div>
                       <ul>
-                        <li>Over-sized Fit- Falls loosely on body</li>
+                        <li>{prod.description.split(".")[6]}</li>
                         <li>
-                          Single jersey, 100% Cotton Classic, Lightweight jersey
+                          {prod.description.split(".")[7]}
                         </li>
                       </ul>
                     </div>
