@@ -6,6 +6,8 @@ import {
   IS_ERROR,
   IS_LOADING,
   SORT_DATA,
+  BAG_DATA,
+  GET_TOTAL
 } from "./actionTypes";
 import axios from "axios";
 
@@ -42,6 +44,14 @@ export const sortData = (payload) => ({
   payload,
 });
 
+export const getmybag = (payload) => ({
+  type: BAG_DATA,
+  payload
+
+})
+
+
+
 export const getProducts = (category) => (dispatch) => {
   dispatch(prodReq());
   axios
@@ -51,6 +61,78 @@ export const getProducts = (category) => (dispatch) => {
     })
     .catch((err) => dispatch(prodError(err.message)));
 };
+
+export const getUserbag = (id) => (dispatch) => {
+  // console.log(id,"id")
+  dispatch(prodReq());
+  axios.get(`http://localhost:8000/users/cart/${id}`).then((res) => {
+    const data = res.data.productData;
+    
+    // console.log(data,"data")
+    dispatch(getmybag(data))
+  }).catch((err) => {
+    dispatch(prodError(err.message))
+  })
+
+}
+
+export const changeQty = (productId,qty,id)=>(dispatch)=>{
+  dispatch(prodReq());
+  console.log(productId,qty,id)
+
+  // console.log(typeof qty)
+ axios.patch(`http://localhost:8000/users/qty/${id}`,{productId,qty}).then((res)=>{
+     
+  const data = res.data.productData;
+    console.log(data,"data")
+    dispatch(getmybag(data))
+ }).catch((err) => {
+    dispatch(prodError(err.message))
+  })
+
+}
+
+
+export const doRemove = (productId,id) => (dispatch)=>{
+
+    dispatch(prodReq());
+
+     axios.patch(`http://localhost:8000/users/removeProduct/${id}`,{productId}).then((res)=>{
+    const data = res.data.productData;
+    dispatch(getmybag(data))
+   }).catch((err)=>{
+    dispatch(prodError(err.message))
+   })
+
+}
+
+export const AddToWish = (productId,id) => (dispatch)=>{
+ 
+  dispatch(prodReq());
+    
+  axios.patch(`http://localhost:8000/users/addToWishlist/${id}`,{productId}).then((res)=>{
+    const data = res.data.productData;
+    dispatch(getmybag(data))
+  }).catch((err)=>{
+   dispatch(prodError(err.message))
+  })
+
+}
+
+
+export const orderbag=(id)=>(dispatch) =>{
+ 
+  dispatch(prodReq());
+    
+  axios.patch(`http://localhost:8000/users/order/${id}`).then((res)=>{
+    const data = res.data.myorders;
+    dispatch(getmybag(data))
+  }).catch((err)=>{
+   dispatch(prodError(err.message))
+  })
+
+
+}
 
 export const getSingleProd = (id) => (dispatch) => {
   dispatch(prodReq());

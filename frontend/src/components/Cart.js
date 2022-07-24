@@ -1,10 +1,15 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import styled from "styled-components";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Button from '@mui/material/Button';
+import { getTotal, getUserbag } from "../Redux/action";
+import {useDispatch,useSelector} from 'react-redux'
+import { useNavigate, useParams } from "react-router-dom";
+import { BagProduct } from "./BagProduct";
+import Loader from "./Loader";
 
 const CartWrapper = styled.div`
   margin: 0px;
@@ -280,16 +285,26 @@ const CartWrapper = styled.div`
 `;
 
 export const Cart = () => {
+ const dispatch =  useDispatch();
+//  const[total,setTotal] = useState(0)
+   const navigate = useNavigate()
 
-
-
+ const {id} = useParams();
+ console.log(id,"id")
+ const {isLoading,isError,mybag,mrp,bag_discount,total} = useSelector((state)=>state.reducer)
+ 
+ console.log(mybag,"bag_Data")
+  useEffect(()=>{
+   dispatch(getUserbag(id))
+  },[])
 
   return (
-    <>
-      <CartWrapper>
+    <>{
+      isLoading?<Loader/>
+      :isError?<></>:<CartWrapper>
         <div>
           <div className="headingDiv">
-            <span>My Bag </span>6 item(s)
+            <span>My Bag {mybag.length} </span> item(s)
           </div>
           <div className="container">
             <div className="leftcont">
@@ -302,75 +317,9 @@ export const Cart = () => {
                 <span>Yay! You get FREE delivery on this order</span>
               </div>
               <div>
-                <div className="productDiv">
-                  <div>
-                    <div>
-                      <div>
-                        Men's Blue Voyage Grpahic Printed Oversized T-Shirt
-                      </div>
-                      <div>
-                        <span id="spfirst">₹499</span>
-                        <span>₹1299</span>
-                      </div>
-                      <div id="savedprice">You saved ₹800!</div>
-                      <div className="selectDiv">
-                        <FormControl className="formcont">
-                          <InputLabel id="demo-simple-select-label">
-                           Size
-                          </InputLabel>
-                          <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            // value={age}
-                            label="Age"
-                            // onChange={handleChange}
-                          >
-                            <MenuItem value={10}>S</MenuItem>
-                            <MenuItem value={20}>M</MenuItem>
-                            <MenuItem value={30}>L</MenuItem>
-                            <MenuItem value={30}>XL</MenuItem>
-                            <MenuItem value={30}>2XL</MenuItem>
-                            <MenuItem value={30}>3XL</MenuItem>
-                          </Select>
-                        </FormControl>
-
-                        <FormControl className="formcont">
-                          <InputLabel id="demo-simple-select-label">
-                           Qty
-                          </InputLabel>
-                          <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            // value={age}
-                            label="Age"
-                            // onChange={handleChange}
-                          >
-                            <MenuItem value={10}>1</MenuItem>
-                            <MenuItem value={20}>2</MenuItem>
-                            <MenuItem value={30}>3</MenuItem>
-                            <MenuItem value={10}>4</MenuItem>
-                            <MenuItem value={20}>5</MenuItem>
-                            <MenuItem value={30}>6</MenuItem>
-                            <MenuItem value={10}>7</MenuItem>
-                            <MenuItem value={20}>8</MenuItem>
-                            <MenuItem value={30}>9</MenuItem>
-                          </Select>
-                        </FormControl>
-                      </div>
-                    </div>
-                    <div>
-                      <img
-                        className="imgtag"
-                        src="https://images.bewakoof.com/t320/voyage-oversized-fit-t-shirt-520745-1658295402-1.jpg"
-                        alt="invalid-image"
-                      />
-                    </div>
-                  </div>
-                  <div className="buttonSection">
-                    <div>Remove</div>
-                    <div>Move to Wishlist</div>
-                  </div>
-                </div>
+              {mybag.map((el)=>{
+               return <BagProduct key={el._id} {...el} />
+              })}
               </div>
             </div>
             <div className="rightcont">
@@ -382,26 +331,22 @@ export const Cart = () => {
                 <div className="coupenDiv"><span>Have a Coupon / Referral / Gift Card ?</span><span>Redeem </span></div>
                 <div className="prsummary">Price Summary</div>
                 <div className="summarysec">
-                    <div><span>Total MRP (Incl. of taxes) </span><span>₹ 6644</span></div>
+                    <div><span>Total MRP (Incl. of taxes) </span><span>₹ {mrp}</span></div>
                     <div><span>Delivery Fee </span><span>FREE</span></div>
-                    <div><span>Bag Discount </span><span>- ₹3800</span></div>
-                    <div><span>Subtotal </span><span></span>₹ 2844</div>
+                    <div><span>Bag Discount </span><span></span>{bag_discount}</div>
+                    <div><span>Subtotal </span><span></span>₹ {total}</div>
                 </div>
                 <div className="saving">You are saving ₹ 3800 on this order</div>
-       
-
-
                 <div className="totalDiv">
-                     <div><p>Total</p><p>₹ 2844</p></div>
-                     <Button variant="contained">Continue</Button>
+                     <div><p>Total</p><p>₹ {total}</p></div>
+                     <Button variant="contained" onClick={()=>navigate(`/payment/${id}`)}>Continue</Button>
                 </div>
-
                 </div>
-            
             </div>
           </div>
         </div>
       </CartWrapper>
+    }
     </>
   );
 };

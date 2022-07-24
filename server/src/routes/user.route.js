@@ -12,11 +12,15 @@ const {
   getUser,
 } = require("../controllers/accountDetails.controller");
 const { addToCart } = require("../controllers/ProductDetails.controllers");
-const { getWishlistProducts } = require("../controllers/wishlist.controllers");
+const { getWishlistProducts} = require("../controllers/wishlist.controllers");
+const createUser = require("../controllers/CreateUser.controller");
 
 const { Router } = require("express");
 const { getGoogleUser } = require("../controllers/google.controller");
 const userRouter = Router();
+
+
+userRouter.post("/",createUser)
 
 // All routes of mybag Page
 userRouter.get("/cart/:id", getProducts);
@@ -37,5 +41,6 @@ userRouter.patch("/addToCart/:id", addToCart);
 
 //All routes of Wishlist Page
 userRouter.get("/wishlisht/:id", getWishlistProducts);
+
 
 module.exports = userRouter;

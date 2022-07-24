@@ -12,6 +12,7 @@ import Footer from "../components/home/Footer";
 import Home from "../components/home/Home";
 import Womenprod from "../components/home/Womenprod";
 import Homeprod from "../components/home/Homeprod";
+import Myaccount from "../pages/MyAccount/Myaccount";
 
 export default function MainRoute() {
   return (
@@ -20,6 +21,11 @@ export default function MainRoute() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/wishlist" element={<WishlistPage />} />
+        <Route path="/single-product" element={<SingleProductPage />} />
+        <Route path="/cart/:id" element={<Cart />} />
+        <Route patch="/account" element={<Myaccount/>}/>
+        <Route path="/:id" element={<Products />} />
+         <Route path='/payment/:id' element={<Paymentpage/>} />
         <Route path="/products/*" element={<SingleProductPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/products/:id" element={<Products />} />
