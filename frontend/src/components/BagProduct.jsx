@@ -76,6 +76,7 @@ export const Bagwrapper = styled.div`
   .selectDiv {
     width: 250px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
   }
   #demo-simple-select {
@@ -137,7 +138,7 @@ export const BagProduct = ({
                   return (
                     <div
                       key={i}
-                      className="px-1 py-2 border border-gray-400 rounded-sm"
+                      className="border h-[54px] w-[84px] text-[xl] flex items-center justify-center border-gray-400 rounded-md"
                     >
                       {size}
                     </div>
