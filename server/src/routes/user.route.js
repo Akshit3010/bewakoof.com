@@ -12,7 +12,7 @@ const {
   getOrders,
   getUser,
 } = require("../controllers/accountDetails.controller");
-const { addToCart } = require("../controllers/ProductDetails.controllers");
+const { addToCart } = require("../controllers/productDetails.controllers");
 const { getWishlistProducts } = require("../controllers/wishlist.controllers");
 const createUser = require("../controllers/CreateUser.controller");
 

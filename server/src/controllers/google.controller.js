@@ -13,7 +13,7 @@ const getGoogleUser = async (req, res) => {
     code,
     clientId: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    redirectUri: `http://localhost:8000/users/auth/google/callback`,
+    redirectUri: `https://heady-rabbits-8947.herokuapp.com/users/auth/google/callback`,
   });
 
   // Fetch the user's profile with the access token and bearer
