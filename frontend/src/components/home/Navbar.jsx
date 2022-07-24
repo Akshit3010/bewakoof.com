@@ -6,12 +6,12 @@ import { IoBagOutline } from "react-icons/io5";
 import { IoSearchOutline } from "react-icons/io5";
 import { BsPhone } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../Redux/action";
+import { getUser, getUserbag } from "../../Redux/action";
 import { FaUserAlt } from "react-icons/fa";
 import axios from "axios";
 
 const Navbar = () => {
-  const { user } = useSelector((state) => state.reducer);
+  const { user, mybag } = useSelector((state) => state.reducer);
   const [active, setActive] = useState("Men");
   const [info, setinfo] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(true);
@@ -20,6 +20,7 @@ const Navbar = () => {
   const token = localStorage.getItem("jwtoken");
   useEffect(() => {
     dispatch(getUser());
+    dispatch(getUserbag(user.user.id));
   }, [isLoggedIn, token]);
 
   const navigate = useNavigate();
@@ -699,11 +700,11 @@ const Navbar = () => {
             </p>
           </li>
           <li>
-            <NavLink to="/cart/62dce091cf122ad222cc0290">
+            <NavLink to={`/cart/${user.user._id}`}>
               <span className="relative">
                 <IoBagOutline />
                 <span className="absolute top-[-5px] left-3 text-[11px] bg-[#fdd835] rounded-full h-[18px] w-[18px] text-center">
-                  0
+                  {mybag.length}
                 </span>
               </span>
             </NavLink>
