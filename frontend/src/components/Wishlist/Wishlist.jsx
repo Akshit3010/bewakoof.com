@@ -57,6 +57,9 @@ export default function Wishlist() {
               </Alert>
             </Stack>
           )}
+          {wishList.length === 0 && (
+            <h1 className="text-2xl text-center">No item in wishlist</h1>
+          )}
           <div className={styles.wrapper}>
             {!isLoading &&
               wishList?.map((item) => {

@@ -97,6 +97,7 @@ export const BagProduct = ({
   strikedOffprice,
   imgUrl,
   qty,
+  sizes,
 }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -142,12 +143,13 @@ export const BagProduct = ({
                     label="Age"
                     // onChange={handleChange}
                   >
-                    <MenuItem value={"S"}>S</MenuItem>
-                    <MenuItem value={"M"}>M</MenuItem>
-                    <MenuItem value={"L"}>L</MenuItem>
-                    <MenuItem value={"XL"}>XL</MenuItem>
-                    <MenuItem value={"2Xl"}>2XL</MenuItem>
-                    <MenuItem value={"3XL"}>3XL</MenuItem>
+                    {sizes.map((size, i) => {
+                      return (
+                        <MenuItem key={i} value={size}>
+                          size
+                        </MenuItem>
+                      );
+                    })}
                   </Select>
                 </FormControl>
 

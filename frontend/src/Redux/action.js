@@ -211,7 +211,7 @@ export const wishRemove = (productId, id) => (dispatch) => {
     });
 };
 
-export const AddToWish = (productId, id) => (dispatch) => {
+export const AddToWish = (productId, id, error, notify) => (dispatch) => {
   dispatch(prodReq());
   let token = localStorage.getItem("jwtoken");
   axios
@@ -227,9 +227,11 @@ export const AddToWish = (productId, id) => (dispatch) => {
     )
     .then((res) => {
       const data = res.data.productData;
+      notify("Added to Wishlist");
       dispatch(getmybag(data));
     })
     .catch((err) => {
+      error("Something went wrong");
       dispatch(prodError(err.message));
     });
 };
