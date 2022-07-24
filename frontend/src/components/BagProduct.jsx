@@ -145,7 +145,7 @@ export const BagProduct = ({
                     {sizes.map((size, i) => {
                       return (
                         <MenuItem key={i} value={size}>
-                          size
+                          {size}
                         </MenuItem>
                       );
                     })}
