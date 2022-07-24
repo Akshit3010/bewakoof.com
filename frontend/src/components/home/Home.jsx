@@ -4,7 +4,8 @@ import Menprod from "./Menprod";
 
 const Home = () => {
   const location = useLocation();
-  console.log(location);
+  const query = location?.search?.substring(1);
+  localStorage.setItem("jwtoken", query);
   return (
     <>
       <Menprod />
