@@ -8,7 +8,11 @@ const prodRouter = require("./routes/products.routes");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+const corsOptions = {
+  origin: true, //included origin as true
+  credentials: true, //included credentials as true
+};
+app.use(cors(corsOptions));
 
 app.use("/users", userRouter);
 app.use("/", prodRouter);
