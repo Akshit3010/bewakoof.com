@@ -17,7 +17,7 @@ const ProductsHeader = ({ products }) => {
           </Link>
           /
           <Link className="mx-3 capitalize" to={"/"}>
-            {first} Clothing
+            {first} {first === "men" || first === "women" ? "clothing" : ""}
           </Link>
           /
           <Link className="mx-3 capitalize" to={"/"}>

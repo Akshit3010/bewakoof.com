@@ -3,6 +3,10 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { AiFillStar } from "react-icons/ai";
 import { ProdImg } from "../Assets/Styled/Products.styled";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AddToWish } from "../Redux/action";
 
 const ProductsCard = ({
   _id,
@@ -12,8 +16,22 @@ const ProductsCard = ({
   strikedOffprice,
   rating,
 }) => {
+  const { user } = useSelector((state) => state.reducer);
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const costForTwo = price * 2 - 19;
+
+  const notify = (msg) => toast(msg);
+  const error = (msg) => toast.error(msg);
+
+  const addToWish = () => {
+    if (!user?.user?.email) {
+      return navigate("/login");
+    }
+    const userId = user.user._id;
+    dispatch(AddToWish(_id, userId, error, notify));
+  };
   return (
     <>
       <div
@@ -37,7 +55,7 @@ const ProductsCard = ({
             <p className="text-[12px] font-bold my-1">Bewakoof</p>
             <p className="text-[11px]">{title.slice(0, 36)}...</p>
           </div>
-          <FavoriteBorderIcon className="mr-3" />
+          <FavoriteBorderIcon className="mr-3" onClick={addToWish} />
         </div>
         <div className="flex items-end">
           <h2 className="font-bold">
