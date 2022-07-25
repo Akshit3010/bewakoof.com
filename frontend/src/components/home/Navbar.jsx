@@ -773,7 +773,7 @@ const Navbar = () => {
                 ? "text-[#333] text-[16px] font-[800] border-b-4 border-[#ffd835]"
                 : ""
             }
-            to="/products/oneplus"
+            to="/products/men-joggers"
             onClick={() => setActive("Men")}
           >
             MEN
