@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import styles from "./slider.module.css";
 import Sliders from "./Sliders";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 const Menprod = () => {
   const settings = {
     slidesToShow: 3,
@@ -120,6 +120,8 @@ const Menprod = () => {
       mrp: "999",
     },
   ];
+
+  const navigate = useNavigate();
   return (
     <div id={styles.sLide1}>
       <div className={styles.Box}>
@@ -227,7 +229,12 @@ const Menprod = () => {
       </div>
 
       <h3 className={styles.popH3}>POPULAR CATEGORIES</h3>
-      <div className={styles.popDiv}>
+      <div
+        className={styles.popDiv}
+        onClick={() => {
+          navigate("/products/men-printed-shirts");
+        }}
+      >
         <div>
           <img
             className={styles.popImg}

@@ -30,7 +30,7 @@ export default function Sliders({ data }) {
       >
         {data.map((e, i) => (
           <SwiperSlide className={styles.manSwip} key={i}>
-            <NavLink to="assc">
+            <NavLink to="/products/men-printed-shirts">
               <img src={e.IMG} alt="" />
             </NavLink>
             <div>
