@@ -16,7 +16,16 @@ const ProductsHeader = ({ products }) => {
             Home
           </Link>
           /
-          <Link className="mx-3 capitalize" to={"/"}>
+          <Link
+            className="mx-3 capitalize"
+            to={`/${
+              first[0] === "men"
+                ? ""
+                : first[0] === "women"
+                ? "women"
+                : "accessories"
+            }`}
+          >
             {first}{" "}
             {first[0] === "men" || first[0] === "women" ? "clothing" : ""}
           </Link>
