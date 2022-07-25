@@ -6,7 +6,7 @@ import { IoBagOutline } from "react-icons/io5";
 import { IoSearchOutline } from "react-icons/io5";
 import { BsPhone } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser, getUserbag } from "../../Redux/action";
+import { getmybag, getUser, getUserbag } from "../../Redux/action";
 import { FaUserAlt } from "react-icons/fa";
 import axios from "axios";
 
@@ -36,7 +36,7 @@ const Navbar = () => {
       .then((res) => {
         console.log(res);
         setLoggedIn(false);
-        dispatch(getUserbag(user?.user?._id));
+        dispatch(getmybag([]));
         localStorage.removeItem("jwtoken");
         navigate("/");
       })
