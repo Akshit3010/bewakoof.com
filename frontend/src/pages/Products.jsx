@@ -118,7 +118,10 @@ const Products = () => {
                 </p>
                 <button
                   className="text-[#51cccc] border border-[#51cccc] py-2 px-4 mt-2 text-xl "
-                  onClick={() => dispatch(getProducts(payload.join("_")))}
+                  onClick={() => {
+                    setSortBy("Popular");
+                    dispatch(getProducts(payload.join("_")));
+                  }}
                 >
                   Clear Filters
                 </button>
