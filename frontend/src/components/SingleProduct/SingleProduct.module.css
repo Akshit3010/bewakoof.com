@@ -123,8 +123,8 @@
   margin: 10px 0;
 }
 .size div {
-  flex: 1;
   aspect-ratio: 1;
+  width: 60px;
   background-color: #eee;
   display: flex;
   justify-content: center;

@@ -24,7 +24,7 @@ const Navbar = () => {
 
   useEffect(() => {
     dispatch(getUserbag(user?.user?._id));
-  }, [isLoggedIn, token]);
+  }, [isLoggedIn, token, user]);
 
   const navigate = useNavigate();
 
@@ -36,6 +36,7 @@ const Navbar = () => {
       .then((res) => {
         console.log(res);
         setLoggedIn(false);
+        dispatch(getUserbag(user?.user?._id));
         localStorage.removeItem("jwtoken");
         navigate("/");
       })
