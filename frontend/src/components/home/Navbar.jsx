@@ -750,6 +750,9 @@ const Navbar = () => {
             <p
               className="cursor-pointer text-xl"
               onClick={() => {
+                if (!user?.user?.email) {
+                  return navigate("/login");
+                }
                 navigate(`/cart/${user.user._id}`);
               }}
             >
