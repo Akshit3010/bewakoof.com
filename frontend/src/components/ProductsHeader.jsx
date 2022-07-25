@@ -7,7 +7,7 @@ const ProductsHeader = ({ products }) => {
   let first = split.slice(0, 1);
   let second = split[split.length - 1];
   let last = split.slice(1, split.length).join(" ");
-
+  console.log(first);
   return (
     <>
       <ProductHeader className="w-[80%] mx-auto my-4 mt-[180px]">
@@ -17,7 +17,8 @@ const ProductsHeader = ({ products }) => {
           </Link>
           /
           <Link className="mx-3 capitalize" to={"/"}>
-            {first} {first === "men" || first === "women" ? "clothing" : ""}
+            {first}{" "}
+            {first[0] === "men" || first[0] === "women" ? "clothing" : ""}
           </Link>
           /
           <Link className="mx-3 capitalize" to={"/"}>
