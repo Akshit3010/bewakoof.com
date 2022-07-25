@@ -7,6 +7,8 @@ import Select from "@mui/material/Select";
 import { useDispatch } from "react-redux";
 import { AddToWish, changeQty, doRemove } from "../Redux/action";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Bagwrapper = styled.div`
   margin: 20px 0px;
@@ -102,6 +104,8 @@ export const BagProduct = ({
   const dispatch = useDispatch();
   const { id } = useParams();
   const [qtyvalue, setQty] = useState(qty);
+  const notify = (msg) => toast(msg);
+  const error = (msg) => toast.error(msg);
 
   console.log(qtyvalue, "outside");
   // console.log(mainqty,"mainqty")
@@ -118,7 +122,7 @@ export const BagProduct = ({
   };
 
   const AddtoWishlist = () => {
-    dispatch(AddToWish(_id, id));
+    dispatch(AddToWish(_id, id, error, notify));
   };
 
   return (
