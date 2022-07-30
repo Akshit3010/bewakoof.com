@@ -7,12 +7,13 @@ import MainRoute from "./routes/mainRoute";
 
 function App() {
    const { user, myBag } = useSelector((state) => state.reducer);
-   console.log('user: ', user.user);
    const dispatch = useDispatch();
 
    useEffect(() => {
-      const userId = user.user !== undefined && user.user._id;
-      dispatch(getUserbag(userId));
+      if (user.user !== undefined) {
+         const userId = user.user._id;
+         dispatch(getUserbag(userId));
+      }
    }, [myBag]);
    return (
       <div className="App">
