@@ -1,14 +1,25 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import ScrollToTop from "./components/ScrollToTop";
+import { getUserbag } from "./Redux/action";
 import MainRoute from "./routes/mainRoute";
 
 function App() {
-  return (
-    <div className="App">
-      <ScrollToTop />
-      <MainRoute />
-    </div>
-  );
+   const { user, myBag } = useSelector((state) => state.reducer);
+   console.log('user: ', user.user);
+   const dispatch = useDispatch();
+
+   useEffect(() => {
+      const userId = user.user !== undefined && user.user._id;
+      dispatch(getUserbag(userId));
+   }, [myBag]);
+   return (
+      <div className="App">
+         <ScrollToTop />
+         <MainRoute />
+      </div>
+   );
 }
 
 export default App;
