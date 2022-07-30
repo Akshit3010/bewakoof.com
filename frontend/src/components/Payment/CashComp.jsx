@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Button from '@mui/material/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Cashwrapper = styled.div`
  font-size: 14px;
@@ -15,13 +17,23 @@ const Cashwrapper = styled.div`
 
 `
 export const CashComp = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const { total } = useSelector((state) => state.reducer);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(orderbag(id));
+    dispatch(getUserbag(id));
+    navigate("/order_successful");
+  };
   return (
 
     <>
       <Cashwrapper>
         <div>Cash Collection Charges: Costs ₹ 35 Extra</div>
-        <Button className='buttontag' type="submit" variant="contained">Pay</Button>
+        <Button className='buttontag' type="submit" onClick={handleSubmit} variant="contained">Pay {total}</Button>
       </Cashwrapper>
     </>
   )
