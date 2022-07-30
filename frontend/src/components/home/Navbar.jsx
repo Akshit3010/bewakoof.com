@@ -25,7 +25,7 @@ const Navbar = () => {
   useEffect(() => {
     dispatch(getUserbag(user?.user?._id));
   }, [isLoggedIn, token, user]);
-
+  console.log(mybag);
   const navigate = useNavigate();
 
   const logout = () => {
