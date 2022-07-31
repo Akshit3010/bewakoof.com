@@ -294,7 +294,7 @@ export const addDataToCart =
       )
       .then((res) => {
         notify("Added to cart");
-        console.log(res.data);
+        dispatch(getUserbag(id));
       })
       .catch((err) => {
         error("Something went wrong");

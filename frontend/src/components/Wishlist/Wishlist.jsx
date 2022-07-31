@@ -2,12 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import {
-  addDataToCart,
-  getUserbag,
-  getUserWish,
-  wishRemove,
-} from "../../Redux/action";
+import { addDataToCart, getUserWish, wishRemove } from "../../Redux/action";
 import styles from "./Wishlist.module.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -36,14 +31,11 @@ export default function Wishlist() {
     const size = ["M"];
     dispatch(addDataToCart(id, productId, size, error, notify));
     dispatch(wishRemove(productId, id));
-    dispatch(getUserbag(id));
   };
 
   const removeWish = (productId) => {
     dispatch(wishRemove(productId, id));
   };
-
-  console.log(wishList);
 
   return (
     <>
