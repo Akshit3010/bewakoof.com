@@ -15,7 +15,7 @@ const OrderSuccessfull = () => {
         </div>
         <p className="text-2xl font-bold">Order successfully placed</p>
         <button
-          className="px-4 py-1 text-xl font-[600] text-black bg-[#fdd835]"
+          className="px-4 py-2 rounded-xl mt-2 text-[14px] font-[600] text-black bg-[#fdd835]"
           onClick={() => navigate("/")}
         >
           Continue Shopping
