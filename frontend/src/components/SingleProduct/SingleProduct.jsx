@@ -131,7 +131,6 @@ export default function SingleProduct() {
                         {elem}
                       </div>
                     );
-
                   })}
                 </div>
                 <div className={styles.cart_menu}>
