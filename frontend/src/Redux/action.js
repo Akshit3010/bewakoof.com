@@ -254,6 +254,7 @@ export const orderbag = (id) => (dispatch) => {
     .then((res) => {
       const data = res.data.myorders;
       dispatch(getmybag(data));
+      dispatch(getUserbag(id));
     })
     .catch((err) => {
       dispatch(prodError(err.message));
