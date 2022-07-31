@@ -6,18 +6,18 @@ import { IoBagOutline } from "react-icons/io5";
 import { IoSearchOutline } from "react-icons/io5";
 import { BsPhone } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { getmybag, getUser, getUserbag } from "../../Redux/action";
+import { getUser, getUserbag } from "../../Redux/action";
 import { FaUserAlt } from "react-icons/fa";
 import axios from "axios";
 
 const Navbar = () => {
-  const { user, mybag } = useSelector((state) => state.reducer);
+  let { user, mybag } = useSelector((state) => state.reducer);
   const [active, setActive] = useState("Men");
   const [info, setinfo] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(true);
   const dispatch = useDispatch();
-  console.log(mybag);
   const token = localStorage.getItem("jwtoken");
+
   useEffect(() => {
     dispatch(getUser());
   }, [isLoggedIn, token]);
@@ -33,9 +33,8 @@ const Navbar = () => {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res);
         setLoggedIn(false);
-        dispatch(getmybag([]));
+        mybag = [];
         localStorage.removeItem("jwtoken");
         navigate("/");
       })

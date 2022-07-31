@@ -6,7 +6,6 @@ import {
   IS_LOADING,
   SORT_DATA,
   BAG_DATA,
-  GET_TOTAL,
   USER_REQ,
   GET_USER,
   USER_FAILURE,
