@@ -58,12 +58,11 @@ export const DebitComp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    setFormData({ ...formData, ["Card Number"]: cardvalue });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
 
     console.log(formData);
     dispatch(orderbag(id));
-    dispatch(getUserbag(id));
 
     navigate("/order_successful");
   };
