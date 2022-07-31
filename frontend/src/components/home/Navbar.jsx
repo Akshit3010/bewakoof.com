@@ -16,7 +16,7 @@ const Navbar = () => {
   const [info, setinfo] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(true);
   const dispatch = useDispatch();
-
+  console.log(mybag);
   const token = localStorage.getItem("jwtoken");
   useEffect(() => {
     dispatch(getUser());
@@ -24,7 +24,7 @@ const Navbar = () => {
 
   useEffect(() => {
     dispatch(getUserbag(user?.user?._id));
-  }, [isLoggedIn, token, user, mybag.length]);
+  }, [isLoggedIn, token, user, mybag]);
   const navigate = useNavigate();
 
   const logout = () => {

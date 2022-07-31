@@ -34,17 +34,19 @@ const ProductsCard = ({
   };
   return (
     <>
-      <div
-        className="cursor-pointer mb-2"
-        onClick={() => {
-          navigate(`${_id}`);
-        }}
-      >
+      <div className="cursor-pointer mb-2">
         <div className="relative overflow-hidden">
           <span className="absolute top-0 z-10 left-0 bg-gray-800 text-[10px] text-white px-1 py-[1px]">
             Buy 2 for {costForTwo}
           </span>
-          <ProdImg className="cursor-pointer" src={imgUrl} alt={title} />
+          <ProdImg
+            className="cursor-pointer"
+            src={imgUrl}
+            alt={title}
+            onClick={() => {
+              navigate(`${_id}`);
+            }}
+          />
           <span className="absolute bottom-4 flex items-center left-0 bg-[rgba(255,255,255,.8)] text-[11px] font-bold  px-1 py-[1px]">
             {rating}
             <AiFillStar className="text-yellow-500 ml-1 text-[12px]" />
@@ -53,7 +55,14 @@ const ProductsCard = ({
         <div className="flex justify-between items-center">
           <div>
             <p className="text-[12px] font-bold my-1">Bewakoof</p>
-            <p className="text-[11px]">{title.slice(0, 36)}...</p>
+            <p
+              className="text-[11px]"
+              onClick={() => {
+                navigate(`${_id}`);
+              }}
+            >
+              {title.slice(0, 36)}...
+            </p>
           </div>
           <FavoriteBorderIcon className="mr-3" onClick={addToWish} />
         </div>

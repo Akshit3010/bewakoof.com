@@ -107,13 +107,10 @@ export const BagProduct = ({
   const notify = (msg) => toast(msg);
   const error = (msg) => toast.error(msg);
 
-  console.log(qtyvalue, "outside");
   // console.log(mainqty,"mainqty")
   const handleChange = (e) => {
     // e.preventDefalut();
-    console.log(qtyvalue, "before");
     setQty(e.target.value);
-    console.log(qtyvalue, "after");
     dispatch(changeQty(_id, e.target.value, id));
   };
 
@@ -123,6 +120,7 @@ export const BagProduct = ({
 
   const AddtoWishlist = () => {
     dispatch(AddToWish(_id, id, error, notify));
+    dispatch(doRemove(_id, id));
   };
 
   return (
