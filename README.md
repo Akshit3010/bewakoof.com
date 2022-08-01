@@ -19,6 +19,8 @@ Bewakoof.com is an E-commerce website where a user can find different acessories
 
 - React FrameWork
 - Redux library
+- ExpressJS
+- MongoDB
 - Material UI
 - Tailwind CSS
 
