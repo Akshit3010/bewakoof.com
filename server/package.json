@@ -4,8 +4,8 @@
   "description": "<h1>Project-Code:heady-rabbits-8957<h1>\r     <h1>Project-Name:Bewakoof.com<h1>",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
