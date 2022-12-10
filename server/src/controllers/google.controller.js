@@ -13,7 +13,7 @@ const getGoogleUser = async (req, res) => {
     code,
     clientId: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    redirectUri: `https://bewakoof-com-lemon.vercel.app/users/auth/google/callback`,
+    redirectUri: `https://bewakoof-com-topaz.vercel.app/users/auth/google/callback`,
   });
 
   // Fetch the user's profile with the access token and bearer

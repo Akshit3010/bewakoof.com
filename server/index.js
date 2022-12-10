@@ -1,13 +1,34 @@
-const app = require("./src/index");
-const { connect, db } = require("./src/Configs/db");
+require("dotenv").config();
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const connection = require("./src/Configs/db");
+
 const PORT = process.env.PORT || 8000;
 
+const userRouter = require("./src/routes/user.route");
+const prodRouter = require("./src/routes/products.routes");
+const cookieParser = require("cookie-parser");
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+const corsOptions = {
+  origin: true,
+  credentials: true, //included credentials as true
+};
+
+app.use(cors(corsOptions));
+
+app.get("/", (req, res) => {
+  res.send("App working");
+});
+
+app.use("/users", userRouter);
+app.use("/", prodRouter);
+
 app.listen(PORT, async () => {
-  try {
-    await connect();
-    console.log("Database Connected", db);
-  } catch (err) {
-    console.log({ err: err.message });
-  }
-  console.log("listeninig on PORT", PORT);
+  await connection;
+  console.log(`Server started at ${PORT}`);
 });
