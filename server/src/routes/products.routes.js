@@ -9,7 +9,7 @@ const prodRouter = Router();
 prodRouter.use(cookieParser());
 
 //Routes for products
-prodRouter.get("/:category", getProducts);
+prodRouter.get("/prod/:category", getProducts);
 prodRouter.get("/product/:id", getProduct);
 prodRouter.post("/prod", postProducts);
 

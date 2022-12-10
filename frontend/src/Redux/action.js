@@ -75,7 +75,7 @@ export const getProducts = (category) => (dispatch) => {
   let token = localStorage.getItem("jwtoken");
 
   axios
-    .get(`https://bewakoof-com-lemon.vercel.app/${category}`, {
+    .get(`https://bewakoof-com-lemon.vercel.app/prod/${category}`, {
       withCredentials: true,
       headers: {
         Authorization: token,
