@@ -75,7 +75,7 @@ export const getProducts = (category) => (dispatch) => {
   let token = localStorage.getItem("jwtoken");
 
   axios
-    .get(`https://heady-rabbits-8947.herokuapp.com/${category}`, {
+    .get(`https://bewakoof-com-lemon.vercel.app/${category}`, {
       withCredentials: true,
       headers: {
         Authorization: token,
@@ -93,7 +93,7 @@ export const getUserbag = (id) => (dispatch) => {
   let token = localStorage.getItem("jwtoken");
 
   axios
-    .get(`https://heady-rabbits-8947.herokuapp.com/users/cart/${id}`, {
+    .get(`https://bewakoof-com-lemon.vercel.app/users/cart/${id}`, {
       withCredentials: true,
       headers: {
         Authorization: token,
@@ -116,7 +116,7 @@ export const getUserWish = (id) => (dispatch) => {
   let token = localStorage.getItem("jwtoken");
 
   axios
-    .get(`https://heady-rabbits-8947.herokuapp.com/users/wishlisht/${id}`, {
+    .get(`https://bewakoof-com-lemon.vercel.app/users/wishlisht/${id}`, {
       withCredentials: true,
       headers: {
         Authorization: token,
@@ -141,7 +141,7 @@ export const changeQty = (productId, qty, id) => (dispatch) => {
   // console.log(typeof qty)
   axios
     .patch(
-      `https://heady-rabbits-8947.herokuapp.com/users/qty/${id}`,
+      `https://bewakoof-com-lemon.vercel.app/users/qty/${id}`,
       {
         productId,
         qty,
@@ -169,7 +169,7 @@ export const doRemove = (productId, id) => (dispatch) => {
 
   axios
     .patch(
-      `https://heady-rabbits-8947.herokuapp.com/users/removeProduct/${id}`,
+      `https://bewakoof-com-lemon.vercel.app/users/removeProduct/${id}`,
       { productId },
       {
         withCredentials: true,
@@ -193,7 +193,7 @@ export const wishRemove = (productId, id) => (dispatch) => {
 
   axios
     .patch(
-      `https://heady-rabbits-8947.herokuapp.com/users/removeWish/${id}`,
+      `https://bewakoof-com-lemon.vercel.app/users/removeWish/${id}`,
       { productId },
       {
         withCredentials: true,
@@ -216,7 +216,7 @@ export const AddToWish = (productId, id, error, notify) => (dispatch) => {
   let token = localStorage.getItem("jwtoken");
   axios
     .patch(
-      `https://heady-rabbits-8947.herokuapp.com/users/addToWishlist/${id}`,
+      `https://bewakoof-com-lemon.vercel.app/users/addToWishlist/${id}`,
       { productId },
       {
         withCredentials: true,
@@ -242,7 +242,7 @@ export const orderbag = (id) => (dispatch) => {
 
   axios
     .patch(
-      `https://heady-rabbits-8947.herokuapp.com/users/order/${id}`,
+      `https://bewakoof-com-lemon.vercel.app/users/order/${id}`,
       {},
       {
         withCredentials: true,
@@ -266,7 +266,7 @@ export const getSingleProd = (id) => (dispatch) => {
   let token = localStorage.getItem("jwtoken");
 
   axios
-    .get(`https://heady-rabbits-8947.herokuapp.com/product/${id}`, {
+    .get(`https://bewakoof-com-lemon.vercel.app/product/${id}`, {
       withCredentials: true,
       headers: {
         Authorization: token,
@@ -284,7 +284,7 @@ export const addDataToCart =
 
     axios
       .patch(
-        `https://heady-rabbits-8947.herokuapp.com/users/addToCart/${id}`,
+        `https://bewakoof-com-lemon.vercel.app/users/addToCart/${id}`,
         { productId, size },
         {
           withCredentials: true,
@@ -309,7 +309,7 @@ export const getUser = () => (dispatch) => {
   let token = localStorage.getItem("jwtoken");
 
   axios
-    .get("https://heady-rabbits-8947.herokuapp.com/users/verify", {
+    .get("https://bewakoof-com-lemon.vercel.app/users/verify", {
       withCredentials: true,
       headers: {
         Authorization: token,
