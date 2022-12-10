@@ -29,7 +29,7 @@ const Navbar = () => {
 
   const logout = () => {
     axios
-      .get("https://heady-rabbits-8947.herokuapp.com/users/logout", {
+      .get("https://bewakoof-com-lemon.vercel.app/users/logout", {
         withCredentials: true,
       })
       .then((res) => {
